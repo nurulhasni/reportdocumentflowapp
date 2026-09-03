@@ -1,0 +1,5 @@
+[
+	{ "SalesOffice": "1000", "SalesOffice_Text": "New York" },
+	{ "SalesOffice": "1100", "SalesOffice_Text": "Frankfurt" },
+	{ "SalesOffice": "1200", "SalesOffice_Text": "Singapore" }
+]

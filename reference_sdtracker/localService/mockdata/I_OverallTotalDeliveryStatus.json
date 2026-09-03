@@ -1,0 +1,5 @@
+[
+	{ "OverallTotalDeliveryStatus": "A", "OverallTotalDeliveryStatus_Text": "Not Delivered" },
+	{ "OverallTotalDeliveryStatus": "B", "OverallTotalDeliveryStatus_Text": "Partially Delivered" },
+	{ "OverallTotalDeliveryStatus": "C", "OverallTotalDeliveryStatus_Text": "Completely Processed" }
+]

@@ -1,0 +1,256 @@
+<!--
+
+    Copyright (C) 2009-2025 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="TrackStatusSalesDocumentCellsFragment"
+	xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns="sap.m">
+	<!-- 1 SalesDocument -->
+	<ObjectIdentifier
+		id="TSSDCellsObjectIdentifierSalesDocument"
+		title="{SalesDocument}" 
+		titleActive="true"
+		titlePress="onLinkSalesDocumentPressed"></ObjectIdentifier>
+	<!---->
+	<!-- 
+       Status                               
+       0 Not relevant                     no icon, no color, visible
+       1 Not yet processed (Open)         future icon, color default, visible 
+       2 Partially processed (In Process) process icon, color default, visible
+       3 Completed						  accept icon, color positive, visible 
+       4 Overdue issue                    warning2 icon, color negative , visible 
+       5 Due next issue					  warning2 icon, color critical, visible 
+       -->
+	<!-- 2 OverallFulfillmentStatus -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutOverallFulfillmentStatus">
+		<core:Icon 
+			id="TSSDCellsIcon_OverallFulfillmentStatus_1"
+			visible="{= ${OverallFulfillmentStatus} === '1' }" 
+			src="sap-icon://future" color="Default" 
+			tooltip="{to_OverallFulfillmentStatus/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_OverallFulfillmentStatus_2"
+			visible="{= ${OverallFulfillmentStatus} === '2' }" 
+			src="sap-icon://process" color="Default" 
+			tooltip="{to_OverallFulfillmentStatus/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_OverallFulfillmentStatus_3"
+			visible="{= ${OverallFulfillmentStatus} === '3' }" 
+			src="sap-icon://message-success" color="Positive"
+			tooltip="{to_OverallFulfillmentStatus/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_OverallFulfillmentStatus_4"
+			visible="{= ${OverallFulfillmentStatus} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_OverallFulfillmentStatus/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_OverallFulfillmentStatus_5"
+			visible="{= ${OverallFulfillmentStatus} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_OverallFulfillmentStatus/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+	<!---->
+	<!-- 3 FulfillmentStatusInOrder -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutFulfillmentStatusInOrder">
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInOrder_1"
+			visible="{= ${FulfillmentStatusInOrder} === '1' }" 
+			src="sap-icon://future" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInOrder/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInOrder_2"
+			visible="{= ${FulfillmentStatusInOrder} === '2' }" 
+			src="sap-icon://process" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInOrder/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInOrder_3"
+			visible="{= ${FulfillmentStatusInOrder} === '3' }" 
+			src="sap-icon://message-success" 
+			color="Positive"
+			tooltip="{to_FulfillmentStatusInOrder/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInOrder_4"
+			visible="{= ${FulfillmentStatusInOrder} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_FulfillmentStatusInOrder/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInOrder_5"
+			visible="{= ${FulfillmentStatusInOrder} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_FulfillmentStatusInOrder/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+	<!---->	
+	<!-- 4 FulfillmentStatusInSupply -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutFulfillmentStatusInSupply">
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInSupply_1"
+			visible="{= ${FulfillmentStatusInSupply} === '1' }" 
+			src="sap-icon://future" color="Default"
+			tooltip="{to_FulfillmentStatusInSupply/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInSupply_2"
+			visible="{= ${FulfillmentStatusInSupply} === '2' }" 
+			src="sap-icon://process" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInSupply/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInSupply_3"
+			visible="{= ${FulfillmentStatusInSupply} === '3' }" 
+			src="sap-icon://message-success" 
+			color="Positive"
+			tooltip="{to_FulfillmentStatusInSupply/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInSupply_4"
+			visible="{= ${FulfillmentStatusInSupply} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_FulfillmentStatusInSupply/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInSupply_5"
+			visible="{= ${FulfillmentStatusInSupply} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_FulfillmentStatusInSupply/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+	<!---->	
+	<!-- 5 FulfillmentStatusInDelivery -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutFulfillmentStatusInDelivery">
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInDelivery_1"
+			visible="{= ${FulfillmentStatusInDelivery} === '1' }" 
+			src="sap-icon://future" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInDelivery/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInDelivery_2"
+			visible="{= ${FulfillmentStatusInDelivery} === '2' }" 
+			src="sap-icon://process" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInDelivery/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInDelivery_3"
+			visible="{= ${FulfillmentStatusInDelivery} === '3' }" 
+			src="sap-icon://message-success" 
+			color="Positive"
+			tooltip="{to_FulfillmentStatusInDelivery/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInDelivery_4"
+			visible="{= ${FulfillmentStatusInDelivery} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_FulfillmentStatusInDelivery/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInDelivery_5"
+			visible="{= ${FulfillmentStatusInDelivery} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_FulfillmentStatusInDelivery/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+	<!---->	
+	<!-- 6 FulfillmentStatusInTransit -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutFulfillmentStatusInTransit">
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInTransit_1"
+			visible="{= ${FulfillmentStatusInTransit} === '1' }" 
+			src="sap-icon://future" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInTransit/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInTransit_2"
+			visible="{= ${FulfillmentStatusInTransit} === '2' }" 
+			src="sap-icon://process" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInTransit/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInTransit_3"
+			visible="{= ${FulfillmentStatusInTransit} === '3' }" 
+			src="sap-icon://message-success" 
+			color="Positive"
+			tooltip="{to_FulfillmentStatusInTransit/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInTransit_4"
+			visible="{= ${FulfillmentStatusInTransit} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_FulfillmentStatusInTransit/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInTransit_5"
+			visible="{= ${FulfillmentStatusInTransit} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_FulfillmentStatusInTransit/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+	<!---->	
+	<!-- 7 FulfillmentStatusInInvoice -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutFulfillmentStatusInInvoice">
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInInvoice_1"
+			visible="{= ${FulfillmentStatusInInvoice} === '1' }" 
+			src="sap-icon://future" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInInvoice/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInInvoice_2"
+			visible="{= ${FulfillmentStatusInInvoice} === '2' }" 
+			src="sap-icon://process" color="Default"
+			tooltip="{to_FulfillmentStatusInInvoice/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInInvoice_3"
+			visible="{= ${FulfillmentStatusInInvoice} === '3' }" 
+			src="sap-icon://message-success" 
+			color="Positive"
+			tooltip="{to_FulfillmentStatusInInvoice/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInInvoice_4"
+			visible="{= ${FulfillmentStatusInInvoice} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_FulfillmentStatusInInvoice/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInInvoice_5"
+			visible="{= ${FulfillmentStatusInInvoice} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_FulfillmentStatusInInvoice/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+	<!---->	
+	<!-- 8 FulfillmentStatusInAccounting -->
+	<layout:VerticalLayout id="TSSDCellsVerticalLayoutFulfillmentStatusInAccounting">
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInAccounting_1"
+			visible="{= ${FulfillmentStatusInAccounting} === '1' }"
+			src="sap-icon://future" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInAccounting/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInAccounting_2"
+			visible="{= ${FulfillmentStatusInAccounting} === '2' }" 
+			src="sap-icon://process" 
+			color="Default"
+			tooltip="{to_FulfillmentStatusInAccounting/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInAccounting_3"
+			visible="{= ${FulfillmentStatusInAccounting} === '3' }" 
+			src="sap-icon://message-success" 
+			color="Positive"
+			tooltip="{to_FulfillmentStatusInAccounting/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInAccounting_4"
+			visible="{= ${FulfillmentStatusInAccounting} === '4' }" 
+			src="sap-icon://message-error" 
+			color="Negative"
+			tooltip="{to_FulfillmentStatusInAccounting/FulfillmentStatus_Text}"></core:Icon>
+		<core:Icon 
+			id="TSSDCellsIcon_FulfillmentStatusInAccounting_5"
+			visible="{= ${FulfillmentStatusInAccounting} === '5' }" 
+			src="sap-icon://message-warning" 
+			color="Critical"
+			tooltip="{to_FulfillmentStatusInAccounting/FulfillmentStatus_Text}"></core:Icon>
+	</layout:VerticalLayout>
+</core:FragmentDefinition>

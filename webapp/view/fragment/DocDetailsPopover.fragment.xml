@@ -1,0 +1,138 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <ResponsivePopover
+        id="idDocDetailsPopover"
+        placement="Auto"
+        contentWidth="360px"
+        class="sapUiResponsivePadding">
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon src="{nodeDetailModel>/icon}" class="sapUiTinyMarginBegin" color="#0070f2" size="1.1rem" />
+                    <Title text="{nodeDetailModel>/title}" level="H4" class="sapUiTinyMarginBegin" />
+                </contentLeft>
+                <contentRight>
+                    <Button
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                        tooltip="Close"
+                        press="onCloseDocDetailsPopover" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+        <content>
+            <VBox class="sapUiSmallMargin">
+                <!-- Header: Doc Number, Subtitle, Status Badge -->
+                <HBox justifyContent="SpaceBetween" alignItems="Start" class="sapUiSmallMarginBottom">
+                    <VBox>
+                        <Title text="{nodeDetailModel>/docNumber}" level="H3" class="sapUiNoMarginBottom" />
+                        <Text text="{nodeDetailModel>/subtitle}" class="sapUiTinyMarginTop" />
+                    </VBox>
+                    <ObjectStatus
+                        text="{nodeDetailModel>/statusText}"
+                        state="{nodeDetailModel>/statusState}"
+                        inverted="true"
+                        class="sapUiTinyMarginTop" />
+                </HBox>
+
+                <MessageStrip
+                    text="Node rencana (belum ada dokumen di SAP)."
+                    type="Warning"
+                    showIcon="true"
+                    visible="{nodeDetailModel>/planned}"
+                    class="sapUiTinyMarginBottom" />
+
+                <!-- Dua baris teks kontekstual seperti pada kartu node -->
+                <VBox class="sapUiTinyMarginBottom">
+                    <Text text="{nodeDetailModel>/extraLine1}" visible="{= !!${nodeDetailModel>/extraLine1} }" />
+                    <Text text="{nodeDetailModel>/extraLine2}" visible="{= !!${nodeDetailModel>/extraLine2} }" />
+                </VBox>
+
+                <!-- Detail dokumen -->
+                <l:Grid defaultSpan="XL6 L6 M6 S12" hSpacing="0" vSpacing="0" class="sapUiSmallMarginTop">
+                    <VBox class="sapUiTinyMarginBottom">
+                        <Label text="Document Number:" />
+                        <Text text="{nodeDetailModel>/nodeKey}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom">
+                        <Label text="Category Code:" />
+                        <Text text="{nodeDetailModel>/categoryCode}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom">
+                        <Label text="Created On:" />
+                        <Text text="{nodeDetailModel>/createdOn}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom">
+                        <Label text="Created By:" />
+                        <Text text="{nodeDetailModel>/createdBy}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom" visible="{= ${nodeDetailModel>/requestedDelivery} !== '-' }">
+                        <Label text="Requested Delivery:" />
+                        <Text text="{nodeDetailModel>/requestedDelivery}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom" visible="{= ${nodeDetailModel>/goodsIssueDate} !== '-' }">
+                        <Label text="Goods Issue On:" />
+                        <Text text="{nodeDetailModel>/goodsIssueDate}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom" visible="{= ${nodeDetailModel>/billingDate} !== '-' }">
+                        <Label text="Billing Date:" />
+                        <Text text="{nodeDetailModel>/billingDate}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom" visible="{= ${nodeDetailModel>/postingDate} !== '-' }">
+                        <Label text="Posting Date:" />
+                        <Text text="{nodeDetailModel>/postingDate}" class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom" visible="{nodeDetailModel>/hasAmount}">
+                        <Label text="Net Value:" />
+                        <ObjectNumber
+                            number="{nodeDetailModel>/netValue}"
+                            emphasized="false"
+                            class="sapUiTinyMarginTop" />
+                    </VBox>
+
+                    <VBox class="sapUiTinyMarginBottom" visible="{= ${nodeDetailModel>/referenceDoc} !== '-' }">
+                        <Label text="Reference Document:" />
+                        <Text text="{nodeDetailModel>/referenceDoc}" class="sapUiTinyMarginTop" />
+                    </VBox>
+                </l:Grid>
+
+                <VBox class="sapUiTinyMarginBottom">
+                    <Label text="Preceding Document(s):" />
+                    <Text text="{nodeDetailModel>/precedingDocs}" class="sapUiTinyMarginTop" />
+                </VBox>
+
+                <VBox class="sapUiTinyMarginBottom">
+                    <Label text="Next Stage Link:" />
+                    <Text text="{nodeDetailModel>/nextStageLink}" class="sapUiTinyMarginTop" />
+                </VBox>
+
+                <VBox class="sapUiTinyMarginBottom">
+                    <Label text="Additional Info:" />
+                    <Text text="{nodeDetailModel>/additionalInfo}" class="sapUiTinyMarginTop" />
+                </VBox>
+            </VBox>
+        </content>
+        <beginButton>
+            <Button
+                text="Copy Number"
+                icon="sap-icon://copy"
+                press="onCopyDocNumberPress" />
+        </beginButton>
+        <endButton>
+            <Button
+                text="OK"
+                type="Emphasized"
+                press="onCloseDocDetailsPopover" />
+        </endButton>
+    </ResponsivePopover>
+</core:FragmentDefinition>

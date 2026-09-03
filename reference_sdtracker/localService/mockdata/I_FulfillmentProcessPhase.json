@@ -1,0 +1,5 @@
+[
+	{ "FulfillmentProcessPhase": "1", "FulfillmentProcessPhase_Text": "In Order" },
+	{ "FulfillmentProcessPhase": "2", "FulfillmentProcessPhase_Text": "In Supply / Delivery / Transit" },
+	{ "FulfillmentProcessPhase": "3", "FulfillmentProcessPhase_Text": "Completed" }
+]

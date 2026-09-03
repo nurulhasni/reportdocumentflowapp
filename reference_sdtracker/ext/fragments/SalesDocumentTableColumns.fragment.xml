@@ -1,0 +1,143 @@
+<!--
+
+    Copyright (C) 2009-2025 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="TrackStatusSalesDocumentColumnsFragment"
+	xmlns:core="sap.ui.core" xmlns="sap.m">
+	<!-- 1 SalesDocument -->
+	<Column id="TableColumnSalesDocument" width="15rem" importance="High">
+		<Text id="TextSalesDocument" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>SalesDocument}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>SalesDocument}"/>
+		<customData>
+			<core:CustomData id="CustomDataSalesDocument" key="p13nData"
+				value='\{
+					"columnKey": "SalesDocument", 
+					"columnIndex" : "0", 
+					"leadingProperty": "SalesDocument", 
+					"sortProperty": "SalesDocument", 
+					"filterProperty": "SalesDocument",
+					"type": "string"}'/>
+		</customData>
+	</Column>
+	<!-- 2 OverallFulfillmentStatus -->
+	<Column id="TableColumnOverallFulfillmentStatus" hAlign="Center" width="10rem" importance="High">
+		<Text id="TextOverallFulfillmentStatus"
+			text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>OverallFulfillmentStatus}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>OverallFulfillmentStatus}"/>
+		<customData>
+			<core:CustomData id="CustomDataOverallFulfillmentStatus" key="p13nData"
+				value='\{
+					"columnKey": "OverallFulfillmentStatus", 
+					"columnIndex" : "1", 
+					"leadingProperty" : "to_OverallFulfillmentStatus/FulfillmentStatus_Text", 
+					"additionalProperty": "OverallFulfillmentStatus", 
+					"sortProperty": "OverallFulfillmentStatus", 
+					"filterProperty": "to_OverallFulfillmentStatus/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+	<!--3 InOrder -->
+	<Column id="TableColumnInOrder" hAlign="Center" width="10rem">
+		<Text id="TextInOrder" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InOrder}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InOrder}"/>
+		<customData>
+			<core:CustomData id="CustomDataInOrder" key="p13nData"
+				value='\{
+					"columnKey": "FulfillmentStatusInOrder", 
+					"columnIndex" : "5", 
+					"leadingProperty": "to_FulfillmentStatusInOrder/FulfillmentStatus_Text", 
+					"additionalProperty": "FulfillmentStatusInOrder", 
+					"sortProperty": "FulfillmentStatusInOrder", 
+					"filterProperty": "to_FulfillmentStatusInOrder/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+	<!-- 4 InSupply -->
+	<Column id="TableColumnInSupply" hAlign="Center" width="10rem">
+		<Text id="TextInSupply" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InSupply}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InSupply}"/>
+		<customData>
+			<core:CustomData id="CustomDataInSupply" key="p13nData"
+				value='\{
+					"columnKey": "FulfillmentStatusInSupply", 
+					"columnIndex" : "6", 
+					"leadingProperty": "to_FulfillmentStatusInSupply/FulfillmentStatus_Text", 
+					"additionalProperty": "FulfillmentStatusInSupply", 
+					"sortProperty": "FulfillmentStatusInSupply", 
+					"filterProperty": "to_FulfillmentStatusInSupply/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+	<!-- 5 InDelivery -->
+	<Column id="TableColumnInDelivery" hAlign="Center" width="10rem">
+		<Text id="TextInDelivery" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InDelivery}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InDelivery}"/>
+		<customData>
+			<core:CustomData id="CustomDataInDelivery" key="p13nData"
+				value='\{
+					"columnKey": "FulfillmentStatusInDelivery", 
+					"columnIndex" : "7", 
+					"leadingProperty": "to_FulfillmentStatusInDelivery/FulfillmentStatus_Text", 
+					"additionalProperty": "FulfillmentStatusInDelivery", 
+					"sortProperty": "FulfillmentStatusInDelivery", 
+					"filterProperty": "to_FulfillmentStatusInDelivery/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+	<!-- 6 InTransit-->
+	<Column id="TableColumnInTransit" hAlign="Center" width="10rem">
+		<Text id="TextInTransit" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InTransit}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InTransit}"/>
+		<customData>
+			<core:CustomData id="CustomDataInTransit" key="p13nData"
+				value='\{
+					"columnKey": "FulfillmentStatusInTransit", 
+					"columnIndex" : "8", 
+					"leadingProperty": "to_FulfillmentStatusInTransit/FulfillmentStatus_Text", 
+					"additionalProperty": "FulfillmentStatusInTransit", 
+					"sortProperty": "FulfillmentStatusInTransit", 
+					"filterProperty": "to_FulfillmentStatusInTransit/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+	<!-- 7 InInvoice -->
+	<Column id="TableColumnInInvoice" hAlign="Center" width="10rem">
+		<Text id="TextInInvoice" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InInvoice}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InInvoice}"/>
+		<customData>
+			<core:CustomData id="CustomDataInInvoice" key="p13nData"
+				value='\{
+					"columnKey": "FulfillmentStatusInInvoice", 
+					"columnIndex" : "9", 
+					"leadingProperty": "to_FulfillmentStatusInInvoice/FulfillmentStatus_Text", 
+					"additionalProperty": "FulfillmentStatusInInvoice", 
+					"sortProperty": "FulfillmentStatusInInvoice", 
+					"filterProperty": "to_FulfillmentStatusInInvoice/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+	<!-- 8 InAccounting -->
+	<Column id="TableColumnInAccounting" hAlign="Center" width="10rem">
+		<Text id="TextInAccounting" text="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InAccounting}"
+			tooltip="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>InAccounting}"/>
+		<customData>
+			<core:CustomData id="CustomDataInAccounting" key="p13nData"
+				value='\{
+					"columnKey": "FulfillmentStatusInAccounting", 
+					"columnIndex" : "10", 
+					"leadingProperty": "to_FulfillmentStatusInAccounting/FulfillmentStatus_Text", 
+					"additionalProperty": "FulfillmentStatusInAccounting", 
+					"sortProperty": "FulfillmentStatusInAccounting", 
+					"filterProperty": "to_FulfillmentStatusInAccounting/FulfillmentStatus_Text",
+					"type": "string"}'
+			/>
+		</customData>
+	</Column>
+</core:FragmentDefinition>

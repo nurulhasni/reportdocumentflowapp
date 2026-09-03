@@ -1,0 +1,5 @@
+[
+	{ "OverallSDDocumentRejectionSts": "A", "OverallSDDocumentRejectionSts_Text": "Nothing Rejected" },
+	{ "OverallSDDocumentRejectionSts": "B", "OverallSDDocumentRejectionSts_Text": "Partially Rejected" },
+	{ "OverallSDDocumentRejectionSts": "C", "OverallSDDocumentRejectionSts_Text": "Completely Rejected" }
+]

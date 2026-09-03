@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Track Sales Orders (Mock Mode)</title>
+
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background: #f7f9fa;
+		}
+		#loading-indicator {
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: #f7f9fa;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+			z-index: 99999;
+			color: #32363a;
+		}
+		.spinner {
+			width: 48px;
+			height: 48px;
+			border: 4px solid #d9e1e8;
+			border-top: 4px solid #0070f2;
+			border-radius: 50%;
+			animation: spin 0.9s linear infinite;
+			margin-bottom: 16px;
+		}
+		@keyframes spin {
+			0% { transform: rotate(0deg); }
+			100% { transform: rotate(360deg); }
+		}
+		#error-box {
+			display: none;
+			position: fixed;
+			top: 20px;
+			left: 20px;
+			right: 20px;
+			max-height: 80vh;
+			overflow-y: auto;
+			background: #fff0f0;
+			border: 2px solid #e03e3e;
+			border-radius: 8px;
+			padding: 16px 20px;
+			color: #b00020;
+			font-family: monospace;
+			font-size: 13px;
+			z-index: 100000;
+			box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+		}
+	</style>
+
+	<script type="text/javascript">
+		// Global error listener to display errors on screen
+		window.onerror = function (msg, url, lineNo, columnNo, error) {
+			var errBox = document.getElementById("error-box");
+			if (errBox) {
+				errBox.style.display = "block";
+				errBox.innerHTML += "<b>[Error]</b> " + msg + "<br><small>" + url + ":" + lineNo + ":" + columnNo + "</small><br>" + (error && error.stack ? "<pre>" + error.stack + "</pre>" : "") + "<hr>";
+			}
+			return false;
+		};
+
+		// Mock/Stub UShell services for Fiori Elements template
+		window.sap = window.sap || {};
+		window.sap.ushell = window.sap.ushell || {};
+		if (!window.sap.ushell.Container) {
+			window.sap.ushell.Container = {
+				getService: function (sService) {
+					if (sService === "CrossApplicationNavigation") {
+						return {
+							toExternal: function (oArgs) { console.log("CrossAppNav toExternal:", oArgs); },
+							getSemanticObjectLinks: function () { return jQuery.Deferred().resolve([]).promise(); },
+							isNavigationSupported: function () { return jQuery.Deferred().resolve({ "SalesOrder-trackStatus": { supported: true } }).promise(); },
+							hrefForExternal: function () { return "#"; }
+						};
+					}
+					if (sService === "URLParsing") {
+						return {
+							parseShellHash: function () { return {}; },
+							constructShellHash: function () { return ""; }
+						};
+					}
+					return {
+						getLinks: function () { return jQuery.Deferred().resolve([]).promise(); }
+					};
+				},
+				getServiceAsync: function (sService) {
+					return Promise.resolve(this.getService(sService));
+				},
+				getRenderer: function () {
+					return null;
+				}
+			};
+		}
+
+		window.onUI5Init = function () {
+			var statusText = document.getElementById("loading-status");
+			if (statusText) statusText.innerText = "Initializing Mock Server & UI...";
+
+			sap.ui.require([
+				"cus/sd/sofulfil/trackstatuss1/localService/mockserver",
+				"sap/m/Shell",
+				"sap/ui/core/ComponentContainer"
+			], function (mockserver, Shell, ComponentContainer) {
+				try {
+					// 1. Start mock server
+					mockserver.init();
+
+					// 2. Create Component Container
+					var oContainer = new ComponentContainer({
+						name: "cus.sd.sofulfil.trackstatuss1",
+						height: "100%",
+						settings: {
+							id: "cus.sd.sofulfil.trackstatuss1"
+						},
+						manifest: true,
+						async: true
+					});
+
+					// 3. Mount in Shell
+					new Shell({
+						appWidthLimited: false,
+						app: oContainer
+					}).placeAt("content");
+
+					// Hide loading screen as soon as component starts mounting
+					setTimeout(function () {
+						var loadInd = document.getElementById("loading-indicator");
+						if (loadInd) loadInd.style.display = "none";
+					}, 1200);
+
+				} catch (e) {
+					console.error("Init exception:", e);
+					var errBox = document.getElementById("error-box");
+					if (errBox) {
+						errBox.style.display = "block";
+						errBox.innerHTML = "<b>Exception during initialization:</b> " + e.message + "<pre>" + e.stack + "</pre>";
+					}
+					var loadInd = document.getElementById("loading-indicator");
+					if (loadInd) loadInd.style.display = "none";
+				}
+			}, function (err) {
+				console.error("Require failed:", err);
+				var errBox = document.getElementById("error-box");
+				if (errBox) {
+					errBox.style.display = "block";
+					errBox.innerHTML = "<b>Require Failed:</b> " + (err.message || err);
+				}
+				var loadInd = document.getElementById("loading-indicator");
+				if (loadInd) loadInd.style.display = "none";
+			});
+		};
+	</script>
+
+	<script
+		id="sap-ui-bootstrap"
+		src="https://ui5.sap.com/1.120.13/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_horizon"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-async="true"
+		data-sap-ui-oninit="onUI5Init"
+		data-sap-ui-resourceroots='{
+			"cus.sd.sofulfil.trackstatuss1": "../",
+			"cus.sd.lib.worklist": "../cus/sd/lib/worklist"
+		}'
+		data-sap-ui-libs="sap.m, sap.ui.generic.app, sap.suite.ui.generic.template, sap.ui.comp, sap.ui.layout, sap.ui.table"
+		data-sap-ui-frameOptions="allow">
+	</script>
+</head>
+<body class="sapUiBody" id="content">
+	<div id="loading-indicator">
+		<div class="spinner"></div>
+		<h3 style="margin: 0 0 8px 0; font-weight: 600;">Track Sales Orders (Mock Mode)</h3>
+		<p id="loading-status" style="margin: 0; color: #6a6d70; font-size: 14px;">Loading SAPUI5 resources...</p>
+	</div>
+	<div id="error-box"></div>
+</body>
+</html>

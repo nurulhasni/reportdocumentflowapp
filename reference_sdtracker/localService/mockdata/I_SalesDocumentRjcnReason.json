@@ -1,0 +1,6 @@
+[
+	{ "SalesDocumentRjcnReason": "", "SalesDocumentRjcnReason_Text": "No Rejection" },
+	{ "SalesDocumentRjcnReason": "01", "SalesDocumentRjcnReason_Text": "Price too high" },
+	{ "SalesDocumentRjcnReason": "02", "SalesDocumentRjcnReason_Text": "Lead time too long" },
+	{ "SalesDocumentRjcnReason": "03", "SalesDocumentRjcnReason_Text": "Order cancelled by customer" }
+]

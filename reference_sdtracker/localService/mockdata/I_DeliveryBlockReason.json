@@ -1,0 +1,7 @@
+[
+	{ "DeliveryBlockReason": "", "DeliveryBlockReason_Text": "No Block", "DeliveryDueListBlock": false },
+	{ "DeliveryBlockReason": "01", "DeliveryBlockReason_Text": "Credit Limit Exceeded", "DeliveryDueListBlock": true },
+	{ "DeliveryBlockReason": "02", "DeliveryBlockReason_Text": "Political Reasons", "DeliveryDueListBlock": true },
+	{ "DeliveryBlockReason": "03", "DeliveryBlockReason_Text": "Export Papers Missing", "DeliveryDueListBlock": true },
+	{ "DeliveryBlockReason": "04", "DeliveryBlockReason_Text": "Customer Dispute", "DeliveryDueListBlock": true }
+]

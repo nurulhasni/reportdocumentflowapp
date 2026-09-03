@@ -1,0 +1,46 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Popover
+        title="Overall Fulfilment Status Legend"
+        placement="Bottom"
+        contentWidth="330px"
+        class="sapUiContentPadding">
+        <Table id="idLegendTable" inset="false" class="sapUiNoMargin">
+            <columns>
+                <Column width="32%" hAlign="Center">
+                    <Text text="Legend" />
+                </Column>
+                <Column width="68%">
+                    <Text text="Description" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <core:Icon src="sap-icon://sys-enter-2" color="#2e7d32" size="1.25rem" />
+                        <Text text="Completely Processed" class="sapUiTinyMarginTopBottom" />
+                    </cells>
+                </ColumnListItem>
+                <ColumnListItem>
+                    <cells>
+                        <core:Icon src="sap-icon://error" color="#d32f2f" size="1.25rem" />
+                        <Text text="Issue : Action Overdue" class="sapUiTinyMarginTopBottom" />
+                    </cells>
+                </ColumnListItem>
+                <ColumnListItem>
+                    <cells>
+                        <core:Icon src="sap-icon://process" color="#475467" size="1.25rem" />
+                        <Text text="Partially Processed" class="sapUiTinyMarginTopBottom" />
+                    </cells>
+                </ColumnListItem>
+                <ColumnListItem>
+                    <cells>
+                        <core:Icon src="sap-icon://history" color="#475467" size="1.25rem" />
+                        <Text text="Not Yet Processed" class="sapUiTinyMarginTopBottom" />
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
+    </Popover>
+</core:FragmentDefinition>

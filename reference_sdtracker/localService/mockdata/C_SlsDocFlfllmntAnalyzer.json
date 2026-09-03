@@ -1,0 +1,635 @@
+[
+	{
+		"SalesDocument": "10000001",
+		"SemanticObject": "SalesOrder",
+		"OverallFulfillmentStatus": "3",
+		"FulfillmentStatusInOrder": "3",
+		"FulfillmentStatusInSupply": "3",
+		"FulfillmentStatusInDelivery": "3",
+		"FulfillmentStatusInTransit": "3",
+		"FulfillmentStatusInInvoice": "3",
+		"FulfillmentStatusInAccounting": "3",
+		"FulfillmentProcessPhase": "3",
+		"SDDocumentCategory": "C",
+		"SalesDocumentType": "OR",
+		"SalesDocumentProcessingType": "",
+		"CreatedByUser": "CB9980000001",
+		"CreatedByUserName": "John Miller",
+		"LastChangedByUser": "CB9980000001",
+		"LastChangedByUserName": "John Miller",
+		"CreationDate": "/Date(1738368000000)/",
+		"LastChangeDate": "/Date(1738800000000)/",
+		"SalesOrganization": "1010",
+		"DistributionChannel": "10",
+		"OrganizationDivision": "00",
+		"SalesGroup": "100",
+		"SalesOffice": "1000",
+		"SoldToParty": "1000000",
+		"SoldToPartyIsOneTimeAccount": false,
+		"SoldToPartyFullName": "Domestic US Customer 1",
+		"PurchaseOrderByCustomer": "PO-2026-001",
+		"SalesDocumentDate": "/Date(1738368000000)/",
+		"TotalNetAmount": "12450.000",
+		"TransactionCurrency": "EUR",
+		"TotalGrossAmount": "14815.500",
+		"RequestedDeliveryDate": "/Date(1739577600000)/",
+		"OverallSDProcessStatus": "C",
+		"OverallTotalDeliveryStatus": "C",
+		"OverallPurchaseConfStatus": "C",
+		"OverallSDDocumentRejectionSts": "A",
+		"DeliveryBlockReason": "",
+		"HeaderBillingBlockReason": "",
+		"SalesDocumentRjcnReason": "",
+		"SalesDocApprovalStatus": "A",
+		"OverallChmlCmplncStatus": "3",
+		"OverallDangerousGoodsStatus": "3",
+		"OverallSafetyDataSheetStatus": "3",
+		"OverallTrdCmplncEmbargoSts": "3",
+		"OvrlTrdCmplncSnctndListChkSts": "3",
+		"OvrlTrdCmplncLegalCtrlChkSts": "3",
+		"BusinessSolutionOrder": "",
+		"OrganizationBPName1": "Domestic US Customer 1",
+		"OrganizationBPName2": "",
+		"UserDescription": "John Miller",
+		"to_OverallFulfillmentStatus": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInOrder": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInSupply": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInDelivery": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInTransit": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInInvoice": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInAccounting": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentProcessPhase": {
+			"FulfillmentProcessPhase": "3",
+			"FulfillmentProcessPhase_Text": "Order Complete"
+		},
+		"to_SalesOrganization": {
+			"SalesOrganization": "1010",
+			"SalesOrganization_Text": "Sales Org 1010"
+		},
+		"to_DistributionChannel": {
+			"DistributionChannel": "10",
+			"DistributionChannel_Text": "Direct Sales"
+		},
+		"to_OrganizationDivision": {
+			"Division": "00",
+			"Division_Text": "Cross-Division"
+		},
+		"to_SalesOffice": {
+			"SalesOffice": "1000",
+			"SalesOffice_Text": "New York"
+		},
+		"to_SalesGroup": {
+			"SalesGroup": "100",
+			"SalesGroup_Text": "Sales Team Alpha"
+		},
+		"to_SalesDocumentType": {
+			"SalesDocumentType": "OR",
+			"SalesDocumentType_Text": "Standard Order (OR)"
+		},
+		"to_OverallSDProcessStatus": {
+			"OverallSDProcessStatus": "C",
+			"OverallSDProcessStatus_Text": "Completed"
+		},
+		"to_OverallTotalDeliveryStatus": {
+			"OverallTotalDeliveryStatus": "C",
+			"OverallTotalDeliveryStatus_Text": "Completely Processed"
+		},
+		"to_OverallSDDocumentRejectionSts": {
+			"OverallSDDocumentRejectionSts": "A",
+			"OverallSDDocumentRejectionSts_Text": "Nothing Rejected"
+		},
+		"to_SalesDocApprovalStatus": {
+			"SalesDocApprovalStatus": "A",
+			"SalesDocApprovalStatus_Text": "Approved"
+		}
+	},
+	{
+		"SalesDocument": "10000002",
+		"SemanticObject": "SalesOrder",
+		"OverallFulfillmentStatus": "2",
+		"FulfillmentStatusInOrder": "3",
+		"FulfillmentStatusInSupply": "2",
+		"FulfillmentStatusInDelivery": "1",
+		"FulfillmentStatusInTransit": "1",
+		"FulfillmentStatusInInvoice": "1",
+		"FulfillmentStatusInAccounting": "1",
+		"FulfillmentProcessPhase": "2",
+		"SDDocumentCategory": "C",
+		"SalesDocumentType": "OR",
+		"SalesDocumentProcessingType": "",
+		"CreatedByUser": "CB9980000002",
+		"CreatedByUserName": "Sarah Jenkins",
+		"LastChangedByUser": "CB9980000002",
+		"LastChangedByUserName": "Sarah Jenkins",
+		"CreationDate": "/Date(1738540800000)/",
+		"LastChangeDate": "/Date(1738972800000)/",
+		"SalesOrganization": "1010",
+		"DistributionChannel": "10",
+		"OrganizationDivision": "00",
+		"SalesGroup": "100",
+		"SalesOffice": "1000",
+		"SoldToParty": "1000001",
+		"SoldToPartyIsOneTimeAccount": false,
+		"SoldToPartyFullName": "Global Retail Corp",
+		"PurchaseOrderByCustomer": "PO-2026-002",
+		"SalesDocumentDate": "/Date(1738540800000)/",
+		"TotalNetAmount": "8900.000",
+		"TransactionCurrency": "USD",
+		"TotalGrossAmount": "9612.000",
+		"RequestedDeliveryDate": "/Date(1740009600000)/",
+		"OverallSDProcessStatus": "B",
+		"OverallTotalDeliveryStatus": "A",
+		"OverallPurchaseConfStatus": "B",
+		"OverallSDDocumentRejectionSts": "A",
+		"DeliveryBlockReason": "",
+		"HeaderBillingBlockReason": "",
+		"SalesDocumentRjcnReason": "",
+		"SalesDocApprovalStatus": "A",
+		"OverallChmlCmplncStatus": "3",
+		"OverallDangerousGoodsStatus": "3",
+		"OverallSafetyDataSheetStatus": "3",
+		"OverallTrdCmplncEmbargoSts": "3",
+		"OvrlTrdCmplncSnctndListChkSts": "3",
+		"OvrlTrdCmplncLegalCtrlChkSts": "3",
+		"BusinessSolutionOrder": "",
+		"OrganizationBPName1": "Global Retail Corp",
+		"OrganizationBPName2": "",
+		"UserDescription": "Sarah Jenkins",
+		"to_OverallFulfillmentStatus": {
+			"FulfillmentStatus": "2",
+			"FulfillmentStatus_Text": "In Processing"
+		},
+		"to_FulfillmentStatusInOrder": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInSupply": {
+			"FulfillmentStatus": "2",
+			"FulfillmentStatus_Text": "In Supply Processing"
+		},
+		"to_FulfillmentStatusInDelivery": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInTransit": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInInvoice": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInAccounting": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentProcessPhase": {
+			"FulfillmentProcessPhase": "2",
+			"FulfillmentProcessPhase_Text": "In Supply"
+		},
+		"to_SalesOrganization": {
+			"SalesOrganization": "1010",
+			"SalesOrganization_Text": "Sales Org 1010"
+		},
+		"to_DistributionChannel": {
+			"DistributionChannel": "10",
+			"DistributionChannel_Text": "Direct Sales"
+		},
+		"to_OrganizationDivision": {
+			"Division": "00",
+			"Division_Text": "Cross-Division"
+		},
+		"to_SalesOffice": {
+			"SalesOffice": "1000",
+			"SalesOffice_Text": "New York"
+		},
+		"to_SalesGroup": {
+			"SalesGroup": "100",
+			"SalesGroup_Text": "Sales Team Alpha"
+		},
+		"to_SalesDocumentType": {
+			"SalesDocumentType": "OR",
+			"SalesDocumentType_Text": "Standard Order (OR)"
+		},
+		"to_OverallSDProcessStatus": {
+			"OverallSDProcessStatus": "B",
+			"OverallSDProcessStatus_Text": "In Process"
+		},
+		"to_OverallTotalDeliveryStatus": {
+			"OverallTotalDeliveryStatus": "A",
+			"OverallTotalDeliveryStatus_Text": "Not Delivered"
+		},
+		"to_OverallSDDocumentRejectionSts": {
+			"OverallSDDocumentRejectionSts": "A",
+			"OverallSDDocumentRejectionSts_Text": "Nothing Rejected"
+		},
+		"to_SalesDocApprovalStatus": {
+			"SalesDocApprovalStatus": "A",
+			"SalesDocApprovalStatus_Text": "Approved"
+		}
+	},
+	{
+		"SalesDocument": "10000003",
+		"SemanticObject": "SalesOrder",
+		"OverallFulfillmentStatus": "4",
+		"FulfillmentStatusInOrder": "3",
+		"FulfillmentStatusInSupply": "4",
+		"FulfillmentStatusInDelivery": "1",
+		"FulfillmentStatusInTransit": "1",
+		"FulfillmentStatusInInvoice": "1",
+		"FulfillmentStatusInAccounting": "1",
+		"FulfillmentProcessPhase": "2",
+		"SDDocumentCategory": "C",
+		"SalesDocumentType": "RO",
+		"SalesDocumentProcessingType": "",
+		"CreatedByUser": "CB9980000003",
+		"CreatedByUserName": "David Clark",
+		"LastChangedByUser": "CB9980000003",
+		"LastChangedByUserName": "David Clark",
+		"CreationDate": "/Date(1738713600000)/",
+		"LastChangeDate": "/Date(1739059200000)/",
+		"SalesOrganization": "1010",
+		"DistributionChannel": "10",
+		"OrganizationDivision": "00",
+		"SalesGroup": "100",
+		"SalesOffice": "1000",
+		"SoldToParty": "1000002",
+		"SoldToPartyIsOneTimeAccount": false,
+		"SoldToPartyFullName": "TechSolutions Ltd",
+		"PurchaseOrderByCustomer": "PO-2026-003",
+		"SalesDocumentDate": "/Date(1738713600000)/",
+		"TotalNetAmount": "45200.000",
+		"TransactionCurrency": "EUR",
+		"TotalGrossAmount": "53788.000",
+		"RequestedDeliveryDate": "/Date(1739145600000)/",
+		"OverallSDProcessStatus": "B",
+		"OverallTotalDeliveryStatus": "A",
+		"OverallPurchaseConfStatus": "A",
+		"OverallSDDocumentRejectionSts": "A",
+		"DeliveryBlockReason": "01",
+		"HeaderBillingBlockReason": "",
+		"SalesDocumentRjcnReason": "",
+		"SalesDocApprovalStatus": "A",
+		"OverallChmlCmplncStatus": "3",
+		"OverallDangerousGoodsStatus": "3",
+		"OverallSafetyDataSheetStatus": "3",
+		"OverallTrdCmplncEmbargoSts": "3",
+		"OvrlTrdCmplncSnctndListChkSts": "3",
+		"OvrlTrdCmplncLegalCtrlChkSts": "3",
+		"BusinessSolutionOrder": "",
+		"OrganizationBPName1": "TechSolutions Ltd",
+		"OrganizationBPName2": "",
+		"UserDescription": "David Clark",
+		"to_OverallFulfillmentStatus": {
+			"FulfillmentStatus": "4",
+			"FulfillmentStatus_Text": "Overdue Issue"
+		},
+		"to_FulfillmentStatusInOrder": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInSupply": {
+			"FulfillmentStatus": "4",
+			"FulfillmentStatus_Text": "Supply Issue (Overdue)"
+		},
+		"to_FulfillmentStatusInDelivery": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInTransit": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInInvoice": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInAccounting": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentProcessPhase": {
+			"FulfillmentProcessPhase": "2",
+			"FulfillmentProcessPhase_Text": "In Supply (Blocked)"
+		},
+		"to_DeliveryBlockReason": {
+			"DeliveryBlockReason": "01",
+			"DeliveryBlockReason_Text": "Credit Limit Exceeded"
+		},
+		"to_SalesOrganization": {
+			"SalesOrganization": "1010",
+			"SalesOrganization_Text": "Sales Org 1010"
+		},
+		"to_DistributionChannel": {
+			"DistributionChannel": "10",
+			"DistributionChannel_Text": "Direct Sales"
+		},
+		"to_OrganizationDivision": {
+			"Division": "00",
+			"Division_Text": "Cross-Division"
+		},
+		"to_SalesOffice": {
+			"SalesOffice": "1000",
+			"SalesOffice_Text": "New York"
+		},
+		"to_SalesGroup": {
+			"SalesGroup": "100",
+			"SalesGroup_Text": "Sales Team Alpha"
+		},
+		"to_SalesDocumentType": {
+			"SalesDocumentType": "RO",
+			"SalesDocumentType_Text": "Rush Order (RO)"
+		},
+		"to_OverallSDProcessStatus": {
+			"OverallSDProcessStatus": "B",
+			"OverallSDProcessStatus_Text": "In Process"
+		},
+		"to_OverallTotalDeliveryStatus": {
+			"OverallTotalDeliveryStatus": "A",
+			"OverallTotalDeliveryStatus_Text": "Not Delivered"
+		},
+		"to_OverallSDDocumentRejectionSts": {
+			"OverallSDDocumentRejectionSts": "A",
+			"OverallSDDocumentRejectionSts_Text": "Nothing Rejected"
+		},
+		"to_SalesDocApprovalStatus": {
+			"SalesDocApprovalStatus": "A",
+			"SalesDocApprovalStatus_Text": "Approved"
+		}
+	},
+	{
+		"SalesDocument": "10000004",
+		"SemanticObject": "SalesOrder",
+		"OverallFulfillmentStatus": "2",
+		"FulfillmentStatusInOrder": "3",
+		"FulfillmentStatusInSupply": "3",
+		"FulfillmentStatusInDelivery": "3",
+		"FulfillmentStatusInTransit": "2",
+		"FulfillmentStatusInInvoice": "1",
+		"FulfillmentStatusInAccounting": "1",
+		"FulfillmentProcessPhase": "2",
+		"SDDocumentCategory": "C",
+		"SalesDocumentType": "OR",
+		"SalesDocumentProcessingType": "",
+		"CreatedByUser": "CB9980000001",
+		"CreatedByUserName": "John Miller",
+		"LastChangedByUser": "CB9980000001",
+		"LastChangedByUserName": "John Miller",
+		"CreationDate": "/Date(1738886400000)/",
+		"LastChangeDate": "/Date(1739145600000)/",
+		"SalesOrganization": "1010",
+		"DistributionChannel": "10",
+		"OrganizationDivision": "00",
+		"SalesGroup": "100",
+		"SalesOffice": "1000",
+		"SoldToParty": "1000000",
+		"SoldToPartyIsOneTimeAccount": false,
+		"SoldToPartyFullName": "Domestic US Customer 1",
+		"PurchaseOrderByCustomer": "PO-2026-004",
+		"SalesDocumentDate": "/Date(1738886400000)/",
+		"TotalNetAmount": "3150.000",
+		"TransactionCurrency": "USD",
+		"TotalGrossAmount": "3402.000",
+		"RequestedDeliveryDate": "/Date(1739836800000)/",
+		"OverallSDProcessStatus": "B",
+		"OverallTotalDeliveryStatus": "B",
+		"OverallPurchaseConfStatus": "C",
+		"OverallSDDocumentRejectionSts": "A",
+		"DeliveryBlockReason": "",
+		"HeaderBillingBlockReason": "",
+		"SalesDocumentRjcnReason": "",
+		"SalesDocApprovalStatus": "A",
+		"OverallChmlCmplncStatus": "3",
+		"OverallDangerousGoodsStatus": "3",
+		"OverallSafetyDataSheetStatus": "3",
+		"OverallTrdCmplncEmbargoSts": "3",
+		"OvrlTrdCmplncSnctndListChkSts": "3",
+		"OvrlTrdCmplncLegalCtrlChkSts": "3",
+		"BusinessSolutionOrder": "",
+		"OrganizationBPName1": "Domestic US Customer 1",
+		"OrganizationBPName2": "",
+		"UserDescription": "John Miller",
+		"to_OverallFulfillmentStatus": {
+			"FulfillmentStatus": "2",
+			"FulfillmentStatus_Text": "In Transit"
+		},
+		"to_FulfillmentStatusInOrder": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInSupply": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInDelivery": {
+			"FulfillmentStatus": "3",
+			"FulfillmentStatus_Text": "Completed"
+		},
+		"to_FulfillmentStatusInTransit": {
+			"FulfillmentStatus": "2",
+			"FulfillmentStatus_Text": "In Transit"
+		},
+		"to_FulfillmentStatusInInvoice": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInAccounting": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentProcessPhase": {
+			"FulfillmentProcessPhase": "2",
+			"FulfillmentProcessPhase_Text": "In Transit"
+		},
+		"to_SalesOrganization": {
+			"SalesOrganization": "1010",
+			"SalesOrganization_Text": "Sales Org 1010"
+		},
+		"to_DistributionChannel": {
+			"DistributionChannel": "10",
+			"DistributionChannel_Text": "Direct Sales"
+		},
+		"to_OrganizationDivision": {
+			"Division": "00",
+			"Division_Text": "Cross-Division"
+		},
+		"to_SalesOffice": {
+			"SalesOffice": "1000",
+			"SalesOffice_Text": "New York"
+		},
+		"to_SalesGroup": {
+			"SalesGroup": "100",
+			"SalesGroup_Text": "Sales Team Alpha"
+		},
+		"to_SalesDocumentType": {
+			"SalesDocumentType": "OR",
+			"SalesDocumentType_Text": "Standard Order (OR)"
+		},
+		"to_OverallSDProcessStatus": {
+			"OverallSDProcessStatus": "B",
+			"OverallSDProcessStatus_Text": "In Process"
+		},
+		"to_OverallTotalDeliveryStatus": {
+			"OverallTotalDeliveryStatus": "B",
+			"OverallTotalDeliveryStatus_Text": "Partially Delivered"
+		},
+		"to_OverallSDDocumentRejectionSts": {
+			"OverallSDDocumentRejectionSts": "A",
+			"OverallSDDocumentRejectionSts_Text": "Nothing Rejected"
+		},
+		"to_SalesDocApprovalStatus": {
+			"SalesDocApprovalStatus": "A",
+			"SalesDocApprovalStatus_Text": "Approved"
+		}
+	},
+	{
+		"SalesDocument": "10000005",
+		"SemanticObject": "SalesOrderWithoutCharge",
+		"OverallFulfillmentStatus": "5",
+		"FulfillmentStatusInOrder": "5",
+		"FulfillmentStatusInSupply": "1",
+		"FulfillmentStatusInDelivery": "1",
+		"FulfillmentStatusInTransit": "1",
+		"FulfillmentStatusInInvoice": "1",
+		"FulfillmentStatusInAccounting": "1",
+		"FulfillmentProcessPhase": "1",
+		"SDDocumentCategory": "C",
+		"SalesDocumentType": "FD",
+		"SalesDocumentProcessingType": "",
+		"CreatedByUser": "CB9980000002",
+		"CreatedByUserName": "Sarah Jenkins",
+		"LastChangedByUser": "CB9980000002",
+		"LastChangedByUserName": "Sarah Jenkins",
+		"CreationDate": "/Date(1739059200000)/",
+		"LastChangeDate": "/Date(1739145600000)/",
+		"SalesOrganization": "1010",
+		"DistributionChannel": "10",
+		"OrganizationDivision": "00",
+		"SalesGroup": "100",
+		"SalesOffice": "1000",
+		"SoldToParty": "1000003",
+		"SoldToPartyIsOneTimeAccount": false,
+		"SoldToPartyFullName": "Apex Industrial",
+		"PurchaseOrderByCustomer": "PO-2026-005",
+		"SalesDocumentDate": "/Date(1739059200000)/",
+		"TotalNetAmount": "0.000",
+		"TransactionCurrency": "EUR",
+		"TotalGrossAmount": "0.000",
+		"RequestedDeliveryDate": "/Date(1740268800000)/",
+		"OverallSDProcessStatus": "A",
+		"OverallTotalDeliveryStatus": "A",
+		"OverallPurchaseConfStatus": "A",
+		"OverallSDDocumentRejectionSts": "A",
+		"DeliveryBlockReason": "",
+		"HeaderBillingBlockReason": "02",
+		"SalesDocumentRjcnReason": "",
+		"SalesDocApprovalStatus": "B",
+		"OverallChmlCmplncStatus": "3",
+		"OverallDangerousGoodsStatus": "3",
+		"OverallSafetyDataSheetStatus": "3",
+		"OverallTrdCmplncEmbargoSts": "3",
+		"OvrlTrdCmplncSnctndListChkSts": "3",
+		"OvrlTrdCmplncLegalCtrlChkSts": "3",
+		"BusinessSolutionOrder": "",
+		"OrganizationBPName1": "Apex Industrial",
+		"OrganizationBPName2": "",
+		"UserDescription": "Sarah Jenkins",
+		"to_OverallFulfillmentStatus": {
+			"FulfillmentStatus": "5",
+			"FulfillmentStatus_Text": "Due Next Issue"
+		},
+		"to_FulfillmentStatusInOrder": {
+			"FulfillmentStatus": "5",
+			"FulfillmentStatus_Text": "Order Approval Pending"
+		},
+		"to_FulfillmentStatusInSupply": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInDelivery": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInTransit": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInInvoice": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentStatusInAccounting": {
+			"FulfillmentStatus": "1",
+			"FulfillmentStatus_Text": "Not Yet Processed"
+		},
+		"to_FulfillmentProcessPhase": {
+			"FulfillmentProcessPhase": "1",
+			"FulfillmentProcessPhase_Text": "In Order (Blocked)"
+		},
+		"to_HeaderBillingBlockReason": {
+			"BillingBlockReason": "02",
+			"BillingBlockReason_Text": "Check Prices & Terms"
+		},
+		"to_SalesOrganization": {
+			"SalesOrganization": "1010",
+			"SalesOrganization_Text": "Sales Org 1010"
+		},
+		"to_DistributionChannel": {
+			"DistributionChannel": "10",
+			"DistributionChannel_Text": "Direct Sales"
+		},
+		"to_OrganizationDivision": {
+			"Division": "00",
+			"Division_Text": "Cross-Division"
+		},
+		"to_SalesOffice": {
+			"SalesOffice": "1000",
+			"SalesOffice_Text": "New York"
+		},
+		"to_SalesGroup": {
+			"SalesGroup": "100",
+			"SalesGroup_Text": "Sales Team Alpha"
+		},
+		"to_SalesDocumentType": {
+			"SalesDocumentType": "FD",
+			"SalesDocumentType_Text": "Delivery Free of Charge"
+		},
+		"to_OverallSDProcessStatus": {
+			"OverallSDProcessStatus": "A",
+			"OverallSDProcessStatus_Text": "Open"
+		},
+		"to_OverallTotalDeliveryStatus": {
+			"OverallTotalDeliveryStatus": "A",
+			"OverallTotalDeliveryStatus_Text": "Not Delivered"
+		},
+		"to_OverallSDDocumentRejectionSts": {
+			"OverallSDDocumentRejectionSts": "A",
+			"OverallSDDocumentRejectionSts_Text": "Nothing Rejected"
+		},
+		"to_SalesDocApprovalStatus": {
+			"SalesDocApprovalStatus": "B",
+			"SalesDocApprovalStatus_Text": "Pending Approval"
+		}
+	}
+]

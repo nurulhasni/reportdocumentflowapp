@@ -1,0 +1,492 @@
+<mvc:View 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m" 
+    xmlns:f="sap.f"
+    xmlns:card="sap.f.cards"
+    xmlns:l="sap.ui.layout"
+    xmlns:cssgrid="sap.ui.layout.cssgrid"
+    xmlns:core="sap.ui.core"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    controllerName="myapp.controller.Main"
+    height="100%">
+    
+    <VBox fitContainer="true" height="100%">
+        <!-- Top ShellBar (SAP Header) -->
+        <f:ShellBar
+            title="SD - Document Flow &amp; Status Report"
+            homeIcon="https://www.sap.com/dam/application/shared/logos/sap-logo-svg.svg"
+            showCopilot="false"
+            showSearch="false"
+            showNotifications="false"
+            showProductSwitcher="false" />
+
+        <!-- DynamicPage for Selection Screen / List Report -->
+        <f:DynamicPage
+            headerExpanded="true"
+            preserveHeaderStateOnScroll="true"
+            showFooter="false"
+            fitContent="false"
+            class="sapUiNoContentPadding">
+            <f:layoutData>
+                <FlexItemData growFactor="1" baseSize="0" />
+            </f:layoutData>
+
+            <!-- DynamicPage Title -->
+            <f:title>
+                <f:DynamicPageTitle>
+                    <f:heading>
+                        <Button
+                            text="Selection Screen"
+                            icon="sap-icon://slim-arrow-down"
+                            iconFirst="false"
+                            type="Transparent"
+                            press="onVariantPress"
+                            class="fioriVariantBtn"
+                            tooltip="Select View / Variant" />
+                    </f:heading>
+
+                    <f:snappedHeading>
+                        <Button
+                            text="Selection Screen"
+                            icon="sap-icon://slim-arrow-down"
+                            iconFirst="false"
+                            type="Transparent"
+                            press="onVariantPress"
+                            class="fioriVariantBtn"
+                            tooltip="Select View / Variant" />
+                    </f:snappedHeading>
+
+                    <f:snappedContent>
+                        <Text id="idFilterSummary" text="Filters: None" class="sapUiTinyMarginTop" />
+                    </f:snappedContent>
+
+                    <f:actions>
+                        <Button icon="sap-icon://action" type="Transparent" tooltip="Share" press="onSharePress" />
+                    </f:actions>
+                </f:DynamicPageTitle>
+            </f:title>
+
+            <!-- DynamicPage Header (Filter Area) -->
+            <f:header>
+                <f:DynamicPageHeader pinnable="true">
+                    <f:content>
+                        <!-- Dynamic CSSGrid Layout with Auto-Reflow on Hide/Show Filters -->
+                        <cssgrid:CSSGrid gridTemplateColumns="repeat(auto-fill, minmax(280px, 1fr))" gridGap="0.75rem 1.25rem" class="sapUiNoMarginBottom">
+                            <VBox id="idBoxSDDocType" visible="{adaptFilterModel>/fieldVisibility/sdDocType}" class="sapUiTinyMarginBottom">
+                                <Label text="SD Document Type" labelFor="idSDDocType" />
+                                <Select
+                                    id="idSDDocType"
+                                    selectedKey="{adaptFilterModel>/fieldValues/sdDocType}"
+                                    width="100%"
+                                    change="onSDDocTypeChange">
+                                    <core:Item key="C" text="Sales Order" />
+                                </Select>
+                            </VBox>
+
+                            <VBox id="idBoxSDDocNum" visible="{adaptFilterModel>/fieldVisibility/sdDocNum}" class="sapUiTinyMarginBottom">
+                                <Label text="{adaptFilterModel>/sdDocNumLabel}" labelFor="idSDDocNum" />
+                                <MultiInput
+                                    id="idSDDocNum"
+                                    tokens="{conditionModel>/tokens}"
+                                    placeholder="{adaptFilterModel>/sdDocNumPlaceholder}"
+                                    width="100%"
+                                    showClearIcon="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onSDDocNumValueHelp"
+                                    tokenUpdate="onSDDocNumTokenUpdate"
+                                    change="onSDDocNumChange">
+                                    <tokens>
+                                        <Token key="{conditionModel>key}" text="{conditionModel>text}" />
+                                    </tokens>
+                                </MultiInput>
+                            </VBox>
+
+                            <VBox id="idBoxSoldToParty" visible="{adaptFilterModel>/fieldVisibility/soldToParty}" class="sapUiTinyMarginBottom">
+                                <Label text="Sold to Party" labelFor="idSoldToParty" />
+                                <Input
+                                    id="idSoldToParty"
+                                    value="{adaptFilterModel>/fieldValues/soldToParty}"
+                                    placeholder="e.g. 100001"
+                                    width="100%"
+                                    showClearIcon="true"
+                                    showValueHelp="true"
+                                    valueHelpRequest="onSoldToPartyValueHelp"
+                                    liveChange="onSearch"
+                                    submit="onSearch" />
+                            </VBox>
+
+                            <VBox id="idBoxCustomerRef" visible="{adaptFilterModel>/fieldVisibility/customerRef}" class="sapUiTinyMarginBottom">
+                                <Label text="Customer Reference" labelFor="idCustomerRef" />
+                                <Input id="idCustomerRef" value="{adaptFilterModel>/fieldValues/customerRef}" placeholder="e.g. PO-998877" width="100%" showClearIcon="true" liveChange="onSearch" submit="onSearch" />
+                            </VBox>
+
+                            <VBox id="idBoxDocDate" visible="{adaptFilterModel>/fieldVisibility/docDate}" class="sapUiTinyMarginBottom">
+                                <Label text="Document Date" labelFor="idDocDate" />
+                                <!-- Standard Fiori Dynamic Date Range (Single Dates + Date Ranges).
+                                     Note: sap.m.DynamicDateRange does not support binding of the "value"
+                                     property, so the value is synced to adaptFilterModel in the controller. -->
+                                <DynamicDateRange
+                                    id="idDocDate"
+                                    standardOptions="DATE,TODAY,YESTERDAY,DATERANGE,FROM,TO,DATETOYEAR,LASTDAYS,LASTWEEKS,LASTMONTHS,LASTQUARTERS,LASTYEARS,TODAYFROMTO"
+                                    placeholder="Select Date or Date Range"
+                                    width="100%"
+                                    change="onDocDateChange" />
+                            </VBox>
+
+                            <VBox id="idBoxSalesEmployee" visible="{adaptFilterModel>/fieldVisibility/salesEmployee}" class="sapUiTinyMarginBottom">
+                                <Label text="Sales Employee" labelFor="idSalesEmployee" />
+                                <Input id="idSalesEmployee" value="{adaptFilterModel>/fieldValues/salesEmployee}" placeholder="e.g. EMP-001" width="100%" showClearIcon="true" liveChange="onSearch" submit="onSearch" />
+                            </VBox>
+
+                            <VBox id="idBoxSalesOrg" visible="{adaptFilterModel>/fieldVisibility/salesOrg}" class="sapUiTinyMarginBottom">
+                                <Label text="Sales Organization" labelFor="idSalesOrg" />
+                                <Input id="idSalesOrg" value="{adaptFilterModel>/fieldValues/salesOrg}" placeholder="e.g. 1000" width="100%" showClearIcon="true" liveChange="onSearch" submit="onSearch" />
+                            </VBox>
+
+                            <VBox id="idBoxDistChannel" visible="{adaptFilterModel>/fieldVisibility/distChannel}" class="sapUiTinyMarginBottom">
+                                <Label text="Distribution Channel" labelFor="idDistChannel" />
+                                <Input id="idDistChannel" value="{adaptFilterModel>/fieldValues/distChannel}" placeholder="e.g. 10" width="100%" showClearIcon="true" liveChange="onSearch" submit="onSearch" />
+                            </VBox>
+
+                            <VBox id="idBoxDivision" visible="{adaptFilterModel>/fieldVisibility/division}" class="sapUiTinyMarginBottom">
+                                <Label text="Division" labelFor="idDivision" />
+                                <Input id="idDivision" value="{adaptFilterModel>/fieldValues/division}" placeholder="e.g. 00" width="100%" showClearIcon="true" liveChange="onSearch" submit="onSearch" />
+                            </VBox>
+                        </cssgrid:CSSGrid>
+
+                        <!-- Filter Actions Bar (Go / Adapt Filters / Clear) -->
+                        <HBox justifyContent="End" alignItems="Center" class="sapUiSmallMarginTop">
+                            <Button text="Go" type="Emphasized" press="onSearch" class="sapUiTinyMarginEnd" />
+                            <Button text="Adapt Filters" type="Transparent" press="onAdaptFilters" class="sapUiTinyMarginEnd" />
+                            <Button text="Clear" type="Transparent" press="onClear" />
+                        </HBox>
+                    </f:content>
+                </f:DynamicPageHeader>
+            </f:header>
+
+            <!-- DynamicPage Content Area (Chart & Results Table) -->
+            <f:content>
+                <VBox class="sapUiSmallMargin">
+                    <!-- Analytical View Toolbar (Fiori ALP Standard Chart & View Controls) -->
+                    <OverflowToolbar class="sapUiTinyMarginBottom">
+                        <Title text="Document Flow Summary" level="H3" />
+                        <ToolbarSpacer />
+                        
+                        <!-- Actions from reference design -->
+                        <Button text="Details" type="Transparent" press="onDetailsPress" tooltip="View Details" />
+                        <Button text="View By" type="Transparent" press="onViewByPress" tooltip="View Dimensions" />
+                        <Button icon="sap-icon://legend" type="Transparent" tooltip="Toggle Legend" press="onChartLegendPress" />
+                        <Button icon="sap-icon://zoom-in" type="Transparent" tooltip="Zoom In" press="onZoomInPress" />
+                        <Button icon="sap-icon://zoom-out" type="Transparent" tooltip="Zoom Out" press="onZoomOutPress" />
+                        <Button icon="sap-icon://action-settings" type="Transparent" tooltip="Chart Personalization" press="onChartSettingsPress" />
+                        <Button icon="sap-icon://full-screen" type="Transparent" tooltip="Full Screen Toggle" press="onFullScreenPress" />
+                        <Button icon="sap-icon://line-chart" type="Transparent" tooltip="Change Chart Type" press="onChartTypePress" />
+                        
+                        <!-- View Switcher (Hybrid / Chart / Table) -->
+                        <SegmentedButton id="idViewSwitcher" selectedKey="hybrid" selectionChange="onViewModeChange">
+                            <items>
+                                <SegmentedButtonItem key="hybrid" icon="sap-icon://chart-table-view" tooltip="Hybrid View (Chart &amp; Table)" />
+                                <SegmentedButtonItem key="chart" icon="sap-icon://bar-chart" tooltip="Chart View Only" />
+                                <SegmentedButtonItem key="table" icon="sap-icon://table-view" tooltip="Table View Only" />
+                            </items>
+                        </SegmentedButton>
+
+                        <Button icon="sap-icon://overflow" type="Transparent" tooltip="More Actions" press="onMoreActionsPress" />
+                    </OverflowToolbar>
+
+                    <!-- Fiori Summary & Total Issue Chart Container (Wider Chart Layout) -->
+                    <f:Card id="idChartContainer" class="sapUiSmallMarginBottom fioriChartCard" busy="{reportModel>/chartBusy}" busyIndicatorDelay="0">
+                        <f:header>
+                            <card:Header
+                                title="Document Flow Summary &amp; Analytics"
+                                subtitle="Chart &amp; tiles cover the whole document flow (inquiry to payment); the table below lists sales orders only"
+                                iconSrc="sap-icon://business-objects-experience" />
+                        </f:header>
+                        <f:content>
+                            <HBox width="100%" wrap="NoWrap" alignItems="Stretch" justifyContent="SpaceBetween" class="sapUiSmallMargin fioriChartContainer">
+                                
+                                <!-- Left: 6 KPI Summary Tiles (2 Columns x 3 Rows - Compact 26% width, Vertically Centered) -->
+                                <VBox width="26%" minWidth="280px" justifyContent="Center" class="sapUiMediumMarginEnd">
+                                    <l:Grid defaultSpan="XL6 L6 M6 S6" hSpacing="1" vSpacing="0" class="sapUiNoMargin">
+                                        <!-- KPI 1: Inquiry -->
+                                        <HBox alignItems="Center" class="kpiSummaryBox kpiBoxInquiry">
+                                            <core:Icon src="sap-icon://customer-and-supplier" size="2rem" class="sapUiSmallMarginEnd kpiIconInquiry" />
+                                            <VBox alignItems="Center" width="100%">
+                                                <Text text="Inquiry" class="kpiTitleInquiry" />
+                                                <Text text="{reportModel>/kpiData/inquiry}" class="kpiValInquiry" />
+                                            </VBox>
+                                        </HBox>
+
+                                        <!-- KPI 2: Delivery -->
+                                        <HBox alignItems="Center" class="kpiSummaryBox kpiBoxDelivery">
+                                            <core:Icon src="sap-icon://shipping-status" size="2rem" class="sapUiSmallMarginEnd kpiIconDelivery" />
+                                            <VBox alignItems="Center" width="100%">
+                                                <Text text="Delivery" class="kpiTitleDelivery" />
+                                                <Text text="{reportModel>/kpiData/delivery}" class="kpiValDelivery" />
+                                            </VBox>
+                                        </HBox>
+
+                                        <!-- KPI 3: Quotation -->
+                                        <HBox alignItems="Center" class="kpiSummaryBox kpiBoxQuotation">
+                                            <core:Icon src="sap-icon://edit" size="2rem" class="sapUiSmallMarginEnd kpiIconQuotation" />
+                                            <VBox alignItems="Center" width="100%">
+                                                <Text text="Quotation" class="kpiTitleQuotation" />
+                                                <Text text="{reportModel>/kpiData/quotation}" class="kpiValQuotation" />
+                                            </VBox>
+                                        </HBox>
+
+                                        <!-- KPI 4: Billing -->
+                                        <HBox alignItems="Center" class="kpiSummaryBox kpiBoxBilling">
+                                            <core:Icon src="sap-icon://receipt" size="2rem" class="sapUiSmallMarginEnd kpiIconBilling" />
+                                            <VBox alignItems="Center" width="100%">
+                                                <Text text="Billing" class="kpiTitleBilling" />
+                                                <Text text="{reportModel>/kpiData/billing}" class="kpiValBilling" />
+                                            </VBox>
+                                        </HBox>
+
+                                        <!-- KPI 5: Sales Order -->
+                                        <HBox alignItems="Center" class="kpiSummaryBox kpiBoxSalesOrder">
+                                            <core:Icon src="sap-icon://sales-order" size="2rem" class="sapUiSmallMarginEnd kpiIconSalesOrder" />
+                                            <VBox alignItems="Center" width="100%">
+                                                <Text text="Sales Order" class="kpiTitleSalesOrder" />
+                                                <Text text="{reportModel>/kpiData/salesOrder}" class="kpiValSalesOrder" />
+                                            </VBox>
+                                        </HBox>
+
+                                        <!-- KPI 6: Payment -->
+                                        <HBox alignItems="Center" class="kpiSummaryBox kpiBoxPayment">
+                                            <core:Icon src="sap-icon://money-bills" size="2rem" class="sapUiSmallMarginEnd kpiIconPayment" />
+                                            <VBox alignItems="Center" width="100%">
+                                                <Text text="Payment" class="kpiTitlePayment" />
+                                                <Text text="{reportModel>/kpiData/payment}" class="kpiValPayment" />
+                                            </VBox>
+                                        </HBox>
+                                    </l:Grid>
+                                </VBox>
+
+                                <!-- Right: Total Issue Horizontal Bar Chart (Wider 72% layout + growFactor) -->
+                                <VBox width="72%">
+                                    <layoutData>
+                                        <FlexItemData growFactor="1" />
+                                    </layoutData>
+                                    <viz:VizFrame
+                                        id="idVizFrame"
+                                        uiConfig="{applicationSet:'fiori'}"
+                                        height="440px"
+                                        width="100%"
+                                        vizType="bar">
+                                        <viz:dataset>
+                                             <viz.data:FlattenedDataset data="{reportModel>/issueData}">
+                                                <viz.data:dimensions>
+                                                    <viz.data:DimensionDefinition name="IssueType" value="{reportModel>issueType}" />
+                                                </viz.data:dimensions>
+                                                <viz.data:measures>
+                                                    <viz.data:MeasureDefinition name="Total Issue" value="{reportModel>count}" />
+                                                </viz.data:measures>
+                                            </viz.data:FlattenedDataset>
+                                        </viz:dataset>
+                                        <viz:feeds>
+                                            <viz.feeds:FeedItem uid="valueAxis" type="Measure" values="Total Issue" />
+                                            <viz.feeds:FeedItem uid="categoryAxis" type="Dimension" values="IssueType" />
+                                        </viz:feeds>
+                                    </viz:VizFrame>
+                                </VBox>
+
+                            </HBox>
+                        </f:content>
+                    </f:Card>
+
+                    <!-- Responsive Results Table with Pop-in & Declarative Binding -->
+                    <Table
+                        id="idDocFlowTable"
+                        items="{reportModel>/results}"
+                        growing="true"
+                        growingThreshold="100"
+                        inset="false"
+                        mode="SingleSelectMaster"
+                        itemPress="onRowPress"
+                        selectionChange="onTableSelectionChange"
+                        busy="{reportModel>/tableBusy}"
+                        busyIndicatorDelay="0"
+                        noDataText="No documents found. Use the filters above and click 'Go' to search."
+                        class="sapUiNoMarginTop">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <Title id="idTableTitle" text="{reportModel>/tableTitle}" level="H3" />
+                                <ToolbarSpacer />
+                                <!-- <Button
+                                    id="idBtnViewFlow"
+                                    text="View Document Flow"
+                                    icon="sap-icon://process"
+                                    type="Emphasized"
+                                    tooltip="View Process Flow for selected sales document"
+                                    press="onViewFlowSelectedPress" />
+                                <ToolbarSeparator /> -->
+                                <!-- Table Density / Line View Switcher -->
+                                <SegmentedButton id="idTableDensitySwitcher" selectedKey="compact" selectionChange="onTableDensityChange">
+                                    <items>
+                                        <SegmentedButtonItem key="cozy" icon="sap-icon://list" tooltip="Detailed View" />
+                                        <SegmentedButtonItem key="compact" icon="sap-icon://horizontal-grip" tooltip="Compact View" />
+                                    </items>
+                                </SegmentedButton>
+
+                                <!-- Status Legend Popover -->
+                                <Button icon="sap-icon://legend" type="Transparent" tooltip="Overall Fulfilment Status Legend" press="onLegendPress" />
+
+                                <!-- Table Personalization / Settings -->
+                                <Button icon="sap-icon://action-settings" type="Transparent" tooltip="Table Settings" press="onTableSettingsPress" />
+
+                                <!-- Export Split Menu Button -->
+                                <MenuButton
+                                    icon="sap-icon://excel-attachment"
+                                    type="Transparent"
+                                    tooltip="Export Options"
+                                    buttonMode="Split"
+                                    defaultAction="onExportPress">
+                                    <menu>
+                                        <Menu>
+                                            <MenuItem text="Export to Excel (*.xlsx)" icon="sap-icon://excel-attachment" press="onExportPress" />
+                                            <MenuItem text="Export as CSV (*.csv)" icon="sap-icon://doc-attachment" press="onExportPress" />
+                                        </Menu>
+                                    </menu>
+                                </MenuButton>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <!-- 1. SD Document Number -->
+                            <Column id="colSDDocNum" width="160px" visible="{tableSettingsModel>/colVisibility/sdDocNum}">
+                                <Text text="{adaptFilterModel>/sdDocNumLabel}" />
+                            </Column>
+
+                            <!-- 2. Overall Fulfilment -->
+                            <Column id="colOverallFulfilment" width="130px" hAlign="Center" visible="{tableSettingsModel>/colVisibility/overallFulfilment}">
+                                <Text text="Overall Fulfilment" />
+                            </Column>
+
+                            <!-- 3. Process Phase -->
+                            <Column id="colProcessPhase" width="160px" visible="{tableSettingsModel>/colVisibility/processPhase}">
+                                <Text text="Process Phase" />
+                            </Column>
+
+                            <!-- 4. Order Processing -->
+                            <Column id="colOrderProcessing" width="130px" hAlign="Center" visible="{tableSettingsModel>/colVisibility/orderProcessing}">
+                                <Text text="Order Processing" />
+                            </Column>
+
+                            <!-- 5. Sales Order -->
+                            <Column id="colSalesOrder" width="140px" visible="{tableSettingsModel>/colVisibility/salesOrder}">
+                                <Text text="Sales Order" />
+                            </Column>
+
+                            <!-- 6. Sold-to Party -->
+                            <Column id="colSoldToParty" width="200px" visible="{tableSettingsModel>/colVisibility/soldToParty}">
+                                <Text text="Sold-to Party" />
+                            </Column>
+
+                            <!-- 7. Customer Ref -->
+                            <Column id="colCustomerRef" width="150px" visible="{tableSettingsModel>/colVisibility/customerRef}">
+                                <Text text="Customer Ref" />
+                            </Column>
+
+                            <!-- 8. Doc Date -->
+                            <Column id="colDocDate" width="130px" visible="{tableSettingsModel>/colVisibility/docDate}">
+                                <Text text="Doc Date" />
+                            </Column>
+
+                            <!-- 9. Sales Employee -->
+                            <Column id="colSalesEmployee" width="160px" visible="{tableSettingsModel>/colVisibility/salesEmployee}">
+                                <Text text="Sales Employee" />
+                            </Column>
+
+                            <!-- 10. Sales Org -->
+                            <Column id="colSalesOrg" width="110px" visible="{tableSettingsModel>/colVisibility/salesOrg}">
+                                <Text text="Sales Org" />
+                            </Column>
+
+                            <!-- 11. Net Value -->
+                            <Column id="colNetValue" width="150px" hAlign="End" visible="{tableSettingsModel>/colVisibility/netValue}">
+                                <Text text="Net Value" />
+                            </Column>
+
+                            <!-- 12. Status -->
+                            <Column id="colStatus" width="130px" hAlign="Center" visible="{tableSettingsModel>/colVisibility/status}">
+                                <Text text="Status" />
+                            </Column>
+
+                            <!-- 13. RAP Flow Action -->
+                            <Column id="colRapFlow" width="140px" hAlign="Center" visible="{tableSettingsModel>/colVisibility/rapFlow}">
+                                <Text text="RAP Flow" />
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem type="Navigation" press="onRowPress">
+                                <cells>
+                                    <!-- 1. SD Document Number Link -->
+                                    <Link text="{reportModel>sdDocNum}" press="onDocLinkPress" class="sapUiTinyMarginBegin" />
+
+                                    <!-- 2. Overall Fulfilment Icon (Matching SAP Standard sap-icon://process) -->
+                                    <HBox justifyContent="Center" alignItems="Center">
+                                        <core:Icon
+                                            src="{reportModel>overallFulfilmentIcon}"
+                                            color="{reportModel>overallFulfilmentColor}"
+                                            size="1.25rem"
+                                            tooltip="{reportModel>overallFulfilmentText}" />
+                                    </HBox>
+
+                                    <!-- 3. Process Phase -->
+                                    <Text text="{reportModel>processPhase}" />
+
+                                    <!-- 4. Order Processing (Dynamic Status Icon matching SAP standard) -->
+                                    <HBox justifyContent="Center" alignItems="Center">
+                                        <core:Icon
+                                            src="{reportModel>orderProcessingIcon}"
+                                            color="{reportModel>orderProcessingColor}"
+                                            size="1.15rem"
+                                            tooltip="{reportModel>orderProcessingText}"
+                                            press="onDocLinkPress" />
+                                    </HBox>
+
+                                    <!-- 5. Sales Order -->
+                                    <Text text="{reportModel>salesOrder}" />
+
+                                    <!-- 6. Sold-to Party -->
+                                    <Text text="{reportModel>soldToParty}" />
+
+                                    <!-- 7. Customer Ref -->
+                                    <Text text="{reportModel>customerRef}" />
+
+                                    <!-- 8. Doc Date -->
+                                    <Text text="{reportModel>docDate}" />
+
+                                    <!-- 9. Sales Employee -->
+                                    <Text text="{reportModel>salesEmployee}" />
+
+                                    <!-- 10. Sales Org -->
+                                    <Text text="{reportModel>salesOrg}" />
+
+                                    <!-- 11. Net Value -->
+                                    <Text text="{reportModel>netValue}" />
+
+                                    <!-- 12. Status -->
+                                    <ObjectStatus
+                                        text="{reportModel>status}"
+                                        state="{reportModel>statusState}" />
+
+                                    <!-- 13. RAP Flow Action -->
+                                    <Button
+                                        text="View Flow"
+                                        icon="sap-icon://process"
+                                        type="Ghost"
+                                        press="onOpenDocFlowPress"
+                                        tooltip="Open S/4HANA Process Flow" />
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </VBox>
+            </f:content>
+        </f:DynamicPage>
+    </VBox>
+</mvc:View>

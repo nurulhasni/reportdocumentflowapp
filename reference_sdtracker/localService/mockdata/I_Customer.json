@@ -1,0 +1,6 @@
+[
+	{ "Customer": "1000000", "CustomerName": "Domestic US Customer 1", "CustomerFullName": "Domestic US Customer 1 Inc.", "Country": "US", "CityName": "New York", "PostalCode": "10001", "StreetName": "5th Avenue 123" },
+	{ "Customer": "1000001", "CustomerName": "Global Retail Corp", "CustomerFullName": "Global Retail Corporation", "Country": "US", "CityName": "Chicago", "PostalCode": "60601", "StreetName": "Michigan Ave 456" },
+	{ "Customer": "1000002", "CustomerName": "TechSolutions Ltd", "CustomerFullName": "TechSolutions Europe Ltd", "Country": "DE", "CityName": "Frankfurt", "PostalCode": "60311", "StreetName": "Mainzer Landstr. 78" },
+	{ "Customer": "1000003", "CustomerName": "Apex Industrial", "CustomerFullName": "Apex Industrial Logistics", "Country": "DE", "CityName": "Berlin", "PostalCode": "10115", "StreetName": "Friedrichstr. 90" }
+]

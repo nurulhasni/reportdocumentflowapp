@@ -1,0 +1,85 @@
+{
+    "_version": "1.40.0",
+    "sap.app": {
+        "id": "myapp",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "SD - Document Flow & Status Report",
+        "description": "SAP Fiori Document Flow & Status Report",
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/SD_SOFA/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "2.0"
+                }
+            },
+            "rapService": {
+                "uri": "/sap/opu/odata4/sap/zui_sd_docflow/srvd/sap/zsd_sd_docflow/0001/",
+                "type": "OData",
+                "settings": {
+                    "odataVersion": "4.0"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "rootView": {
+            "viewName": "myapp.view.Main",
+            "type": "XML",
+            "async": true,
+            "id": "idViewMain"
+        },
+        "dependencies": {
+            "minUI5Version": "1.100.0",
+            "libs": {
+                "sap.m": {},
+                "sap.f": {},
+                "sap.ui.layout": {},
+                "sap.ui.core": {},
+                "sap.viz": {},
+                "sap.suite.ui.microchart": {},
+                "sap.suite.ui.commons": {}
+            }
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "myapp.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "rapFlowService": {
+                "dataSource": "rapService",
+                "preload": false,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server"
+                }
+            }
+        }
+    }
+}

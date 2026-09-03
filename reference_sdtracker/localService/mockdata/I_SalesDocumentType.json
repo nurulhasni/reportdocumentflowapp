@@ -1,0 +1,6 @@
+[
+	{ "SalesDocumentType": "OR", "SalesDocumentType_Text": "Standard Order (OR)", "SDDocumentCategory": "C" },
+	{ "SalesDocumentType": "RO", "SalesDocumentType_Text": "Rush Order (RO)", "SDDocumentCategory": "C" },
+	{ "SalesDocumentType": "FD", "SalesDocumentType_Text": "Delivery Free of Charge (FD)", "SDDocumentCategory": "C" },
+	{ "SalesDocumentType": "DR", "SalesDocumentType_Text": "Debit Memo Request (DR)", "SDDocumentCategory": "L" }
+]

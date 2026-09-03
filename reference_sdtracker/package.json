@@ -1,0 +1,15 @@
+{
+  "name": "sdtracker",
+  "version": "2025.0.2",
+  "description": "Track Sales Orders - SAP Fiori Elements",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "sapui5",
+    "fiori",
+    "sales-order"
+  ],
+  "author": "",
+  "license": "UNLICENSED"
+}

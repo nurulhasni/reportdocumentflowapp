@@ -1,0 +1,14 @@
+specVersion: "4.0"
+metadata:
+  name: reportdocumentflowapp
+type: application
+server:
+  customMiddleware:
+    - name: ui5-middleware-simpleproxy
+      mountPath: /sap
+      afterMiddleware: compression
+      configuration:
+        baseUri: "https://s2025pst.pst.co.id:44305/sap"
+        strictSSL: false
+        username: "PST-HASNI"
+        password: "Bismillah29"

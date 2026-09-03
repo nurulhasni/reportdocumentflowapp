@@ -1,0 +1,178 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <!--
+        Define Conditions: Sales Document
+        Standard SAP Fiori Select-Options dialog (ABAP RANGES semantics):
+          - Condition input row : operator (Include / Exclude groups) + value(s) + Add
+          - Selected Conditions : Tokenizer with one Token per committed condition
+          - Footer              : OK (Emphasized) / Cancel (Transparent)
+    -->
+    <Dialog
+        id="idSDDocNumValueHelpDialog"
+        title="Define Conditions: Sales Document"
+        contentWidth="46rem"
+        contentHeight="24rem"
+        resizable="true"
+        draggable="true"
+        class="sapUiResponsiveContentPadding">
+
+        <content>
+            <VBox width="100%" class="sapUiTinyMarginTop">
+
+                <!-- ==========================================================
+                     1. CONDITION INPUT ROW  (Operator | Value | To Value | Add)
+                     ========================================================== -->
+                <Label
+                    text="Sales Document Number"
+                    labelFor="idConditionValue1"
+                    class="sapUiTinyMarginBottom" />
+
+                <HBox
+                    width="100%"
+                    alignItems="Center"
+                    justifyContent="Start"
+                    class="sapUiTinyMarginBottom">
+
+                    <!-- Operator dropdown grouped into Include / Exclude -->
+                    <Select
+                        id="idConditionOperator"
+                        selectedKey="{conditionModel>/operator}"
+                        change="onConditionOperatorChange"
+                        tooltip="Condition operator"
+                        width="14rem"
+                        class="sapUiTinyMarginEnd">
+
+                        <!-- ===== Include ===== -->
+                        <core:SeparatorItem text="Include" />
+                        <core:Item key="contains" text="contains" />
+                        <core:Item key="equal to" text="equal to" />
+                        <core:Item key="between" text="between" />
+                        <core:Item key="starts with" text="starts with" />
+                        <core:Item key="ends with" text="ends with" />
+                        <core:Item key="less than" text="less than" />
+                        <core:Item key="less than or equal to" text="less than or equal to" />
+                        <core:Item key="greater than" text="greater than" />
+                        <core:Item key="greater than or equal to" text="greater than or equal to" />
+                        <core:Item key="empty" text="empty" />
+
+                        <!-- ===== Exclude ===== -->
+                        <core:SeparatorItem text="Exclude" />
+                        <core:Item key="does not contain" text="does not contain" />
+                        <core:Item key="not equal to" text="not equal to" />
+                        <core:Item key="not between" text="not between" />
+                        <core:Item key="does not start with" text="does not start with" />
+                        <core:Item key="does not end with" text="does not end with" />
+                        <core:Item key="not less than" text="not less than" />
+                        <core:Item key="not less than or equal to" text="not less than or equal to" />
+                        <core:Item key="not greater than" text="not greater than" />
+                        <core:Item key="not greater than or equal to" text="not greater than or equal to" />
+                        <core:Item key="not empty" text="not empty" />
+                    </Select>
+
+                    <!-- Value (From) : hidden for empty / not empty -->
+                    <Input
+                        id="idConditionValue1"
+                        value="{conditionModel>/value1}"
+                        placeholder="Value"
+                        showClearIcon="true"
+                        visible="{= ${conditionModel>/valueCount} > 0 }"
+                        liveChange="onConditionValueLiveChange"
+                        submit="onAddCondition"
+                        class="sapUiTinyMarginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" baseSize="0%" minWidth="7rem" />
+                        </layoutData>
+                    </Input>
+
+                    <!-- To Value : only for between / not between -->
+                    <Input
+                        id="idConditionValue2"
+                        value="{conditionModel>/value2}"
+                        placeholder="To Value"
+                        showClearIcon="true"
+                        visible="{= ${conditionModel>/valueCount} > 1 }"
+                        liveChange="onConditionValueLiveChange"
+                        submit="onAddCondition"
+                        class="sapUiTinyMarginEnd">
+                        <layoutData>
+                            <FlexItemData growFactor="1" baseSize="0%" minWidth="7rem" />
+                        </layoutData>
+                    </Input>
+
+                    <!-- Filler so that "Add" stays right aligned for empty / not empty -->
+                    <HBox visible="{= ${conditionModel>/valueCount} === 0 }">
+                        <layoutData>
+                            <FlexItemData growFactor="1" baseSize="0%" />
+                        </layoutData>
+                    </HBox>
+
+                    <Button
+                        id="idConditionAddBtn"
+                        text="Add"
+                        icon="sap-icon://add"
+                        press="onAddCondition"
+                        tooltip="Add this condition to the selected conditions" />
+                </HBox>
+
+                <!-- ==========================================================
+                     2. SELECTED CONDITIONS  (empty state / populated state)
+                     ========================================================== -->
+                <HBox
+                    width="100%"
+                    alignItems="Center"
+                    justifyContent="SpaceBetween"
+                    class="sapUiSmallMarginTop sapUiTinyMarginBottom">
+                    <Label
+                        design="Bold"
+                        text="{= ${conditionModel>/conditions}.length &gt; 0 ? 'Selected Conditions (' + ${conditionModel>/conditions}.length + ')' : 'No Conditions Selected' }" />
+                    <Link
+                        text="Remove All"
+                        press="onRemoveAllConditions"
+                        visible="{= ${conditionModel>/conditions}.length &gt; 0 }" />
+                </HBox>
+
+                <HBox
+                    width="100%"
+                    alignItems="Center"
+                    class="sdCondTokenBox">
+                    <Tokenizer
+                        id="idConditionTokenizer"
+                        renderMode="Loose"
+                        editable="true"
+                        tokenDelete="onConditionTokenDelete"
+                        tokens="{conditionModel>/tokens}"
+                        class="sdCondTokenizer">
+                        <layoutData>
+                            <FlexItemData growFactor="1" baseSize="0%" />
+                        </layoutData>
+                        <Token
+                            key="{conditionModel>key}"
+                            text="{conditionModel>text}" />
+                    </Tokenizer>
+
+                    <Button
+                        id="idConditionClearAllBtn"
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                        tooltip="Remove all conditions"
+                        press="onRemoveAllConditions"
+                        enabled="{= ${conditionModel>/conditions}.length &gt; 0 }" />
+                </HBox>
+            </VBox>
+        </content>
+
+        <buttons>
+            <Button
+                id="idConditionOkBtn"
+                text="OK"
+                type="Emphasized"
+                press="onSDDocNumValueHelpOK" />
+            <Button
+                id="idConditionCancelBtn"
+                text="Cancel"
+                type="Transparent"
+                press="onSDDocNumValueHelpCancel" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,5 @@
+[
+	{ "SalesDocApprovalStatus": "A", "SalesDocApprovalStatus_Text": "Approved" },
+	{ "SalesDocApprovalStatus": "B", "SalesDocApprovalStatus_Text": "Pending Approval" },
+	{ "SalesDocApprovalStatus": "C", "SalesDocApprovalStatus_Text": "Rejected" }
+]

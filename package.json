@@ -1,0 +1,17 @@
+{
+  "name": "reportdocumentflowapp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx @ui5/cli serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "ui5": {
+    "dependencies": [
+      "ui5-middleware-simpleproxy"
+    ]
+  },
+  "devDependencies": {
+    "ui5-middleware-simpleproxy": "^3.2.10"
+  }
+}

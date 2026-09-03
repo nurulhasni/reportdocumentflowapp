@@ -1,0 +1,7 @@
+[
+	{ "FulfillmentStatus": "1", "FulfillmentStatus_Text": "Not Yet Processed" },
+	{ "FulfillmentStatus": "2", "FulfillmentStatus_Text": "Partially Processed" },
+	{ "FulfillmentStatus": "3", "FulfillmentStatus_Text": "Completed" },
+	{ "FulfillmentStatus": "4", "FulfillmentStatus_Text": "Overdue Issue" },
+	{ "FulfillmentStatus": "5", "FulfillmentStatus_Text": "Due Next Issue" }
+]

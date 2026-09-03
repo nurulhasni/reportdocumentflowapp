@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Track Sales Orders - SAP Fiori Launchpad Sandbox</title>
+
+	<script type="text/javascript">
+		window["sap-ushell-config"] = {
+			defaultRenderer: "fiori2",
+			renderers: {
+				fiori2: {
+					componentData: {
+						config: {
+							search: "hidden",
+							enableSearch: false,
+							rootIntent: "SalesOrder-trackStatus"
+						}
+					}
+				}
+			},
+			services: {
+				"LaunchPage": {
+					"adapter": {
+						"config": {
+							"groups": [{
+								"tiles": [{
+									"tileType": "sap.ushell.ui.tile.StaticTile",
+									"properties": {
+										"title": "Track Sales Orders",
+										"subtitle": "Sales Order Fulfillment Issues",
+										"info": "F2577",
+										"icon": "sap-icon://sales-order",
+										"targetURL": "#SalesOrder-trackStatus"
+									}
+								}]
+							}]
+						}
+					}
+				},
+				"ClientSideTargetResolution": {
+					"adapter": {
+						"config": {
+							"inbounds": {
+								"SalesOrder-trackStatus": {
+									"semanticObject": "SalesOrder",
+									"action": "trackStatus",
+									"title": "Track Sales Orders",
+									"signature": {
+										"parameters": {},
+										"additionalParameters": "allowed"
+									},
+									"resolutionResult": {
+										"applicationType": "SAPUI5",
+										"additionalInformation": "SAPUI5.Component=cus.sd.sofulfil.trackstatuss1",
+										"url": "../"
+									}
+								}
+							}
+						}
+					}
+				},
+				"NavTargetResolution": {
+					"config": {
+						"enableClientSideTargetResolution": true
+					}
+				}
+			},
+			applications: {
+				"SalesOrder-trackStatus": {
+					"title": "Track Sales Orders",
+					"description": "Track Sales Order Fulfillment Status",
+					"additionalInformation": "SAPUI5.Component=cus.sd.sofulfil.trackstatuss1",
+					"applicationType": "URL",
+					"url": "../"
+				}
+			}
+		};
+	</script>
+
+	<script
+		id="sap-ui-bootstrap"
+		src="https://ui5.sap.com/1.120.13/resources/sap-ui-core.js"
+		data-sap-ui-theme="sap_horizon"
+		data-sap-ui-compatVersion="edge"
+		data-sap-ui-preload="async"
+		data-sap-ui-resourceroots='{
+			"cus.sd.sofulfil.trackstatuss1": "../",
+			"cus.sd.lib.worklist": "../cus/sd/lib/worklist"
+		}'
+		data-sap-ui-libs="sap.m, sap.ui.generic.app, sap.suite.ui.generic.template, sap.ui.comp, sap.ui.layout, sap.ui.table"
+		data-sap-ui-frameOptions="allow">
+	</script>
+
+	<script type="text/javascript">
+		sap.ui.getCore().attachInit(function () {
+			sap.ui.require([
+				"cus/sd/sofulfil/trackstatuss1/localService/mockserver",
+				"sap/ushell/services/Container"
+			], function (mockserver) {
+				// Initialize mock server with mock data
+				mockserver.init();
+
+				// Initialize FLP Sandbox Container
+				sap.ushell.bootstrap("local").then(function () {
+					sap.ushell.Container.createRenderer().placeAt("content");
+				});
+			});
+		});
+	</script>
+</head>
+<body class="sapUiBody" id="content">
+</body>
+</html>

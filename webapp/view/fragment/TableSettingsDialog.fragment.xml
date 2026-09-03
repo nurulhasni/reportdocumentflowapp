@@ -1,0 +1,95 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <ViewSettingsDialog
+        id="idTableSettingsDialog"
+        title="View Settings"
+        confirm="onConfirmTableSettings"
+        resetFilters="onResetTableSettings">
+        
+        <!-- 1. Custom Tab: Columns Personalization (Standard Fiori P13n) -->
+        <customTabs>
+            <ViewSettingsCustomTab
+                id="idTabColumns"
+                title="Columns"
+                icon="sap-icon://table-column">
+                <content>
+                    <VBox class="sapUiSmallMargin">
+                        <SearchField
+                            id="idColumnSearchField"
+                            width="100%"
+                            placeholder="Search columns..."
+                            liveChange="onColumnSearch"
+                            class="sapUiTinyMarginBottom" />
+                        <HBox justifyContent="SpaceBetween" alignItems="Center" class="sapUiTinyMarginBottom">
+                            <Text text="Columns to display:" class="sapUiTinyMarginBegin" />
+                            <HBox>
+                                <Button text="Select All" type="Transparent" press="onSelectAllColumns" class="sapUiTinyMarginEnd" />
+                                <Button text="Deselect All" type="Transparent" press="onDeselectAllColumns" />
+                            </HBox>
+                        </HBox>
+                        <List
+                            id="idColumnsList"
+                            items="{tableSettingsModel>/columns}"
+                            noDataText="No columns match search.">
+                            <CustomListItem>
+                                <HBox alignItems="Center" justifyContent="SpaceBetween" class="sapUiSmallMargin">
+                                    <CheckBox
+                                        text="{tableSettingsModel>label}"
+                                        selected="{tableSettingsModel>visible}" />
+                                    <Text text="{tableSettingsModel>description}" class="sapUiTinyMarginEnd" />
+                                </HBox>
+                            </CustomListItem>
+                        </List>
+                    </VBox>
+                </content>
+            </ViewSettingsCustomTab>
+        </customTabs>
+
+        <!-- 2. Standard Fiori Sort Tab -->
+        <sortItems>
+            <ViewSettingsItem key="sdDocNum" text="SD Document Number" selected="true" />
+            <ViewSettingsItem key="processPhase" text="Process Phase" />
+            <ViewSettingsItem key="overallFulfilmentText" text="Overall Fulfilment" />
+            <ViewSettingsItem key="salesOrder" text="Sales Order" />
+            <ViewSettingsItem key="soldToParty" text="Sold-to Party" />
+            <ViewSettingsItem key="customerRef" text="Customer Reference" />
+            <ViewSettingsItem key="docDate" text="Document Date" />
+            <ViewSettingsItem key="salesEmployee" text="Sales Employee" />
+            <ViewSettingsItem key="salesOrg" text="Sales Organization" />
+            <ViewSettingsItem key="netValueNum" text="Net Value" />
+            <ViewSettingsItem key="status" text="Status" />
+        </sortItems>
+
+        <!-- 3. Standard Fiori Group Tab -->
+        <groupItems>
+            <ViewSettingsItem key="processPhase" text="Process Phase" />
+            <ViewSettingsItem key="overallFulfilmentText" text="Overall Fulfilment" />
+            <ViewSettingsItem key="salesOrg" text="Sales Organization" />
+            <ViewSettingsItem key="status" text="Status" />
+            <ViewSettingsItem key="soldToParty" text="Sold-to Party" />
+            <ViewSettingsItem key="salesEmployee" text="Sales Employee" />
+        </groupItems>
+
+        <!-- 4. Standard Fiori Filter Tab -->
+        <filterItems>
+            <ViewSettingsFilterItem key="processPhaseFilter" text="Process Phase" multiSelect="true">
+                <items>
+                    <ViewSettingsItem key="Accounting" text="Accounting" />
+                    <ViewSettingsItem key="Delivery Processing" text="Delivery Processing" />
+                    <ViewSettingsItem key="Already Payment" text="Already Payment" />
+                    <ViewSettingsItem key="Order Processing" text="Order Processing" />
+                </items>
+            </ViewSettingsFilterItem>
+            <ViewSettingsFilterItem key="statusFilter" text="Status" multiSelect="true">
+                <items>
+                    <ViewSettingsItem key="Release" text="Release" />
+                    <ViewSettingsItem key="Partially Blocked" text="Partially Blocked" />
+                    <ViewSettingsItem key="Blocked" text="Blocked" />
+                    <ViewSettingsItem key="Not Blocked" text="Not Blocked" />
+                </items>
+            </ViewSettingsFilterItem>
+        </filterItems>
+
+    </ViewSettingsDialog>
+</core:FragmentDefinition>

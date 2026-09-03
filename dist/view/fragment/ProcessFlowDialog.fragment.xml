@@ -1,0 +1,147 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:commons="sap.suite.ui.commons">
+    <Dialog
+        id="idProcessFlowDialog"
+        title="{pfModel>/dialogTitle}"
+        icon="sap-icon://process"
+        contentWidth="94vw"
+        contentHeight="86vh"
+        resizable="true"
+        draggable="true"
+        class="sapUiResponsiveContentPadding">
+        
+        <customHeader>
+            <Bar>
+                <contentLeft>
+                    <core:Icon src="sap-icon://process" class="sapUiSmallMarginBegin" size="1.25rem" color="#0070f2" />
+                    <Title text="{pfModel>/dialogTitle}" level="H3" class="sapUiTinyMarginBegin" />
+                </contentLeft>
+                <contentMiddle>
+                    <ObjectStatus
+                        text="{pfModel>/overallStatusText}"
+                        state="{pfModel>/overallStatusState}"
+                        inverted="true" />
+                </contentMiddle>
+                <contentRight>
+                    <Button
+                        icon="sap-icon://decline"
+                        type="Transparent"
+                        tooltip="Close"
+                        press="onCloseProcessFlowDialog" />
+                </contentRight>
+            </Bar>
+        </customHeader>
+
+        <subHeader>
+            <OverflowToolbar>
+                <Text text="Anchor Document: " class="sapUiSmallMarginBegin" />
+                <ObjectIdentifier
+                    title="{pfModel>/anchorDoc}"
+                    text="{pfModel>/anchorCategoryText}" />
+                <ToolbarSeparator />
+                <Text text="Total Documents in Chain: " />
+                <ObjectStatus text="{pfModel>/totalNodes}" state="Information" inverted="true" class="sapUiTinyMarginEnd" />
+
+                <ToolbarSpacer />
+
+                <ToggleButton
+                    icon="sap-icon://combine"
+                    text="Single Row"
+                    type="Transparent"
+                    tooltip="Gabungkan node sejenis per lane (multi-delivery / collective invoice) agar seluruh alur berada di satu baris"
+                    pressed="{pfModel>/compactMode}"
+                    press="onPFToggleCompact" />
+                <Button
+                    icon="sap-icon://zoom-in"
+                    type="Transparent"
+                    tooltip="Zoom In"
+                    press="onPFZoomIn" />
+                <Button
+                    icon="sap-icon://zoom-out"
+                    type="Transparent"
+                    tooltip="Zoom Out"
+                    press="onPFZoomOut" />
+                <Button
+                    icon="sap-icon://fit-page"
+                    type="Transparent"
+                    text="Fit View"
+                    tooltip="Zoom to Fit"
+                    press="onPFZoomToFit" />
+                <Button
+                    icon="sap-icon://refresh"
+                    type="Transparent"
+                    tooltip="Reload Flow"
+                    press="onPFReload" />
+            </OverflowToolbar>
+        </subHeader>
+
+        <content>
+            <VBox fitContainer="true" height="100%">
+                <!-- Busy indicator overlay -->
+                <BusyIndicator
+                    id="idPFBusy"
+                    visible="{pfModel>/busy}"
+                    size="2rem"
+                    text="Loading Document Flow from S/4HANA RAP..."
+                    class="sapUiLargeMargin" />
+
+                <!-- Empty State Message when 0 relations found in SAP -->
+                <IllustratedMessage
+                    illustrationType="sapIllus-NoData"
+                    title="No Document Flow Found"
+                    description="Tidak ada alur dokumen (Process Flow) yang ditemukan di SAP untuk dokumen ini."
+                    visible="{= !${pfModel>/busy} &amp;&amp; ${pfModel>/totalNodes} === 0 }" />
+
+                <!-- Process Flow Component -->
+                <commons:ProcessFlow
+                    id="idProcessFlow"
+                    scrollable="true"
+                    foldedCorners="true"
+                    wheelZoomable="true"
+                    showLabels="true"
+                    lanes="{pfModel>/lanes}"
+                    nodes="{pfModel>/nodes}"
+                    nodePress="onNodePress"
+                    visible="{= !${pfModel>/busy} &amp;&amp; ${pfModel>/totalNodes} > 0 }">
+                    <commons:lanes>
+                        <commons:ProcessFlowLaneHeader
+                            laneId="{pfModel>laneId}"
+                            iconSrc="{pfModel>iconSrc}"
+                            text="{pfModel>text}"
+                            position="{pfModel>position}"
+                            state="{pfModel>state}" />
+                    </commons:lanes>
+                    <commons:nodes>
+                        <commons:ProcessFlowNode
+                            nodeId="{pfModel>nodeId}"
+                            laneId="{pfModel>laneId}"
+                            title="{pfModel>title}"
+                            titleAbbreviation="{pfModel>titleAbbreviation}"
+                            type="{pfModel>type}"
+                            children="{pfModel>children}"
+                            state="{pfModel>state}"
+                            stateText="{pfModel>stateText}"
+                            texts="{pfModel>texts}"
+                            focused="{pfModel>focused}" />
+                    </commons:nodes>
+                </commons:ProcessFlow>
+            </VBox>
+        </content>
+
+        <beginButton>
+            <Button
+                icon="sap-icon://copy"
+                text="Copy Flow Summary"
+                type="Transparent"
+                press="onCopyFlowSummary" />
+        </beginButton>
+        <endButton>
+            <Button
+                text="Close"
+                type="Emphasized"
+                press="onCloseProcessFlowDialog" />
+        </endButton>
+    </Dialog>
+</core:FragmentDefinition>

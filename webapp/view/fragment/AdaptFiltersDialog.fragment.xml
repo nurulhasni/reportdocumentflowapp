@@ -1,0 +1,141 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core">
+    <Dialog
+        id="idAdaptFiltersDialog"
+        title="Adapt Filters"
+        icon="sap-icon://filter"
+        contentWidth="620px"
+        contentHeight="540px"
+        resizable="true"
+        draggable="true"
+        class="sapUiResponsiveContentPadding">
+        
+        <content>
+            <VBox class="sapUiTinyMargin">
+                <VBox class="sapUiSmallMarginBottom">
+                    <HBox alignItems="Center" justifyContent="SpaceBetween" width="100%" class="sapUiTinyMarginBottom">
+                        <Select
+                            id="idFilterGroupSelect"
+                            selectedKey="{adaptFilterModel>/selectedGroup}"
+                            change="onFilterGroupChange"
+                            width="180px">
+                            <core:Item key="ALL" text="All" />
+                            <core:Item key="BASIC" text="Basic Data" />
+                            <core:Item key="ORG" text="Organizational Data" />
+                            <core:Item key="PARTNER" text="Partner Data" />
+                        </Select>
+
+                        <HBox alignItems="Center">
+                            <Link
+                                text="{= ${adaptFilterModel>/showValues} ? 'Hide Values' : 'Show Values'}"
+                                press="onToggleShowValues"
+                                class="sapUiSmallMarginEnd" />
+                            <SegmentedButton
+                                selectedKey="{= ${adaptFilterModel>/showValues} ? 'values' : 'list'}"
+                                selectionChange="onAdaptViewModeChange">
+                                <items>
+                                    <SegmentedButtonItem key="list" icon="sap-icon://list" tooltip="List View" />
+                                    <SegmentedButtonItem key="values" icon="sap-icon://form" tooltip="Show Values" />
+                                </items>
+                            </SegmentedButton>
+                        </HBox>
+                    </HBox>
+
+                    <SearchField
+                        id="idFilterSearchField"
+                        width="100%"
+                        placeholder="Search for Filters"
+                        liveChange="onAdaptFilterSearch" />
+                </VBox>
+
+                <Table
+                    id="idAdaptFiltersList"
+                    items="{adaptFilterModel>/fields}"
+                    noDataText="No filter fields match your search."
+                    class="sapUiNoContentPadding">
+                    <columns>
+                        <Column width="{= ${adaptFilterModel>/showValues} ? '45%' : '80%'}">
+                            <header>
+                                <HBox alignItems="Center">
+                                    <Button
+                                        icon="sap-icon://multiselect-all"
+                                        type="Transparent"
+                                        tooltip="Toggle Select All"
+                                        press="onSelectAllFiltersToggle"
+                                        class="sapUiTinyMarginEnd" />
+                                    <Label text="Field" design="Bold" />
+                                </HBox>
+                            </header>
+                        </Column>
+                        <Column width="{= ${adaptFilterModel>/showValues} ? '55%' : '20%'}" hAlign="End">
+                            <header>
+                                <Label text="Active" design="Bold" class="sapUiSmallMarginEnd" />
+                            </header>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <CheckBox
+                                    text="{adaptFilterModel>label}"
+                                    selected="{adaptFilterModel>visible}"
+                                    select="onFilterCheckboxSelect" />
+
+                                <HBox justifyContent="End" alignItems="Center" width="100%">
+                                    <VBox visible="{adaptFilterModel>/showValues}" width="100%">
+                                        <Input
+                                            value="{adaptFilterModel>value}"
+                                            placeholder="{adaptFilterModel>placeholder}"
+                                            width="100%"
+                                            showClearIcon="true"
+                                            showValueHelp="{= ${adaptFilterModel>key} === 'sdDocNum' || ${adaptFilterModel>key} === 'soldToParty'}"
+                                            valueHelpRequest="onAdaptFieldValueHelp"
+                                            visible="{= ${adaptFilterModel>key} !== 'sdDocType' &amp;&amp; ${adaptFilterModel>key} !== 'docDate'}" />
+                                        <Select
+                                            selectedKey="{adaptFilterModel>value}"
+                                            forceSelection="false"
+                                            width="100%"
+                                            visible="{= ${adaptFilterModel>key} === 'sdDocType'}">
+                                            <core:Item key="C" text="Sales Order" />
+                                        </Select>
+                                        <!-- Standard Fiori Dynamic Date Range for Document Date.
+                                             "value" is not bindable for this control, it is synced in the controller. -->
+                                        <DynamicDateRange
+                                            id="idDocDateAdapt"
+                                            standardOptions="DATE,TODAY,YESTERDAY,DATERANGE,FROM,TO,DATETOYEAR,LASTDAYS,LASTWEEKS,LASTMONTHS,LASTQUARTERS,LASTYEARS,TODAYFROMTO"
+                                            placeholder="Select Date or Date Range"
+                                            width="100%"
+                                            change="onDocDateChange"
+                                            visible="{= ${adaptFilterModel>key} === 'docDate'}" />
+                                    </VBox>
+
+                                    <ObjectStatus
+                                        text="{= ${adaptFilterModel>value} ? '1' : ''}"
+                                        state="Information"
+                                        inverted="true"
+                                        visible="{= !${adaptFilterModel>/showValues} &amp;&amp; !!${adaptFilterModel>value}}" />
+                                </HBox>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+            </VBox>
+        </content>
+
+        <buttons>
+            <Button
+                text="Reset"
+                type="Transparent"
+                press="onRestoreDefaultFilters" />
+            <Button
+                text="OK"
+                type="Emphasized"
+                press="onApplyAdaptFilters" />
+            <Button
+                text="Cancel"
+                type="Transparent"
+                press="onCancelAdaptFilters" />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

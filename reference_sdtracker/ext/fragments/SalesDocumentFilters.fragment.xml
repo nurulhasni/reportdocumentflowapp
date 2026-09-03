@@ -1,0 +1,31 @@
+<!--
+
+    Copyright (C) 2009-2025 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+<core:FragmentDefinition id="TrackStatusSalesDocumentFiltersFragment"
+	xmlns="sap.m" xmlns:smartfilterbar="sap.ui.comp.smartfilterbar" xmlns:core="sap.ui.core">
+	<smartfilterbar:ControlConfiguration id="filterPO_SO" groupId="_BASIC" index="21" key="Purchase_OrderByCustomer"
+		label="{i18n|sap.suite.ui.generic.template.ListReport|C_SlsDocFlfllmntAnalyzer>CustomerReference}"
+		visibleInAdvancedArea="true">
+		<smartfilterbar:customControl id="TSSDFCustomControlPurchaseOrderByCustomer">
+			<Input id="PurchaseOrderByCustomerValue">
+			</Input>
+		</smartfilterbar:customControl>
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterRequestedDeliveryDate" key="RequestedDeliveryDate" groupId="_BASIC" index="22"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType' }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterSalesDocumentDate" key="SalesDocumentDate" groupId="_BASIC" index="31"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType', 
+		operations: { filter: { path: 'key' , contains: 'TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4' , exclude:true } } }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterCreationDate" key="CreationDate"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType', 
+		operations: { filter: { path: 'key' , contains: 'TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4' , exclude:true } } }">
+	</smartfilterbar:ControlConfiguration>
+	<smartfilterbar:ControlConfiguration id="filterLastChangeDate" key="LastChangeDate"
+		conditionType="{ module: 'sap.ui.comp.config.condition.DateRangeType', 
+		operations: { filter: { path: 'key' , contains: 'TOMORROW,NEXT,LASTYEAR,LAST2WEEKS,LAST3WEEKS,LAST4WEEKS,LAST5WEEKS,YEARTODATE,QUARTER1,QUARTER2,QUARTER3,QUARTER4' , exclude:true } } }">
+	</smartfilterbar:ControlConfiguration>
+</core:FragmentDefinition>

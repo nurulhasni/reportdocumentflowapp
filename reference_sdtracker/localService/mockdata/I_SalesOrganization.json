@@ -1,0 +1,4 @@
+[
+	{ "SalesOrganization": "1010", "SalesOrganization_Text": "Sales Org 1010", "SalesOrganizationCurrency": "EUR", "CompanyCode": "1010" },
+	{ "SalesOrganization": "1710", "SalesOrganization_Text": "Sales Org 1710 US", "SalesOrganizationCurrency": "USD", "CompanyCode": "1710" }
+]

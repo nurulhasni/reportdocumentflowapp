@@ -1,0 +1,5 @@
+[
+	{ "Currency": "EUR", "Currency_Text": "Euro", "Decimals": 2, "ISOCode": "EUR" },
+	{ "Currency": "USD", "Currency_Text": "US Dollar", "Decimals": 2, "ISOCode": "USD" },
+	{ "Currency": "GBP", "Currency_Text": "British Pound", "Decimals": 2, "ISOCode": "GBP" }
+]

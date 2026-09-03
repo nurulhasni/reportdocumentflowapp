@@ -1,0 +1,893 @@
+<?xml version="1.0" encoding="UTF-8"?><edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+<!--
+
+    Copyright (C) 2009-2025 SAP SE or an SAP affiliate company. All rights reserved.
+
+-->
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Aggregation" Namespace="Org.OData.Aggregation.V1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Analytics" Namespace="com.sap.vocabularies.Analytics.v1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CODELIST',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="SAP__CodeList" Namespace="com.sap.vocabularies.CodeList.v1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/><edmx:Include Alias="SAP__common" Namespace="com.sap.vocabularies.Common.v1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Communication" Namespace="com.sap.vocabularies.Communication.v1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="SAP__core" Namespace="Org.OData.Core.V1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Measures" Namespace="Org.OData.Measures.V1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="PersonalData" Namespace="com.sap.vocabularies.PersonalData.v1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/></edmx:Reference>
+	<edmx:Reference Uri="./iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"><edmx:Include Alias="Validation" Namespace="Org.OData.Validation.V1"/></edmx:Reference>
+	<edmx:DataServices m:DataServiceVersion="2.0">
+		<Schema Namespace="SD_SOFA" sap:schema-version="1" xml:lang="en"><Annotation String="1.0.0" Term="Core.SchemaVersion"/>
+			<EntityType Name="C_SalesDocumentUserVHType" sap:content-version="1" sap:label="Sales Document User"><Key><PropertyRef Name="UserID"/></Key><Property Name="UserID" Type="Edm.String" Nullable="false"/><Property Name="UserDescription" Type="Edm.String"/></EntityType>
+			<EntityType Name="C_SlsDocFlfmtSlsDocTypeVHType" sap:content-version="1" sap:label="Sales Doc Type VH"><Key><PropertyRef Name="SalesDocumentType"/></Key><Property Name="SalesDocumentType" Type="Edm.String" Nullable="false"/><Property Name="SalesDocumentTypeLangDepdnt" Type="Edm.String"/></EntityType>
+			<EntityType Name="C_SoldToValueHelpType" sap:content-version="1" sap:label="Sold-To Party"><Key><PropertyRef Name="Customer"/></Key><Property Name="Customer" Type="Edm.String" Nullable="false"/><Property Name="CustomerName" Type="Edm.String"/><Property Name="PostalCode" Type="Edm.String"/><Property Name="CityName" Type="Edm.String"/><Property Name="Country" Type="Edm.String"/><Property Name="StreetName" Type="Edm.String"/><Property Name="EmailAddress" Type="Edm.String"/><Property Name="InternationalPhoneNumber" Type="Edm.String"/><Property Name="InternationalMobilePhoneNumber" Type="Edm.String"/><Property Name="BusinessPartnerImageURL" Type="Edm.String"/><Property Name="HouseNumber" Type="Edm.String"/><Property Name="OrganizationBPName1" Type="Edm.String"/><Property Name="OrganizationBPName2" Type="Edm.String"/></EntityType>
+			<EntityType Name="I_Customer_VHType" sap:content-version="1" sap:label="Customer VH"><Key><PropertyRef Name="Customer"/></Key><Property Name="Customer" Type="Edm.String" Nullable="false"/><Property Name="CustomerAccountGroup" Type="Edm.String"/><Property Name="AuthorizationGroup" Type="Edm.String"/><Property Name="IsBusinessPurposeCompleted" Type="Edm.String"/><Property Name="IsCompetitor" Type="Edm.Boolean"/></EntityType>
+			<EntityType Name="C_DischannelvaluehelpType" sap:content-version="1" sap:label="Sales Org specific Distribution Channel">
+				<Key><PropertyRef Name="SalesOrganization"/><PropertyRef Name="DistributionChannel"/></Key><Property MaxLength="4" Name="SalesOrganization" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Organization"/><Property MaxLength="2" Name="DistributionChannel" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Distribution Channel" sap:text="DistributionChannel_Text"/><Property MaxLength="20" Name="DistributionChannel_Text" Type="Edm.String" sap:creatable="false" sap:label="Distribution Channel Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="C_OrgDivisionValueHelpType" sap:content-version="1" sap:label="Sales Org/Dis Ch specific Org Division">
+				<Key><PropertyRef Name="SalesOrganization"/><PropertyRef Name="DistributionChannel"/><PropertyRef Name="Division"/></Key><Property MaxLength="4" Name="SalesOrganization" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Organization"/><Property MaxLength="2" Name="DistributionChannel" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Distribution Channel"/><Property MaxLength="2" Name="Division" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Division" sap:text="Division_Text"/><Property MaxLength="20" Name="Division_Text" Type="Edm.String" sap:creatable="false" sap:label="Division Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="C_OverallsddocumentrjcnstatusType" sap:content-version="1" sap:label="Overall SD Document Rejection Status">
+				<Key><PropertyRef Name="OverallSDDocumentRejectionSts"/></Key><Property MaxLength="1" Name="OverallSDDocumentRejectionSts" Nullable="false" Type="Edm.String" sap:text="OverallSDDocumentRejectionSts_Text"/><Property MaxLength="20" Name="OverallSDDocumentRejectionSts_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="Status Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="C_SalesGroupValueHelpType" sap:content-version="1" sap:label="Sales Office specific Sales Group">
+				<Key><PropertyRef Name="SalesOffice"/><PropertyRef Name="SalesGroup"/></Key><Property MaxLength="4" Name="SalesOffice" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Office"/><Property MaxLength="3" Name="SalesGroup" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Group" sap:text="SalesGroup_Text"/><Property MaxLength="20" Name="SalesGroup_Text" Type="Edm.String" sap:creatable="false" sap:label="Sales Group Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="C_SalesOfficeValueHelpType" sap:content-version="1" sap:label="Sales Area specific Sales Office">
+				<Key><PropertyRef Name="SalesOrganization"/><PropertyRef Name="DistributionChannel"/><PropertyRef Name="OrganizationDivision"/><PropertyRef Name="SalesOffice"/></Key><Property MaxLength="4" Name="SalesOrganization" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Organization"/><Property MaxLength="2" Name="DistributionChannel" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Distribution Channel"/><Property MaxLength="2" Name="OrganizationDivision" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Division"/><Property MaxLength="4" Name="SalesOffice" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Office" sap:text="SalesOffice_Text"/><Property MaxLength="20" Name="SalesOffice_Text" Type="Edm.String" sap:creatable="false" sap:label="Sales Office Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="C_SlsDocFlfllmntAnalyzerType" sap:content-version="1" sap:label="Track Sales Orders">
+				<Key><PropertyRef Name="SalesDocument"/></Key><Property MaxLength="10" Name="SalesDocument" Nullable="false" Type="Edm.String" sap:creatable="false" sap:display-format="UpperCase" sap:label="Sales Document" sap:updatable="false"/><Property MaxLength="23" Name="SemanticObject" Type="Edm.String"/><Property MaxLength="1" Name="OverallFulfillmentStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Overall Fulfillment" sap:quickinfo="Sales Order Overall Fulfillment Status" sap:text="to_OverallFulfillmentStatus/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentStatusInOrder" Type="Edm.String" sap:display-format="UpperCase" sap:label="Order Processing" sap:quickinfo="Sales Order Fulfillment Order Status" sap:text="to_FulfillmentStatusInOrder/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentStatusInSupply" Type="Edm.String" sap:display-format="UpperCase" sap:label="Supply Processing" sap:quickinfo="Sales Order Fulfillment Supply Status" sap:text="to_FulfillmentStatusInSupply/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentStatusInDelivery" Type="Edm.String" sap:display-format="UpperCase" sap:label="Delivery Processing" sap:quickinfo="Sales Order Fulfillment Delivery Status" sap:text="to_FulfillmentStatusInDelivery/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentStatusInTransit" Type="Edm.String" sap:display-format="UpperCase" sap:label="In Transit" sap:quickinfo="Sales Order Fulfillment Transit Status" sap:text="to_FulfillmentStatusInTransit/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentStatusInInvoice" Type="Edm.String" sap:display-format="UpperCase" sap:label="Invoicing" sap:quickinfo="Sales Order Fulfillment Invoice Status" sap:text="to_FulfillmentStatusInInvoice/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentStatusInAccounting" Type="Edm.String" sap:display-format="UpperCase" sap:label="Accounting" sap:quickinfo="Sales Order Fulfillment Accounting Status" sap:text="to_FulfillmentStatusInAccounting/FulfillmentStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="FulfillmentProcessPhase" Type="Edm.String" sap:display-format="UpperCase" sap:label="Process Phase" sap:quickinfo="Sales Order Fulfillment Process Phase" sap:text="to_FulfillmentProcessPhase/FulfillmentProcessPhase_Text" sap:value-list="fixed-values"/><Property MaxLength="4" Name="SDDocumentCategory" Type="Edm.String" sap:label="SD Document Category" sap:text="to_SDDocumentCategory/SDDocumentCategory_Text" sap:value-list="fixed-values"/><Property MaxLength="4" Name="SalesDocumentType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Document Type" sap:text="to_SalesDocumentType/SalesDocumentType_Text" sap:value-list="standard"/><Property MaxLength="1" Name="SalesDocumentProcessingType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Indicator" sap:quickinfo="SD document indicator"/><Property MaxLength="12" Name="CreatedByUser" Type="Edm.String" sap:display-format="UpperCase" sap:label="Created By" sap:quickinfo="Name of Person Responsible for Creating the Object" sap:text="CreatedByUserName" sap:value-list="standard"/><Property MaxLength="80" Name="CreatedByUserName" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="User Description" sap:updatable="false"/><Property MaxLength="12" Name="LastChangedByUser" Type="Edm.String" sap:display-format="UpperCase" sap:label="Last Changed By" sap:quickinfo="User Who Last Changed the Business Document" sap:text="LastChangedByUserName" sap:value-list="standard"/><Property MaxLength="80" Name="LastChangedByUserName" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="User Description" sap:updatable="false"/><Property Name="CreationDate" Precision="0" Type="Edm.DateTime" sap:display-format="Date" sap:label="Created On" sap:quickinfo="Date on Which Record Was Created"/><Property Name="LastChangeDate" Precision="0" Type="Edm.DateTime" sap:display-format="Date" sap:label="Changed On" sap:quickinfo="Last Changed On"/><Property MaxLength="4" Name="SalesOrganization" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Organization" sap:text="to_SalesOrganization/SalesOrganization_Text" sap:value-list="standard"/><Property MaxLength="2" Name="DistributionChannel" Type="Edm.String" sap:display-format="UpperCase" sap:label="Distribution Channel" sap:text="to_DistributionChannel/DistributionChannel_Text" sap:value-list="standard"/><Property MaxLength="2" Name="OrganizationDivision" Type="Edm.String" sap:display-format="UpperCase" sap:label="Division" sap:text="to_OrganizationDivision/Division_Text" sap:value-list="standard"/><Property MaxLength="3" Name="SalesGroup" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Group" sap:text="to_SalesGroup/SalesGroup_Text" sap:value-list="standard"/><Property MaxLength="4" Name="SalesOffice" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Office" sap:text="to_SalesOffice/SalesOffice_Text" sap:value-list="standard"/><Property MaxLength="10" Name="SoldToParty" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sold-to Party" sap:text="SoldToPartyFullName" sap:value-list="standard"/><Property Name="SoldToPartyIsOneTimeAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:filter-restriction="single-value" sap:label="Sold-to Party One-Time Account" sap:quickinfo="Is the sold-to party a one-time account?"/><Property MaxLength="80" Name="SoldToPartyFullName" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:label="Sold-to Party Name" sap:quickinfo="Full Name of Sold-to Party" sap:sortable="false" sap:updatable="false"/><Property MaxLength="35" Name="PurchaseOrderByCustomer" Type="Edm.String" sap:label="Customer Reference"/><Property Name="SalesDocumentDate" Precision="0" Type="Edm.DateTime" sap:display-format="Date" sap:label="Document Date" sap:quickinfo="Document Date (Date Received/Sent)"/><Property Name="TotalNetAmount" Precision="16" Scale="3" Type="Edm.Decimal" sap:filterable="false" sap:label="Net Value" sap:quickinfo="Net Value of the Sales Order in Document Currency" sap:unit="TransactionCurrency"/><Property MaxLength="5" Name="TransactionCurrency" Type="Edm.String" sap:display-format="UpperCase" sap:filterable="false" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code" sap:text="to_TransactionCurrency/Currency_Text" sap:value-list="standard"/><Property Name="TotalGrossAmount" Precision="20" Scale="3" Type="Edm.Decimal" sap:filterable="false" sap:label="Total Amount" sap:quickinfo="Total Amount Incl. Taxes" sap:sortable="false" sap:unit="TransactionCurrency"/><Property Name="RequestedDeliveryDate" Precision="0" Type="Edm.DateTime" sap:display-format="Date" sap:label="Requested Delivery Date"/><Property MaxLength="1" Name="OverallSDProcessStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Overall Status" sap:quickinfo="Overall Processing Status (Header/All Items)" sap:text="to_OverallSDProcessStatus/OverallSDProcessStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallTotalDeliveryStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Ovrl Delivery Status" sap:quickinfo="Overall Delivery Status (All Items)" sap:text="to_OverallTotalDeliveryStatus/OverallTotalDeliveryStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallPurchaseConfStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Purchasing Confirmation Status" sap:quickinfo="Purchasing Confirmation Status (All Items)" sap:text="to_OverallPurchaseConfStatus/OverallPurchaseConfStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallSDDocumentRejectionSts" Type="Edm.String" sap:display-format="UpperCase" sap:label="Rejection Status" sap:quickinfo="Rejection Status (All Items)" sap:text="to_OverallSDDocumentRejectionSts/OverallSDDocumentRejectionSts_Text" sap:value-list="fixed-values"/><Property MaxLength="2" Name="DeliveryBlockReason" Type="Edm.String" sap:display-format="UpperCase" sap:label="Delivery Block" sap:quickinfo="Delivery Block (Document Header)" sap:text="to_DeliveryBlockReason/DeliveryBlockReason_Text" sap:value-list="fixed-values"/><Property MaxLength="2" Name="HeaderBillingBlockReason" Type="Edm.String" sap:display-format="UpperCase" sap:label="Billing Block" sap:quickinfo="Billing Block in SD Document" sap:text="to_HeaderBillingBlockReason/BillingBlockReason_Text" sap:value-list="fixed-values"/><Property MaxLength="2" Name="SalesDocumentRjcnReason" Type="Edm.String" sap:display-format="UpperCase" sap:label="Reason for Rejection" sap:quickinfo="Reason for Rejection of Sales Documents" sap:text="to_SalesDocumentRjcnReason/SalesDocumentRjcnReason_Text" sap:value-list="standard"/><Property MaxLength="1" Name="SalesDocApprovalStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Approval Status" sap:quickinfo="Document Approval Status" sap:text="to_SalesDocApprovalStatus/SalesDocApprovalStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallChmlCmplncStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Product Marketability Status" sap:quickinfo="Product Marketability Status (All Items)" sap:text="to_OverallChmlCmplncStatus/OverallChmlCmplncStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallDangerousGoodsStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Dangerous Goods Status" sap:quickinfo="Dangerous Goods Status (All Items)" sap:text="to_OverallDangerousGoodsStatus/OverallDangerousGoodsStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallSafetyDataSheetStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Safety Data Sheet Status" sap:quickinfo="Safety Data Sheet Status (All Items)" sap:text="to_OvrlSftyDataSheetSts/OverallSafetyDataSheetStatus_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OverallTrdCmplncEmbargoSts" Type="Edm.String" sap:display-format="UpperCase" sap:label="Embargo Status" sap:quickinfo="Embargo Status (All Items)" sap:text="to_OvrlTradeCmplncEmbargoStatus/OverallTrdCmplncEmbargoSts_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OvrlTrdCmplncSnctndListChkSts" Type="Edm.String" sap:display-format="UpperCase" sap:label="Screening Status" sap:quickinfo="Screening Status (All Items)" sap:text="to_OvTrdCmplncSnctndListChkSts/OvrlTrdCmplncSnctndListChkSts_Text" sap:value-list="fixed-values"/><Property MaxLength="1" Name="OvrlTrdCmplncLegalCtrlChkSts" Type="Edm.String" sap:display-format="UpperCase" sap:label="Legal Control Status" sap:quickinfo="Legal Control Status (All Items)" sap:text="to_OvrlTrdCmplncLegalCtrlChkSts/OvrlTrdCmplncLegalCtrlChkSts_Text" sap:value-list="fixed-values"/><Property MaxLength="10" Name="BusinessSolutionOrder" Type="Edm.String" sap:display-format="UpperCase" sap:label="Solution Order" sap:value-list="standard"/><Property MaxLength="35" Name="OrganizationBPName1" Type="Edm.String" sap:label="Name" sap:quickinfo="Name 1"/><Property MaxLength="35" Name="OrganizationBPName2" Type="Edm.String" sap:label="Name 2"/><Property MaxLength="80" Name="UserDescription" Type="Edm.String" sap:label="Description" sap:quickinfo="User Description"/><NavigationProperty FromRole="FromRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" Name="to_DeliveryBlockReason" Relationship="SD_SOFA.assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" ToRole="ToRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E"/><NavigationProperty FromRole="FromRole_assoc_9269EB41593B822C48C1818C80CA36B3" Name="to_DistributionChannel" Relationship="SD_SOFA.assoc_9269EB41593B822C48C1818C80CA36B3" ToRole="ToRole_assoc_9269EB41593B822C48C1818C80CA36B3"/><NavigationProperty FromRole="FromRole_assoc_BB14EA8CCF84EB1D1B30645F75EE3584" Name="to_DistributionChannelVH" Relationship="SD_SOFA.assoc_BB14EA8CCF84EB1D1B30645F75EE3584" ToRole="ToRole_assoc_BB14EA8CCF84EB1D1B30645F75EE3584"/><NavigationProperty FromRole="FromRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96" Name="to_FulfillmentProcessPhase" Relationship="SD_SOFA.assoc_3BA06A33186A2CDED58D92D8BBD90C96" ToRole="ToRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96"/><NavigationProperty FromRole="FromRole_assoc_D807C35146D88C9A3E4CBAA40966EB30" Name="to_FulfillmentStatusInAccounting" Relationship="SD_SOFA.assoc_D807C35146D88C9A3E4CBAA40966EB30" ToRole="ToRole_assoc_D807C35146D88C9A3E4CBAA40966EB30"/><NavigationProperty FromRole="FromRole_assoc_8FA92032D4144A960089D8430E678A8D" Name="to_FulfillmentStatusInDelivery" Relationship="SD_SOFA.assoc_8FA92032D4144A960089D8430E678A8D" ToRole="ToRole_assoc_8FA92032D4144A960089D8430E678A8D"/><NavigationProperty FromRole="FromRole_assoc_93F9A728E439F29516C0A89F20439EB3" Name="to_FulfillmentStatusInInvoice" Relationship="SD_SOFA.assoc_93F9A728E439F29516C0A89F20439EB3" ToRole="ToRole_assoc_93F9A728E439F29516C0A89F20439EB3"/><NavigationProperty FromRole="FromRole_assoc_83E6407812F1BB63407206407BE1A6F3" Name="to_FulfillmentStatusInOrder" Relationship="SD_SOFA.assoc_83E6407812F1BB63407206407BE1A6F3" ToRole="ToRole_assoc_83E6407812F1BB63407206407BE1A6F3"/><NavigationProperty FromRole="FromRole_assoc_B7131AD68391997BCD726A45C2F55F4C" Name="to_FulfillmentStatusInSupply" Relationship="SD_SOFA.assoc_B7131AD68391997BCD726A45C2F55F4C" ToRole="ToRole_assoc_B7131AD68391997BCD726A45C2F55F4C"/><NavigationProperty FromRole="FromRole_assoc_37EE613B84599E40AF123AB937F8BEB0" Name="to_FulfillmentStatusInTransit" Relationship="SD_SOFA.assoc_37EE613B84599E40AF123AB937F8BEB0" ToRole="ToRole_assoc_37EE613B84599E40AF123AB937F8BEB0"/><NavigationProperty FromRole="FromRole_assoc_E5BF0036EC64C77F65945CDC157C9818" Name="to_HeaderBillingBlockReason" Relationship="SD_SOFA.assoc_E5BF0036EC64C77F65945CDC157C9818" ToRole="ToRole_assoc_E5BF0036EC64C77F65945CDC157C9818"/><NavigationProperty FromRole="FromRole_assoc_2F490397C021DE86B11836B9A15FA47C" Name="to_OrganizationDivision" Relationship="SD_SOFA.assoc_2F490397C021DE86B11836B9A15FA47C" ToRole="ToRole_assoc_2F490397C021DE86B11836B9A15FA47C"/><NavigationProperty FromRole="FromRole_assoc_3957DA89FBEF7609C32B61DE8298847E" Name="to_OrganizationDivisionVH" Relationship="SD_SOFA.assoc_3957DA89FBEF7609C32B61DE8298847E" ToRole="ToRole_assoc_3957DA89FBEF7609C32B61DE8298847E"/><NavigationProperty FromRole="FromRole_assoc_684F59178C7A38156302FF1760CFB4FF" Name="to_OverallChmlCmplncStatus" Relationship="SD_SOFA.assoc_684F59178C7A38156302FF1760CFB4FF" ToRole="ToRole_assoc_684F59178C7A38156302FF1760CFB4FF"/><NavigationProperty FromRole="FromRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" Name="to_OverallDangerousGoodsStatus" Relationship="SD_SOFA.assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" ToRole="ToRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB"/><NavigationProperty FromRole="FromRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5" Name="to_OverallFulfillmentStatus" Relationship="SD_SOFA.assoc_8B92F31E7AA79538F87244C9E2D8D3A5" ToRole="ToRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5"/><NavigationProperty FromRole="FromRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B" Name="to_OverallPurchaseConfStatus" Relationship="SD_SOFA.assoc_D6835A9EE21769E2B90A8C9BDE316B0B" ToRole="ToRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B"/><NavigationProperty FromRole="FromRole_assoc_A79AF045319217EB4812100890E9C739" Name="to_OverallSDDocRejectionStsVH" Relationship="SD_SOFA.assoc_A79AF045319217EB4812100890E9C739" ToRole="ToRole_assoc_A79AF045319217EB4812100890E9C739"/><NavigationProperty FromRole="FromRole_assoc_15FF4EEC94DF0962699E87995207F189" Name="to_OverallSDDocumentRejectionSts" Relationship="SD_SOFA.assoc_15FF4EEC94DF0962699E87995207F189" ToRole="ToRole_assoc_15FF4EEC94DF0962699E87995207F189"/><NavigationProperty FromRole="FromRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9" Name="to_OverallSDProcessStatus" Relationship="SD_SOFA.assoc_152C6E76A6A7F004BDECF5CE532F3AB9" ToRole="ToRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9"/><NavigationProperty FromRole="FromRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" Name="to_OverallTotalDeliveryStatus" Relationship="SD_SOFA.assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" ToRole="ToRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D"/><NavigationProperty FromRole="FromRole_assoc_53DB374DB2386D9913EC6C1487DCD858" Name="to_OvrlSftyDataSheetSts" Relationship="SD_SOFA.assoc_53DB374DB2386D9913EC6C1487DCD858" ToRole="ToRole_assoc_53DB374DB2386D9913EC6C1487DCD858"/><NavigationProperty FromRole="FromRole_assoc_8F24140BAB803E255E59ECD13498A4B7" Name="to_OvrlTradeCmplncEmbargoStatus" Relationship="SD_SOFA.assoc_8F24140BAB803E255E59ECD13498A4B7" ToRole="ToRole_assoc_8F24140BAB803E255E59ECD13498A4B7"/><NavigationProperty FromRole="FromRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12" Name="to_OvrlTrdCmplncLegalCtrlChkSts" Relationship="SD_SOFA.assoc_3D27B8E7B737E8A6BF30F262444DBE12" ToRole="ToRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12"/><NavigationProperty FromRole="FromRole_assoc_4F0A32A291D765A72C203CAEF3387E4B" Name="to_OvTrdCmplncSnctndListChkSts" Relationship="SD_SOFA.assoc_4F0A32A291D765A72C203CAEF3387E4B" ToRole="ToRole_assoc_4F0A32A291D765A72C203CAEF3387E4B"/><NavigationProperty FromRole="FromRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" Name="to_SalesDocApprovalStatus" Relationship="SD_SOFA.assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" ToRole="ToRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC"/><NavigationProperty FromRole="FromRole_assoc_568152357C45AD49ABDD4C1EFF15D828" Name="to_SalesDocumentRjcnReason" Relationship="SD_SOFA.assoc_568152357C45AD49ABDD4C1EFF15D828" ToRole="ToRole_assoc_568152357C45AD49ABDD4C1EFF15D828"/><NavigationProperty FromRole="FromRole_assoc_056A6578022A10D8DFE3110095D95973" Name="to_SalesDocumentType" Relationship="SD_SOFA.assoc_056A6578022A10D8DFE3110095D95973" ToRole="ToRole_assoc_056A6578022A10D8DFE3110095D95973"/><NavigationProperty FromRole="FromRole_assoc_7E2687E18EF54187DAFDC095DF18C474" Name="to_SalesGroup" Relationship="SD_SOFA.assoc_7E2687E18EF54187DAFDC095DF18C474" ToRole="ToRole_assoc_7E2687E18EF54187DAFDC095DF18C474"/><NavigationProperty FromRole="FromRole_assoc_7F2E07BD6328815F04AA738335C79148" Name="to_SalesGroupVH" Relationship="SD_SOFA.assoc_7F2E07BD6328815F04AA738335C79148" ToRole="ToRole_assoc_7F2E07BD6328815F04AA738335C79148"/><NavigationProperty FromRole="FromRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D" Name="to_SalesOffice" Relationship="SD_SOFA.assoc_F8C2B8DCC28A95206E9EE8876D37E85D" ToRole="ToRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D"/><NavigationProperty FromRole="FromRole_assoc_FF5A0C1909978C4A6CC5BEA7708A0448" Name="to_SalesOfficeVH" Relationship="SD_SOFA.assoc_FF5A0C1909978C4A6CC5BEA7708A0448" ToRole="ToRole_assoc_FF5A0C1909978C4A6CC5BEA7708A0448"/><NavigationProperty FromRole="FromRole_assoc_57982DCDFFA73D35E072F170421A7FA3" Name="to_SalesOrganization" Relationship="SD_SOFA.assoc_57982DCDFFA73D35E072F170421A7FA3" ToRole="ToRole_assoc_57982DCDFFA73D35E072F170421A7FA3"/><NavigationProperty FromRole="FromRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" Name="to_SDDocumentCategory" Relationship="SD_SOFA.assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" ToRole="ToRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066"/><NavigationProperty FromRole="FromRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59" Name="to_SoldToParty" Relationship="SD_SOFA.assoc_42309CE41DBBC9354AC8F0DE1F41BB59" ToRole="ToRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59"/><NavigationProperty FromRole="FromRole_assoc_ACC8757D870AC50649DD751F2CECCCE1" Name="to_TransactionCurrency" Relationship="SD_SOFA.assoc_ACC8757D870AC50649DD751F2CECCCE1" ToRole="ToRole_assoc_ACC8757D870AC50649DD751F2CECCCE1"/></EntityType>
+			<EntityType Name="I_BillingBlockReasonType" sap:content-version="1" sap:label="Billing Block Reason">
+				<Key><PropertyRef Name="BillingBlockReason"/></Key><Property MaxLength="2" Name="BillingBlockReason" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Billing Block" sap:text="BillingBlockReason_Text"/><Property MaxLength="20" Name="BillingBlockReason_Text" Type="Edm.String" sap:creatable="false" sap:label="Billing Block Desc." sap:quickinfo="Billing Block Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_BusinessSolutionOrderStdVHType" sap:content-version="1" sap:label="Solution Order Value Help">
+				<Key><PropertyRef Name="BusinessSolutionOrder"/></Key><Property MaxLength="10" Name="BusinessSolutionOrder" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Solution Order ID" sap:quickinfo="Process ID"/><Property MaxLength="40" Name="BusSolnOrdDescription" Type="Edm.String" sap:label="Solution Order Description" sap:quickinfo="Transaction Description"/><Property MaxLength="81" Name="BusinessPartnerName" Type="Edm.String" sap:label="Sold To Party"/><Property MaxLength="35" Name="PurchaseOrderByCustomer" Type="Edm.String" sap:label="External Reference" sap:quickinfo="Sold-To Party's External Reference Number"/><Property MaxLength="4" Name="SalesOrganization" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Organization"/><Property MaxLength="4" Name="ServiceDocumentStatus" Type="Edm.String" sap:display-format="UpperCase" sap:label="Life Cycle Status" sap:text="ServiceDocumentStatusName"/><Property MaxLength="60" Name="ServiceDocumentStatusName" Type="Edm.String" sap:label="Life Cycle Status Description" sap:quickinfo="Short Text for Fixed Values"/></EntityType>
+			<EntityType Name="I_CurrencyType" sap:content-version="1" sap:label="Currency">
+				<Key><PropertyRef Name="Currency"/></Key><Property MaxLength="5" Name="Currency" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Currency" sap:quickinfo="Currency Key" sap:semantics="currency-code" sap:text="Currency_Text"/><Property MaxLength="40" Name="Currency_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:updatable="false"/><Property Name="Decimals" Type="Edm.Byte" sap:label="Decimal Places" sap:quickinfo="Number of decimal places"/><Property MaxLength="3" Name="CurrencyISOCode" Type="Edm.String" sap:display-format="UpperCase" sap:label="ISO Code" sap:quickinfo="ISO Currency Code"/><Property MaxLength="3" Name="AlternativeCurrencyKey" Type="Edm.String" sap:display-format="UpperCase" sap:label="Alternative Key"/><Property Name="IsPrimaryCurrencyForISOCrcy" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Primary" sap:quickinfo="Primary SAP Currency Code for ISO Code"/></EntityType>
+			<EntityType Name="I_CustomerType" sap:content-version="1" sap:label="Customer">
+				<Key><PropertyRef Name="Customer"/></Key><Property MaxLength="10" Name="Customer" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Customer" sap:quickinfo="Customer Number" sap:text="CustomerName"/><Property MaxLength="80" Name="CustomerName" Type="Edm.String" sap:label="Name of Customer"/><Property MaxLength="220" Name="CustomerFullName" Type="Edm.String" sap:display-format="UpperCase" sap:label="Customer Name" sap:quickinfo="Customer Full Name"/><Property MaxLength="12" Name="CreatedByUser" Type="Edm.String" sap:display-format="UpperCase" sap:label="Created by" sap:quickinfo="Name of Person who Created the Object"/><Property Name="CreationDate" Precision="0" Type="Edm.DateTime" sap:display-format="Date" sap:label="Created on" sap:quickinfo="Date on which the Record Was Created"/><Property MaxLength="10" Name="AddressID" Type="Edm.String" sap:display-format="UpperCase" sap:label="Address"/><Property MaxLength="2" Name="CustomerClassification" Type="Edm.String" sap:display-format="UpperCase" sap:label="Customer Classific." sap:quickinfo="Customer Classification" sap:text="CustomerClassification_Text"/><Property MaxLength="20" Name="CustomerClassification_Text" Type="Edm.String" sap:creatable="false" sap:label="Customer Classification Description" sap:updatable="false"/><Property MaxLength="20" Name="VATRegistration" Type="Edm.String" sap:display-format="UpperCase" sap:label="VAT Registration No." sap:quickinfo="VAT Registration Number"/><Property MaxLength="4" Name="CustomerAccountGroup" Type="Edm.String" sap:display-format="UpperCase" sap:label="Account Group" sap:quickinfo="Customer Account Group"/><Property MaxLength="4" Name="AuthorizationGroup" Type="Edm.String" sap:display-format="UpperCase" sap:label="Authorization" sap:quickinfo="Authorization Group"/><Property MaxLength="2" Name="DeliveryIsBlocked" Type="Edm.String" sap:display-format="UpperCase" sap:label="Delivery block" sap:quickinfo="Central delivery block for the customer"/><Property Name="PostingIsBlocked" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Posting Block" sap:quickinfo="Central posting block"/><Property MaxLength="2" Name="BillingIsBlockedForCustomer" Type="Edm.String" sap:display-format="UpperCase" sap:label="Billing block" sap:quickinfo="Central billing block for customer"/><Property MaxLength="2" Name="OrderIsBlockedForCustomer" Type="Edm.String" sap:display-format="UpperCase" sap:label="Order block" sap:quickinfo="Central order block for customer"/><Property MaxLength="7" Name="InternationalLocationNumber1" Type="Edm.String" sap:display-format="NonNegative" sap:label="Int. Location No. 1" sap:quickinfo="International Location Number (Part 1)"/><Property Name="IsOneTimeAccount" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="One-time account" sap:quickinfo="Indicator: Is the account a one-time account?"/><Property MaxLength="15" Name="TaxJurisdiction" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Jurisdiction"/><Property MaxLength="4" Name="Industry" Type="Edm.String" sap:display-format="UpperCase" sap:label="Industry" sap:quickinfo="Industry key"/><Property MaxLength="2" Name="TaxNumberType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax number type" sap:quickinfo="Tax Number Type"/><Property MaxLength="16" Name="TaxNumber1" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Number 1"/><Property MaxLength="11" Name="TaxNumber2" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Number 2"/><Property MaxLength="18" Name="TaxNumber3" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Number 3"/><Property MaxLength="18" Name="TaxNumber4" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Number 4"/><Property MaxLength="60" Name="TaxNumber5" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Number 5"/><Property MaxLength="20" Name="TaxNumber6" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Number 6"/><Property MaxLength="10" Name="CustomerCorporateGroup" Type="Edm.String" sap:display-format="UpperCase" sap:label="Group key"/><Property MaxLength="10" Name="Supplier" Type="Edm.String" sap:display-format="UpperCase" sap:label="Supplier" sap:quickinfo="Account Number of Supplier"/><Property MaxLength="2" Name="NielsenRegion" Type="Edm.String" sap:display-format="UpperCase" sap:label="Nielsen indicator" sap:quickinfo="Nielsen ID"/><Property MaxLength="10" Name="IndustryCode1" Type="Edm.String" sap:display-format="UpperCase" sap:label="Industry code 1"/><Property MaxLength="10" Name="IndustryCode2" Type="Edm.String" sap:display-format="UpperCase" sap:label="Industry code 2"/><Property MaxLength="10" Name="IndustryCode3" Type="Edm.String" sap:display-format="UpperCase" sap:label="Industry code 3"/><Property MaxLength="10" Name="IndustryCode4" Type="Edm.String" sap:display-format="UpperCase" sap:label="Industry code 4"/><Property MaxLength="10" Name="IndustryCode5" Type="Edm.String" sap:display-format="UpperCase" sap:label="Industry code 5"/><Property MaxLength="3" Name="Country" Type="Edm.String" sap:display-format="UpperCase" sap:label="Country/Region Key"/><Property MaxLength="35" Name="OrganizationBPName1" Type="Edm.String" sap:label="Name" sap:quickinfo="Name 1"/><Property MaxLength="35" Name="OrganizationBPName2" Type="Edm.String" sap:label="Name 2"/><Property MaxLength="35" Name="CityName" Type="Edm.String" sap:label="City"/><Property MaxLength="10" Name="PostalCode" Type="Edm.String" sap:display-format="UpperCase" sap:label="Postal Code"/><Property MaxLength="35" Name="StreetName" Type="Edm.String" sap:label="Street" sap:quickinfo="Street and House Number"/><Property MaxLength="10" Name="SortField" Type="Edm.String" sap:display-format="UpperCase" sap:label="Search Term" sap:quickinfo="Sort Field"/><Property MaxLength="31" Name="FaxNumber" Type="Edm.String" sap:label="Fax Number"/><Property MaxLength="9" Name="BR_SUFRAMACode" Type="Edm.String" sap:display-format="UpperCase" sap:label="Suframa Code"/><Property MaxLength="3" Name="Region" Type="Edm.String" sap:display-format="UpperCase" sap:label="Region" sap:quickinfo="Region (State, Province, County)"/><Property MaxLength="16" Name="TelephoneNumber1" Type="Edm.String" sap:label="Telephone 1" sap:quickinfo="First telephone number"/><Property MaxLength="16" Name="TelephoneNumber2" Type="Edm.String" sap:label="Telephone 2" sap:quickinfo="Second telephone number"/><Property MaxLength="10" Name="AlternativePayerAccount" Type="Edm.String" sap:display-format="UpperCase" sap:label="Alternative Payer" sap:quickinfo="Account Number of an Alternative Payer"/><Property MaxLength="1" Name="DataMediumExchangeIndicator" Type="Edm.String" sap:display-format="UpperCase" sap:label="DME indicator" sap:quickinfo="Report key for data medium exchange"/><Property Name="VATLiability" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Liable for VAT"/><Property MaxLength="1" Name="IsBusinessPurposeCompleted" Type="Edm.String" sap:display-format="UpperCase" sap:label="Purpose Completed" sap:quickinfo="Business Purpose Completed Flag"/><Property MaxLength="2" Name="ResponsibleType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Tax Type"/><Property MaxLength="10" Name="FiscalAddress" Type="Edm.String" sap:display-format="UpperCase" sap:label="Fiscal address" sap:quickinfo="Account number of the master record with the fiscal address"/><Property MaxLength="1" Name="NFPartnerIsNaturalPerson" Type="Edm.String" sap:display-format="UpperCase" sap:label="Natural Person"/><Property Name="DeletionIndicator" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Deletion Flag" sap:quickinfo="Central Deletion Flag for Master Record"/><Property MaxLength="2" Name="Language" Type="Edm.String" sap:label="Language Key"/><Property MaxLength="6" Name="TradingPartner" Type="Edm.String" sap:display-format="UpperCase" sap:label="Trading Partner No." sap:quickinfo="Company ID of Trading Partner"/><Property MaxLength="1" Name="DeliveryDateTypeRule" Type="Edm.String" sap:display-format="UpperCase" sap:label="Deliv Date Rule" sap:quickinfo="Delivery Date Rule"/><Property MaxLength="25" Name="ExpressTrainStationName" Type="Edm.String" sap:label="Express station" sap:quickinfo="Express train station"/><Property MaxLength="25" Name="TrainStationName" Type="Edm.String" sap:label="Train station"/><Property MaxLength="5" Name="InternationalLocationNumber2" Type="Edm.String" sap:display-format="NonNegative" sap:label="Int. Location No. 2" sap:quickinfo="International Location Number (Part 2)"/><Property MaxLength="1" Name="InternationalLocationNumber3" Type="Edm.String" sap:display-format="NonNegative" sap:label="Check Digit" sap:quickinfo="Check Digit for the International Location Number"/><Property MaxLength="4" Name="CityCode" Type="Edm.String" sap:display-format="UpperCase" sap:label="City Code"/><Property MaxLength="3" Name="County" Type="Edm.String" sap:display-format="UpperCase" sap:label="County Code"/><Property Name="CustomerHasUnloadingPoint" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Unloading points" sap:quickinfo="Indicator: Unloading points exist"/><Property MaxLength="2" Name="CustomerWorkingTimeCalendar" Type="Edm.String" sap:display-format="UpperCase" sap:label="Working times" sap:quickinfo="Working Time Calendar"/><Property Name="IsCompetitor" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Competitors" sap:quickinfo="Indicator: Competitor"/><Property MaxLength="10" Name="TaxInvoiceRepresentativeName" Type="Edm.String" sap:label="Rep's Name" sap:quickinfo="Name of Representative"/><Property MaxLength="30" Name="BusinessType" Type="Edm.String" sap:label="Type of Business"/><Property MaxLength="30" Name="IndustryType" Type="Edm.String" sap:label="Type of Industry"/><Property MaxLength="1" Name="TW_CollvBillingIsSupported" Type="Edm.String" sap:display-format="UpperCase" sap:label="Consolidated Invoic." sap:quickinfo="Consolidated Invoicing for Taiwan"/><Property Name="AlternativePayeeIsAllowed" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Alt.payer in doc?" sap:quickinfo="Indicator: Is an alternative payer allowed in document?"/><Property MaxLength="2" Name="FreeDefinedAttribute01" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 1"/><Property MaxLength="2" Name="FreeDefinedAttribute02" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 2"/><Property MaxLength="2" Name="FreeDefinedAttribute03" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 3"/><Property MaxLength="2" Name="FreeDefinedAttribute04" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 4"/><Property MaxLength="2" Name="FreeDefinedAttribute05" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 5"/><Property MaxLength="3" Name="FreeDefinedAttribute06" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 6"/><Property MaxLength="3" Name="FreeDefinedAttribute07" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 7"/><Property MaxLength="3" Name="FreeDefinedAttribute08" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 8"/><Property MaxLength="3" Name="FreeDefinedAttribute09" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 9"/><Property MaxLength="3" Name="FreeDefinedAttribute10" Type="Edm.String" sap:display-format="UpperCase" sap:label="Attribute 10"/><Property MaxLength="4" Name="PaymentReason" Type="Edm.String" sap:display-format="UpperCase" sap:label="Payment Reason"/></EntityType>
+			<EntityType Name="I_DeliveryBlockReasonType" sap:content-version="1" sap:label="Delivery Block Reason">
+				<Key><PropertyRef Name="DeliveryBlockReason"/></Key><Property MaxLength="2" Name="DeliveryBlockReason" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Delivery Block" sap:quickinfo="Default Delivery Block" sap:text="DeliveryBlockReason_Text"/><Property MaxLength="20" Name="DeliveryBlockReason_Text" Type="Edm.String" sap:creatable="false" sap:label="Delivery Block Desc." sap:quickinfo="Description" sap:updatable="false"/><Property Name="DeliveryDueListBlock" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Delv. Due List Block" sap:quickinfo="Delivery Due List Block"/></EntityType>
+			<EntityType Name="I_DistributionChannelType" sap:content-version="1" sap:label="Distribution Channel">
+				<Key><PropertyRef Name="DistributionChannel"/></Key><Property MaxLength="2" Name="DistributionChannel" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Distribution Channel" sap:text="DistributionChannel_Text"/><Property MaxLength="20" Name="DistributionChannel_Text" Type="Edm.String" sap:creatable="false" sap:label="Distribution Channel Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_DivisionType" sap:content-version="1" sap:label="Division">
+				<Key><PropertyRef Name="Division"/></Key><Property MaxLength="2" Name="Division" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Division" sap:text="Division_Text"/><Property MaxLength="20" Name="Division_Text" Type="Edm.String" sap:creatable="false" sap:label="Division Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_FulfillmentProcessPhaseType" sap:content-version="1" sap:label="Fullfillment Process Phase">
+				<Key><PropertyRef Name="FulfillmentProcessPhase"/></Key><Property MaxLength="1" Name="FulfillmentProcessPhase" Nullable="false" Type="Edm.String" sap:text="FulfillmentProcessPhase_Text"/><Property MaxLength="60" Name="FulfillmentProcessPhase_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_FulfillmentStatusType" sap:content-version="1" sap:label="Fullfillment Status">
+				<Key><PropertyRef Name="FulfillmentStatus"/></Key><Property MaxLength="1" Name="FulfillmentStatus" Nullable="false" Type="Edm.String" sap:text="FulfillmentStatus_Text"/><Property MaxLength="60" Name="FulfillmentStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OverallChmlCmplncStatusType" sap:content-version="1" sap:label="Overall Chemical Compliance Check Status">
+				<Key><PropertyRef Name="OverallChmlCmplncStatus"/></Key><Property MaxLength="1" Name="OverallChmlCmplncStatus" Nullable="false" Type="Edm.String" sap:text="OverallChmlCmplncStatus_Text"/><Property MaxLength="60" Name="OverallChmlCmplncStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OverallDangerousGoodsStatusType" sap:content-version="1" sap:label="Overall Dangerous Goods Status">
+				<Key><PropertyRef Name="OverallDangerousGoodsStatus"/></Key><Property MaxLength="1" Name="OverallDangerousGoodsStatus" Nullable="false" Type="Edm.String" sap:text="OverallDangerousGoodsStatus_Text"/><Property MaxLength="60" Name="OverallDangerousGoodsStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OverallPurchaseConfStatusType" sap:content-version="1" sap:label="Overall Purchase Confirmation Status">
+				<Key><PropertyRef Name="OverallPurchaseConfStatus"/></Key><Property MaxLength="1" Name="OverallPurchaseConfStatus" Nullable="false" Type="Edm.String" sap:text="OverallPurchaseConfStatus_Text"/><Property MaxLength="60" Name="OverallPurchaseConfStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OverallSDDocumentRjcnStatusType" sap:content-version="1" sap:label="Overall SD Document Rejection Status">
+				<Key><PropertyRef Name="OverallSDDocumentRejectionSts"/></Key><Property MaxLength="1" Name="OverallSDDocumentRejectionSts" Nullable="false" Type="Edm.String" sap:text="OverallSDDocumentRejectionSts_Text"/><Property MaxLength="20" Name="OverallSDDocumentRejectionSts_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="Status Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OverallSDProcessStatusType" sap:content-version="1" sap:label="Overall SD Process Status">
+				<Key><PropertyRef Name="OverallSDProcessStatus"/></Key><Property MaxLength="1" Name="OverallSDProcessStatus" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Overall Status" sap:quickinfo="Overall Processing Status (Header/All Items)" sap:text="OverallSDProcessStatus_Text"/><Property MaxLength="20" Name="OverallSDProcessStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="Status Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OverallTotalDeliveryStatusType" sap:content-version="1" sap:label="Overall Total Delivery Status">
+				<Key><PropertyRef Name="OverallTotalDeliveryStatus"/></Key><Property MaxLength="1" Name="OverallTotalDeliveryStatus" Nullable="false" Type="Edm.String" sap:text="OverallTotalDeliveryStatus_Text"/><Property MaxLength="20" Name="OverallTotalDeliveryStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="Status Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OvrlSftyDataSheetStsType" sap:content-version="1" sap:label="Overall Safety Data Sheet Status">
+				<Key><PropertyRef Name="OverallSafetyDataSheetStatus"/></Key><Property MaxLength="1" Name="OverallSafetyDataSheetStatus" Nullable="false" Type="Edm.String" sap:text="OverallSafetyDataSheetStatus_Text"/><Property MaxLength="60" Name="OverallSafetyDataSheetStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OvrlTradeCmplncEmbargoStatusType" sap:content-version="1" sap:label="Overall Trade Compliance Embargo Status">
+				<Key><PropertyRef Name="OverallTrdCmplncEmbargoSts"/></Key><Property MaxLength="1" Name="OverallTrdCmplncEmbargoSts" Nullable="false" Type="Edm.String" sap:text="OverallTrdCmplncEmbargoSts_Text"/><Property MaxLength="60" Name="OverallTrdCmplncEmbargoSts_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OvrlTrdCmplncLegalCtrlChkStsType" sap:content-version="1" sap:label="Ovrl Trade Cmplnc Legal Ctrl Chk Sts">
+				<Key><PropertyRef Name="OvrlTrdCmplncLegalCtrlChkSts"/></Key><Property MaxLength="1" Name="OvrlTrdCmplncLegalCtrlChkSts" Nullable="false" Type="Edm.String" sap:text="OvrlTrdCmplncLegalCtrlChkSts_Text"/><Property MaxLength="60" Name="OvrlTrdCmplncLegalCtrlChkSts_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_OvTrdCmplncSnctndListChkStsType" sap:content-version="1" sap:label="Ovrl Trade Compl Snctnd List Chk Sts">
+				<Key><PropertyRef Name="OvrlTrdCmplncSnctndListChkSts"/></Key><Property MaxLength="1" Name="OvrlTrdCmplncSnctndListChkSts" Nullable="false" Type="Edm.String" sap:text="OvrlTrdCmplncSnctndListChkSts_Text"/><Property MaxLength="60" Name="OvrlTrdCmplncSnctndListChkSts_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_SalesDocApprovalStatusType" sap:content-version="1" sap:label="Approval Sts for Sales Document">
+				<Key><PropertyRef Name="SalesDocApprovalStatus"/></Key><Property MaxLength="1" Name="SalesDocApprovalStatus" Nullable="false" Type="Edm.String" sap:text="SalesDocApprovalStatus_Text"/><Property MaxLength="60" Name="SalesDocApprovalStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Short Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_SalesDocumentRjcnReasonType" sap:content-version="1" sap:label="Sales Document Rejection Reason">
+				<Key><PropertyRef Name="SalesDocumentRjcnReason"/></Key><Property MaxLength="2" Name="SalesDocumentRjcnReason" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Reason for Rejection" sap:quickinfo="Reason for Rejection of Sales Documents" sap:text="SalesDocumentRjcnReason_Text"/><Property MaxLength="40" Name="SalesDocumentRjcnReason_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_SalesDocumentTypeType" sap:content-version="1" sap:label="Sales Document Type">
+				<Key><PropertyRef Name="SalesDocumentType"/></Key><Property MaxLength="4" Name="SalesDocumentType" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Document Type" sap:text="SalesDocumentType_Text"/><Property MaxLength="20" Name="SalesDocumentType_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="Sales Document Type Description" sap:updatable="false"/><Property MaxLength="4" Name="SDDocumentCategory" Type="Edm.String" sap:label="SD Document Category"/><Property MaxLength="1" Name="MandatoryReferenceSDDocCat" Type="Edm.String" sap:display-format="UpperCase" sap:label="Reference Mandatory"/><Property MaxLength="1" Name="SalesDocumentProcessingType" Type="Edm.String" sap:display-format="UpperCase" sap:label="Indicator" sap:quickinfo="Sales document indicator (for display in TVAK only)"/><Property MaxLength="4" Name="ScreenSequenceGroup" Type="Edm.String" sap:display-format="UpperCase" sap:label="Screen sequence grp." sap:quickinfo="Screen sequence group for document header &amp; item"/><Property MaxLength="4" Name="OrderTypeForBillingRequest" Type="Edm.String" sap:display-format="UpperCase" sap:label="Billing request" sap:quickinfo="Order type for request for billing"/><Property MaxLength="2" Name="DeliveryBlockReason" Type="Edm.String" sap:display-format="UpperCase" sap:label="Delivery Block" sap:quickinfo="Delivery Block (Document Header)"/><Property MaxLength="1" Name="IsLocked" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Document Block"/><Property MaxLength="1" Name="RetsMgmtIsActive" Type="Edm.String" sap:display-format="UpperCase" sap:label="Adv. Returns Active" sap:quickinfo="Advanced Returns Management Active"/><Property Name="TradeComplianceIsActive" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Trade Compliance" sap:quickinfo="Trade Compliance is active"/><Property MaxLength="2" Name="TextDeterminationProcedure" Type="Edm.String" sap:display-format="UpperCase" sap:label="Text Determ Proced" sap:quickinfo="Text Determination Procedure for Sales Document Header"/><Property MaxLength="4" Name="PartnerDeterminationProcedure" Type="Edm.String" sap:display-format="UpperCase" sap:label="Partner Detn Proced" sap:quickinfo="Partner Determination Procedure for Sales Document Header"/><Property MaxLength="2" Name="SlsDocProdProposalProcedure" Type="Edm.String" sap:display-format="UpperCase" sap:label="PP document proced." sap:quickinfo="Document procedure for determining product proposal proced."/><Property MaxLength="2" Name="NumberRangeForIntIDAssignment" Type="Edm.String" sap:display-format="UpperCase" sap:label="No. Range Int. Asst" sap:quickinfo="Number Range of Internal Number Assignment"/><Property MaxLength="2" Name="NumberRangeForExtIDAssignment" Type="Edm.String" sap:display-format="UpperCase" sap:label="No. Range Ext. Asst" sap:quickinfo="Number Range of External Number Assignment"/></EntityType>
+			<EntityType Name="I_SalesGroupType" sap:content-version="1" sap:label="Sales Group">
+				<Key><PropertyRef Name="SalesGroup"/></Key><Property MaxLength="3" Name="SalesGroup" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Group" sap:text="SalesGroup_Text"/><Property MaxLength="20" Name="SalesGroup_Text" Type="Edm.String" sap:creatable="false" sap:label="Sales Group Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_SalesOfficeType" sap:content-version="1" sap:label="Sales Office">
+				<Key><PropertyRef Name="SalesOffice"/></Key><Property MaxLength="4" Name="SalesOffice" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Office" sap:text="SalesOffice_Text"/><Property MaxLength="20" Name="SalesOffice_Text" Type="Edm.String" sap:creatable="false" sap:label="Sales Office Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_SalesOrganizationType" sap:content-version="1" sap:label="Sales Organization">
+				<Key><PropertyRef Name="SalesOrganization"/></Key><Property MaxLength="4" Name="SalesOrganization" Nullable="false" Type="Edm.String" sap:display-format="UpperCase" sap:label="Sales Organization" sap:text="SalesOrganization_Text"/><Property MaxLength="20" Name="SalesOrganization_Text" Type="Edm.String" sap:creatable="false" sap:label="Sales Organization Description" sap:updatable="false"/><Property MaxLength="5" Name="SalesOrganizationCurrency" Type="Edm.String" sap:display-format="UpperCase" sap:filterable="false" sap:label="Statistics Currency" sap:quickinfo="Statistics currency" sap:semantics="currency-code"/><Property MaxLength="4" Name="CompanyCode" Type="Edm.String" sap:display-format="UpperCase" sap:filterable="false" sap:label="Company Code" sap:quickinfo="Company code of the sales organization" sap:value-list="standard"/><Property MaxLength="10" Name="IntercompanyBillingCustomer" Type="Edm.String" sap:display-format="UpperCase" sap:filterable="false" sap:label="Cust.Inter-Co.Bill." sap:quickinfo="Customer number for intercompany billing" sap:value-list="standard"/><Property MaxLength="10" Name="AddressID" Type="Edm.String" sap:display-format="UpperCase" sap:label="Address"/></EntityType>
+			<EntityType Name="I_SDDocumentCategoryType" sap:content-version="1" sap:label="SD Document Category">
+				<Key><PropertyRef Name="SDDocumentCategory"/></Key><Property MaxLength="4" Name="SDDocumentCategory" Nullable="false" Type="Edm.String" sap:label="SD Document Category" sap:text="SDDocumentCategory_Text"/><Property MaxLength="60" Name="SDDocumentCategory_Text" Type="Edm.String" sap:creatable="false" sap:label="SD Document Category Description" sap:updatable="false"/></EntityType>
+			<EntityType Name="I_SrvcDocStatusVHType" sap:content-version="1" sap:label="Service transaction status value help">
+				<Key><PropertyRef Name="ServiceDocumentStatus"/></Key><Property MaxLength="4" Name="ServiceDocumentStatus" Nullable="false" Type="Edm.String" sap:text="ServiceDocumentStatus_Text"/><Property MaxLength="60" Name="ServiceDocumentStatus_Text" Type="Edm.String" sap:creatable="false" sap:label="Description" sap:quickinfo="Short Text for Fixed Values" sap:updatable="false"/></EntityType>
+			<EntityType Name="SAP__Currency" sap:content-version="1">
+				<Key><PropertyRef Name="CurrencyCode"/></Key><Property MaxLength="5" Name="CurrencyCode" Nullable="false" Type="Edm.String" sap:label="Currency" sap:semantics="currency-code"/><Property MaxLength="3" Name="ISOCode" Nullable="false" Type="Edm.String" sap:label="ISO Code"/><Property MaxLength="15" Name="Text" Nullable="false" Type="Edm.String" sap:label="Short Text"/><Property Name="DecimalPlaces" Nullable="false" Type="Edm.Byte" sap:label="Decimals"/></EntityType>
+			<EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
+				<Key><PropertyRef Name="UnitCode"/></Key><Property MaxLength="3" Name="UnitCode" Nullable="false" Type="Edm.String" sap:label="Internal UoM" sap:semantics="unit-of-measure"/><Property MaxLength="3" Name="ISOCode" Nullable="false" Type="Edm.String" sap:label="ISO Code"/><Property MaxLength="3" Name="ExternalCode" Nullable="false" Type="Edm.String" sap:label="Commercial"/><Property MaxLength="30" Name="Text" Nullable="false" Type="Edm.String" sap:label="Measurement Unit Txt"/><Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/></EntityType>
+			<EntityType Name="SAP__DocumentDescription" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Nullable="false" Type="Edm.Guid" sap:label="UUID"/><Property MaxLength="12" Name="CreatedBy" Nullable="false" Type="Edm.String"/><Property Name="CreatedAt" Nullable="false" Precision="0" Type="Edm.DateTime" sap:label="Time Stamp"/><Property MaxLength="256" Name="FileName" Nullable="false" Type="Edm.String"/><Property MaxLength="256" Name="Title" Nullable="false" Type="Edm.String"/><NavigationProperty FromRole="FromRole_to_format" Name="Format" Relationship="SD_SOFA.to_format" ToRole="ToRole_to_format"/><NavigationProperty FromRole="FromRole_to_tablecolumns" Name="TableColumns" Relationship="SD_SOFA.to_tablecolumns" ToRole="ToRole_to_tablecolumns"/><NavigationProperty FromRole="FromRole_to_coverpage" Name="CoverPage" Relationship="SD_SOFA.to_coverpage" ToRole="ToRole_to_coverpage"/><NavigationProperty FromRole="FromRole_to_signature" Name="Signature" Relationship="SD_SOFA.to_signature" ToRole="ToRole_to_signature"/></EntityType>
+			<EntityType Name="SAP__Format" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Nullable="false" Type="Edm.Guid" sap:creatable="false" sap:filterable="false" sap:label="UUID" sap:sortable="false" sap:updatable="false"/><Property Name="DoEnableAccessibility" Nullable="false" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Indicator" sap:sortable="false" sap:updatable="false"/><Property Name="FontSize" Nullable="false" Type="Edm.Int32" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/><Property MaxLength="10" Name="Orientation" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/><Property MaxLength="10" Name="PaperSize" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="SAP__TableColumns" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/><PropertyRef Name="Name"/><PropertyRef Name="Header"/></Key><Property Name="Id" Nullable="false" Type="Edm.Guid" sap:creatable="false" sap:filterable="false" sap:label="UUID" sap:sortable="false" sap:updatable="false"/><Property MaxLength="256" Name="Name" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/><Property MaxLength="256" Name="Header" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/><Property MaxLength="10" Name="HorizontalAlignment" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="SAP__CoverPage" sap:content-version="1">
+				<Key><PropertyRef Name="Title"/><PropertyRef Name="Id"/><PropertyRef Name="Name"/></Key><Property MaxLength="256" Name="Title" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/><Property Name="Id" Nullable="false" Type="Edm.Guid" sap:creatable="false" sap:filterable="false" sap:label="UUID" sap:sortable="false" sap:updatable="false"/><Property MaxLength="256" Name="Name" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/><Property MaxLength="256" Name="Value" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/></EntityType>
+			<EntityType Name="SAP__Signature" sap:content-version="1">
+				<Key><PropertyRef Name="Id"/></Key><Property Name="Id" Nullable="false" Type="Edm.Guid" sap:creatable="false" sap:filterable="false" sap:label="UUID" sap:sortable="false" sap:updatable="false"/><Property Name="DoSign" Nullable="false" Type="Edm.Boolean" sap:creatable="false" sap:filterable="false" sap:label="Indicator" sap:sortable="false" sap:updatable="false"/><Property MaxLength="256" Name="Reason" Nullable="false" Type="Edm.String" sap:creatable="false" sap:filterable="false" sap:sortable="false" sap:updatable="false"/></EntityType>
+			<Association Name="to_format" sap:content-version="1"><End Multiplicity="1" Role="FromRole_to_format" Type="SD_SOFA.SAP__DocumentDescription"/><End Multiplicity="1" Role="ToRole_to_format" Type="SD_SOFA.SAP__Format"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_format"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_format"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_tablecolumns" sap:content-version="1"><End Multiplicity="1" Role="FromRole_to_tablecolumns" Type="SD_SOFA.SAP__DocumentDescription"/><End Multiplicity="*" Role="ToRole_to_tablecolumns" Type="SD_SOFA.SAP__TableColumns"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_tablecolumns"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_tablecolumns"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_coverpage" sap:content-version="1"><End Multiplicity="1" Role="FromRole_to_coverpage" Type="SD_SOFA.SAP__DocumentDescription"/><End Multiplicity="*" Role="ToRole_to_coverpage" Type="SD_SOFA.SAP__CoverPage"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_coverpage"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_coverpage"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="to_signature" sap:content-version="1"><End Multiplicity="1" Role="FromRole_to_signature" Type="SD_SOFA.SAP__DocumentDescription"/><End Multiplicity="1" Role="ToRole_to_signature" Type="SD_SOFA.SAP__Signature"/>
+				<ReferentialConstraint>
+					<Principal Role="FromRole_to_signature"><PropertyRef Name="Id"/></Principal>
+					<Dependent Role="ToRole_to_signature"><PropertyRef Name="Id"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_9269EB41593B822C48C1818C80CA36B3" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_9269EB41593B822C48C1818C80CA36B3" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_9269EB41593B822C48C1818C80CA36B3" Type="SD_SOFA.I_DistributionChannelType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_9269EB41593B822C48C1818C80CA36B3"><PropertyRef Name="DistributionChannel"/></Principal>
+					<Dependent Role="FromRole_assoc_9269EB41593B822C48C1818C80CA36B3"><PropertyRef Name="DistributionChannel"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_BB14EA8CCF84EB1D1B30645F75EE3584" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_BB14EA8CCF84EB1D1B30645F75EE3584" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_BB14EA8CCF84EB1D1B30645F75EE3584" Type="SD_SOFA.C_DischannelvaluehelpType"/></Association>
+			<Association Name="assoc_3BA06A33186A2CDED58D92D8BBD90C96" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96" Type="SD_SOFA.I_FulfillmentProcessPhaseType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96"><PropertyRef Name="FulfillmentProcessPhase"/></Principal>
+					<Dependent Role="FromRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96"><PropertyRef Name="FulfillmentProcessPhase"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_D807C35146D88C9A3E4CBAA40966EB30" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_D807C35146D88C9A3E4CBAA40966EB30" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_D807C35146D88C9A3E4CBAA40966EB30" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_D807C35146D88C9A3E4CBAA40966EB30"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_D807C35146D88C9A3E4CBAA40966EB30"><PropertyRef Name="FulfillmentStatusInAccounting"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_8FA92032D4144A960089D8430E678A8D" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_8FA92032D4144A960089D8430E678A8D" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_8FA92032D4144A960089D8430E678A8D" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_8FA92032D4144A960089D8430E678A8D"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_8FA92032D4144A960089D8430E678A8D"><PropertyRef Name="FulfillmentStatusInDelivery"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_93F9A728E439F29516C0A89F20439EB3" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_93F9A728E439F29516C0A89F20439EB3" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_93F9A728E439F29516C0A89F20439EB3" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_93F9A728E439F29516C0A89F20439EB3"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_93F9A728E439F29516C0A89F20439EB3"><PropertyRef Name="FulfillmentStatusInInvoice"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_83E6407812F1BB63407206407BE1A6F3" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_83E6407812F1BB63407206407BE1A6F3" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_83E6407812F1BB63407206407BE1A6F3" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_83E6407812F1BB63407206407BE1A6F3"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_83E6407812F1BB63407206407BE1A6F3"><PropertyRef Name="FulfillmentStatusInOrder"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_B7131AD68391997BCD726A45C2F55F4C" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_B7131AD68391997BCD726A45C2F55F4C" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_B7131AD68391997BCD726A45C2F55F4C" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_B7131AD68391997BCD726A45C2F55F4C"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_B7131AD68391997BCD726A45C2F55F4C"><PropertyRef Name="FulfillmentStatusInSupply"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_37EE613B84599E40AF123AB937F8BEB0" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_37EE613B84599E40AF123AB937F8BEB0" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_37EE613B84599E40AF123AB937F8BEB0" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_37EE613B84599E40AF123AB937F8BEB0"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_37EE613B84599E40AF123AB937F8BEB0"><PropertyRef Name="FulfillmentStatusInTransit"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_E5BF0036EC64C77F65945CDC157C9818" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_E5BF0036EC64C77F65945CDC157C9818" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_E5BF0036EC64C77F65945CDC157C9818" Type="SD_SOFA.I_BillingBlockReasonType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_E5BF0036EC64C77F65945CDC157C9818"><PropertyRef Name="BillingBlockReason"/></Principal>
+					<Dependent Role="FromRole_assoc_E5BF0036EC64C77F65945CDC157C9818"><PropertyRef Name="HeaderBillingBlockReason"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_2F490397C021DE86B11836B9A15FA47C" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_2F490397C021DE86B11836B9A15FA47C" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_2F490397C021DE86B11836B9A15FA47C" Type="SD_SOFA.I_DivisionType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_2F490397C021DE86B11836B9A15FA47C"><PropertyRef Name="Division"/></Principal>
+					<Dependent Role="FromRole_assoc_2F490397C021DE86B11836B9A15FA47C"><PropertyRef Name="OrganizationDivision"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_3957DA89FBEF7609C32B61DE8298847E" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_3957DA89FBEF7609C32B61DE8298847E" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_3957DA89FBEF7609C32B61DE8298847E" Type="SD_SOFA.C_OrgDivisionValueHelpType"/></Association>
+			<Association Name="assoc_684F59178C7A38156302FF1760CFB4FF" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_684F59178C7A38156302FF1760CFB4FF" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_684F59178C7A38156302FF1760CFB4FF" Type="SD_SOFA.I_OverallChmlCmplncStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_684F59178C7A38156302FF1760CFB4FF"><PropertyRef Name="OverallChmlCmplncStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_684F59178C7A38156302FF1760CFB4FF"><PropertyRef Name="OverallChmlCmplncStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" Type="SD_SOFA.I_OverallDangerousGoodsStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB"><PropertyRef Name="OverallDangerousGoodsStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB"><PropertyRef Name="OverallDangerousGoodsStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_8B92F31E7AA79538F87244C9E2D8D3A5" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5" Type="SD_SOFA.I_FulfillmentStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5"><PropertyRef Name="FulfillmentStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5"><PropertyRef Name="OverallFulfillmentStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_D6835A9EE21769E2B90A8C9BDE316B0B" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B" Type="SD_SOFA.I_OverallPurchaseConfStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B"><PropertyRef Name="OverallPurchaseConfStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B"><PropertyRef Name="OverallPurchaseConfStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_A79AF045319217EB4812100890E9C739" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_A79AF045319217EB4812100890E9C739" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_A79AF045319217EB4812100890E9C739" Type="SD_SOFA.C_OverallsddocumentrjcnstatusType"/></Association>
+			<Association Name="assoc_15FF4EEC94DF0962699E87995207F189" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_15FF4EEC94DF0962699E87995207F189" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_15FF4EEC94DF0962699E87995207F189" Type="SD_SOFA.I_OverallSDDocumentRjcnStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_15FF4EEC94DF0962699E87995207F189"><PropertyRef Name="OverallSDDocumentRejectionSts"/></Principal>
+					<Dependent Role="FromRole_assoc_15FF4EEC94DF0962699E87995207F189"><PropertyRef Name="OverallSDDocumentRejectionSts"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_152C6E76A6A7F004BDECF5CE532F3AB9" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9" Type="SD_SOFA.I_OverallSDProcessStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9"><PropertyRef Name="OverallSDProcessStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9"><PropertyRef Name="OverallSDProcessStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" Type="SD_SOFA.I_OverallTotalDeliveryStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D"><PropertyRef Name="OverallTotalDeliveryStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D"><PropertyRef Name="OverallTotalDeliveryStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_53DB374DB2386D9913EC6C1487DCD858" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_53DB374DB2386D9913EC6C1487DCD858" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_53DB374DB2386D9913EC6C1487DCD858" Type="SD_SOFA.I_OvrlSftyDataSheetStsType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_53DB374DB2386D9913EC6C1487DCD858"><PropertyRef Name="OverallSafetyDataSheetStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_53DB374DB2386D9913EC6C1487DCD858"><PropertyRef Name="OverallSafetyDataSheetStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_8F24140BAB803E255E59ECD13498A4B7" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_8F24140BAB803E255E59ECD13498A4B7" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_8F24140BAB803E255E59ECD13498A4B7" Type="SD_SOFA.I_OvrlTradeCmplncEmbargoStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_8F24140BAB803E255E59ECD13498A4B7"><PropertyRef Name="OverallTrdCmplncEmbargoSts"/></Principal>
+					<Dependent Role="FromRole_assoc_8F24140BAB803E255E59ECD13498A4B7"><PropertyRef Name="OverallTrdCmplncEmbargoSts"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_3D27B8E7B737E8A6BF30F262444DBE12" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12" Type="SD_SOFA.I_OvrlTrdCmplncLegalCtrlChkStsType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12"><PropertyRef Name="OvrlTrdCmplncLegalCtrlChkSts"/></Principal>
+					<Dependent Role="FromRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12"><PropertyRef Name="OvrlTrdCmplncLegalCtrlChkSts"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_4F0A32A291D765A72C203CAEF3387E4B" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_4F0A32A291D765A72C203CAEF3387E4B" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_4F0A32A291D765A72C203CAEF3387E4B" Type="SD_SOFA.I_OvTrdCmplncSnctndListChkStsType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_4F0A32A291D765A72C203CAEF3387E4B"><PropertyRef Name="OvrlTrdCmplncSnctndListChkSts"/></Principal>
+					<Dependent Role="FromRole_assoc_4F0A32A291D765A72C203CAEF3387E4B"><PropertyRef Name="OvrlTrdCmplncSnctndListChkSts"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" Type="SD_SOFA.I_SalesDocApprovalStatusType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC"><PropertyRef Name="SalesDocApprovalStatus"/></Principal>
+					<Dependent Role="FromRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC"><PropertyRef Name="SalesDocApprovalStatus"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_568152357C45AD49ABDD4C1EFF15D828" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_568152357C45AD49ABDD4C1EFF15D828" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_568152357C45AD49ABDD4C1EFF15D828" Type="SD_SOFA.I_SalesDocumentRjcnReasonType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_568152357C45AD49ABDD4C1EFF15D828"><PropertyRef Name="SalesDocumentRjcnReason"/></Principal>
+					<Dependent Role="FromRole_assoc_568152357C45AD49ABDD4C1EFF15D828"><PropertyRef Name="SalesDocumentRjcnReason"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_056A6578022A10D8DFE3110095D95973" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_056A6578022A10D8DFE3110095D95973" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_056A6578022A10D8DFE3110095D95973" Type="SD_SOFA.I_SalesDocumentTypeType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_056A6578022A10D8DFE3110095D95973"><PropertyRef Name="SalesDocumentType"/></Principal>
+					<Dependent Role="FromRole_assoc_056A6578022A10D8DFE3110095D95973"><PropertyRef Name="SalesDocumentType"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_7E2687E18EF54187DAFDC095DF18C474" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_7E2687E18EF54187DAFDC095DF18C474" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_7E2687E18EF54187DAFDC095DF18C474" Type="SD_SOFA.I_SalesGroupType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_7E2687E18EF54187DAFDC095DF18C474"><PropertyRef Name="SalesGroup"/></Principal>
+					<Dependent Role="FromRole_assoc_7E2687E18EF54187DAFDC095DF18C474"><PropertyRef Name="SalesGroup"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_7F2E07BD6328815F04AA738335C79148" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_7F2E07BD6328815F04AA738335C79148" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_7F2E07BD6328815F04AA738335C79148" Type="SD_SOFA.C_SalesGroupValueHelpType"/></Association>
+			<Association Name="assoc_F8C2B8DCC28A95206E9EE8876D37E85D" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D" Type="SD_SOFA.I_SalesOfficeType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D"><PropertyRef Name="SalesOffice"/></Principal>
+					<Dependent Role="FromRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D"><PropertyRef Name="SalesOffice"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_FF5A0C1909978C4A6CC5BEA7708A0448" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_FF5A0C1909978C4A6CC5BEA7708A0448" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_FF5A0C1909978C4A6CC5BEA7708A0448" Type="SD_SOFA.C_SalesOfficeValueHelpType"/></Association>
+			<Association Name="assoc_57982DCDFFA73D35E072F170421A7FA3" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_57982DCDFFA73D35E072F170421A7FA3" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_57982DCDFFA73D35E072F170421A7FA3" Type="SD_SOFA.I_SalesOrganizationType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_57982DCDFFA73D35E072F170421A7FA3"><PropertyRef Name="SalesOrganization"/></Principal>
+					<Dependent Role="FromRole_assoc_57982DCDFFA73D35E072F170421A7FA3"><PropertyRef Name="SalesOrganization"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" Type="SD_SOFA.I_SDDocumentCategoryType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066"><PropertyRef Name="SDDocumentCategory"/></Principal>
+					<Dependent Role="FromRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066"><PropertyRef Name="SDDocumentCategory"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_42309CE41DBBC9354AC8F0DE1F41BB59" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59" Type="SD_SOFA.I_CustomerType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59"><PropertyRef Name="Customer"/></Principal>
+					<Dependent Role="FromRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59"><PropertyRef Name="SoldToParty"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_ACC8757D870AC50649DD751F2CECCCE1" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_ACC8757D870AC50649DD751F2CECCCE1" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_ACC8757D870AC50649DD751F2CECCCE1" Type="SD_SOFA.I_CurrencyType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_ACC8757D870AC50649DD751F2CECCCE1"><PropertyRef Name="Currency"/></Principal>
+					<Dependent Role="FromRole_assoc_ACC8757D870AC50649DD751F2CECCCE1"><PropertyRef Name="TransactionCurrency"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<Association Name="assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" sap:content-version="1"><End Multiplicity="1" Role="FromRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" Type="SD_SOFA.C_SlsDocFlfllmntAnalyzerType"/><End Multiplicity="0..1" Role="ToRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" Type="SD_SOFA.I_DeliveryBlockReasonType"/>
+				<ReferentialConstraint>
+					<Principal Role="ToRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E"><PropertyRef Name="DeliveryBlockReason"/></Principal>
+					<Dependent Role="FromRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E"><PropertyRef Name="DeliveryBlockReason"/></Dependent>
+				</ReferentialConstraint>
+			</Association>
+			<EntityContainer Name="SD_SOFA_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx"><EntitySet EntityType="SD_SOFA.C_SalesDocumentUserVHType" Name="C_SalesDocumentUserVH" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.C_SlsDocFlfmtSlsDocTypeVHType" Name="C_SlsDocFlfmtSlsDocTypeVH" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.C_SoldToValueHelpType" Name="C_SoldToValueHelp" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.I_Customer_VHType" Name="I_Customer_VH" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.SAP__Currency" Name="SAP__Currencies" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.SAP__UnitOfMeasure" Name="SAP__UnitsOfMeasure" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.SAP__DocumentDescription" Name="SAP__MyDocumentDescriptions" sap:content-version="1"/><EntitySet EntityType="SD_SOFA.SAP__Format" Name="SAP__FormatSet" sap:addressable="false" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.SAP__TableColumns" Name="SAP__TableColumnsSet" sap:addressable="false" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.SAP__CoverPage" Name="SAP__CoverPageSet" sap:addressable="false" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.SAP__Signature" Name="SAP__SignatureSet" sap:addressable="false" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:pageable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.C_DischannelvaluehelpType" Name="C_Dischannelvaluehelp" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.C_OrgDivisionValueHelpType" Name="C_OrgDivisionValueHelp" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.C_OverallsddocumentrjcnstatusType" Name="C_Overallsddocumentrjcnstatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.C_SalesGroupValueHelpType" Name="C_SalesGroupValueHelp" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.C_SalesOfficeValueHelpType" Name="C_SalesOfficeValueHelp" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.C_SlsDocFlfllmntAnalyzerType" Name="C_SlsDocFlfllmntAnalyzer" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_BillingBlockReasonType" Name="I_BillingBlockReason" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_BusinessSolutionOrderStdVHType" Name="I_BusinessSolutionOrderStdVH" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_CurrencyType" Name="I_Currency" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_CustomerType" Name="I_Customer" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_DeliveryBlockReasonType" Name="I_DeliveryBlockReason" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_DistributionChannelType" Name="I_DistributionChannel" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_DivisionType" Name="I_Division" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_FulfillmentProcessPhaseType" Name="I_FulfillmentProcessPhase" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_FulfillmentStatusType" Name="I_FulfillmentStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OverallChmlCmplncStatusType" Name="I_OverallChmlCmplncStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OverallDangerousGoodsStatusType" Name="I_OverallDangerousGoodsStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OverallPurchaseConfStatusType" Name="I_OverallPurchaseConfStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OverallSDDocumentRjcnStatusType" Name="I_OverallSDDocumentRjcnStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OverallSDProcessStatusType" Name="I_OverallSDProcessStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OverallTotalDeliveryStatusType" Name="I_OverallTotalDeliveryStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OvrlSftyDataSheetStsType" Name="I_OvrlSftyDataSheetSts" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OvrlTradeCmplncEmbargoStatusType" Name="I_OvrlTradeCmplncEmbargoStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OvrlTrdCmplncLegalCtrlChkStsType" Name="I_OvrlTrdCmplncLegalCtrlChkSts" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_OvTrdCmplncSnctndListChkStsType" Name="I_OvTrdCmplncSnctndListChkSts" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SalesDocApprovalStatusType" Name="I_SalesDocApprovalStatus" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SalesDocumentRjcnReasonType" Name="I_SalesDocumentRjcnReason" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SalesDocumentTypeType" Name="I_SalesDocumentType" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SalesGroupType" Name="I_SalesGroup" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SalesOfficeType" Name="I_SalesOffice" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SalesOrganizationType" Name="I_SalesOrganization" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SDDocumentCategoryType" Name="I_SDDocumentCategory" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:searchable="true" sap:updatable="false"/><EntitySet EntityType="SD_SOFA.I_SrvcDocStatusVHType" Name="I_SrvcDocStatusVH" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"/>
+				<AssociationSet Association="SD_SOFA.assoc_A79AF045319217EB4812100890E9C739" Name="assoc_A79AF045319217EB4812100890E9C739" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_A79AF045319217EB4812100890E9C739"/><End EntitySet="C_Overallsddocumentrjcnstatus" Role="ToRole_assoc_A79AF045319217EB4812100890E9C739"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_57982DCDFFA73D35E072F170421A7FA3" Name="assoc_57982DCDFFA73D35E072F170421A7FA3" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_57982DCDFFA73D35E072F170421A7FA3"/><End EntitySet="I_SalesOrganization" Role="ToRole_assoc_57982DCDFFA73D35E072F170421A7FA3"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" Name="assoc_2FABABCA1CC9027DAEC02C488DB0FB7E" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E"/><End EntitySet="I_DeliveryBlockReason" Role="ToRole_assoc_2FABABCA1CC9027DAEC02C488DB0FB7E"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_8FA92032D4144A960089D8430E678A8D" Name="assoc_8FA92032D4144A960089D8430E678A8D" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_8FA92032D4144A960089D8430E678A8D"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_8FA92032D4144A960089D8430E678A8D"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_568152357C45AD49ABDD4C1EFF15D828" Name="assoc_568152357C45AD49ABDD4C1EFF15D828" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_568152357C45AD49ABDD4C1EFF15D828"/><End EntitySet="I_SalesDocumentRjcnReason" Role="ToRole_assoc_568152357C45AD49ABDD4C1EFF15D828"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_37EE613B84599E40AF123AB937F8BEB0" Name="assoc_37EE613B84599E40AF123AB937F8BEB0" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_37EE613B84599E40AF123AB937F8BEB0"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_37EE613B84599E40AF123AB937F8BEB0"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.to_format" Name="to_formatSet" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_format"/><End EntitySet="SAP__FormatSet" Role="ToRole_to_format"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_056A6578022A10D8DFE3110095D95973" Name="assoc_056A6578022A10D8DFE3110095D95973" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_056A6578022A10D8DFE3110095D95973"/><End EntitySet="I_SalesDocumentType" Role="ToRole_assoc_056A6578022A10D8DFE3110095D95973"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_B7131AD68391997BCD726A45C2F55F4C" Name="assoc_B7131AD68391997BCD726A45C2F55F4C" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_B7131AD68391997BCD726A45C2F55F4C"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_B7131AD68391997BCD726A45C2F55F4C"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_ACC8757D870AC50649DD751F2CECCCE1" Name="assoc_ACC8757D870AC50649DD751F2CECCCE1" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_ACC8757D870AC50649DD751F2CECCCE1"/><End EntitySet="I_Currency" Role="ToRole_assoc_ACC8757D870AC50649DD751F2CECCCE1"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_152C6E76A6A7F004BDECF5CE532F3AB9" Name="assoc_152C6E76A6A7F004BDECF5CE532F3AB9" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9"/><End EntitySet="I_OverallSDProcessStatus" Role="ToRole_assoc_152C6E76A6A7F004BDECF5CE532F3AB9"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_8F24140BAB803E255E59ECD13498A4B7" Name="assoc_8F24140BAB803E255E59ECD13498A4B7" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_8F24140BAB803E255E59ECD13498A4B7"/><End EntitySet="I_OvrlTradeCmplncEmbargoStatus" Role="ToRole_assoc_8F24140BAB803E255E59ECD13498A4B7"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" Name="assoc_1F4844DCFBBEF73EB9E4D411464CA6DC" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC"/><End EntitySet="I_SalesDocApprovalStatus" Role="ToRole_assoc_1F4844DCFBBEF73EB9E4D411464CA6DC"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_7E2687E18EF54187DAFDC095DF18C474" Name="assoc_7E2687E18EF54187DAFDC095DF18C474" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_7E2687E18EF54187DAFDC095DF18C474"/><End EntitySet="I_SalesGroup" Role="ToRole_assoc_7E2687E18EF54187DAFDC095DF18C474"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" Name="assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066"/><End EntitySet="I_SDDocumentCategory" Role="ToRole_assoc_2AA0BE4A2C5381DBCF29E3CB6D63A066"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_FF5A0C1909978C4A6CC5BEA7708A0448" Name="assoc_FF5A0C1909978C4A6CC5BEA7708A0448" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_FF5A0C1909978C4A6CC5BEA7708A0448"/><End EntitySet="C_SalesOfficeValueHelp" Role="ToRole_assoc_FF5A0C1909978C4A6CC5BEA7708A0448"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_E5BF0036EC64C77F65945CDC157C9818" Name="assoc_E5BF0036EC64C77F65945CDC157C9818" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_E5BF0036EC64C77F65945CDC157C9818"/><End EntitySet="I_BillingBlockReason" Role="ToRole_assoc_E5BF0036EC64C77F65945CDC157C9818"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_8B92F31E7AA79538F87244C9E2D8D3A5" Name="assoc_8B92F31E7AA79538F87244C9E2D8D3A5" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_8B92F31E7AA79538F87244C9E2D8D3A5"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_2F490397C021DE86B11836B9A15FA47C" Name="assoc_2F490397C021DE86B11836B9A15FA47C" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_2F490397C021DE86B11836B9A15FA47C"/><End EntitySet="I_Division" Role="ToRole_assoc_2F490397C021DE86B11836B9A15FA47C"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_BB14EA8CCF84EB1D1B30645F75EE3584" Name="assoc_BB14EA8CCF84EB1D1B30645F75EE3584" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_BB14EA8CCF84EB1D1B30645F75EE3584"/><End EntitySet="C_Dischannelvaluehelp" Role="ToRole_assoc_BB14EA8CCF84EB1D1B30645F75EE3584"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_3BA06A33186A2CDED58D92D8BBD90C96" Name="assoc_3BA06A33186A2CDED58D92D8BBD90C96" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96"/><End EntitySet="I_FulfillmentProcessPhase" Role="ToRole_assoc_3BA06A33186A2CDED58D92D8BBD90C96"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" Name="assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D"/><End EntitySet="I_OverallTotalDeliveryStatus" Role="ToRole_assoc_1AB2B35AFF9FE569EAA7ECA58FA1E54D"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.to_tablecolumns" Name="to_tablecolumnsSet" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_tablecolumns"/><End EntitySet="SAP__TableColumnsSet" Role="ToRole_to_tablecolumns"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_83E6407812F1BB63407206407BE1A6F3" Name="assoc_83E6407812F1BB63407206407BE1A6F3" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_83E6407812F1BB63407206407BE1A6F3"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_83E6407812F1BB63407206407BE1A6F3"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_7F2E07BD6328815F04AA738335C79148" Name="assoc_7F2E07BD6328815F04AA738335C79148" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_7F2E07BD6328815F04AA738335C79148"/><End EntitySet="C_SalesGroupValueHelp" Role="ToRole_assoc_7F2E07BD6328815F04AA738335C79148"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.to_signature" Name="to_signatureSet" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_signature"/><End EntitySet="SAP__SignatureSet" Role="ToRole_to_signature"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_15FF4EEC94DF0962699E87995207F189" Name="assoc_15FF4EEC94DF0962699E87995207F189" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_15FF4EEC94DF0962699E87995207F189"/><End EntitySet="I_OverallSDDocumentRjcnStatus" Role="ToRole_assoc_15FF4EEC94DF0962699E87995207F189"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" Name="assoc_DF7AF818AE2C32B0FC76D86DB8A328FB" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB"/><End EntitySet="I_OverallDangerousGoodsStatus" Role="ToRole_assoc_DF7AF818AE2C32B0FC76D86DB8A328FB"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_4F0A32A291D765A72C203CAEF3387E4B" Name="assoc_4F0A32A291D765A72C203CAEF3387E4B" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_4F0A32A291D765A72C203CAEF3387E4B"/><End EntitySet="I_OvTrdCmplncSnctndListChkSts" Role="ToRole_assoc_4F0A32A291D765A72C203CAEF3387E4B"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_53DB374DB2386D9913EC6C1487DCD858" Name="assoc_53DB374DB2386D9913EC6C1487DCD858" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_53DB374DB2386D9913EC6C1487DCD858"/><End EntitySet="I_OvrlSftyDataSheetSts" Role="ToRole_assoc_53DB374DB2386D9913EC6C1487DCD858"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_684F59178C7A38156302FF1760CFB4FF" Name="assoc_684F59178C7A38156302FF1760CFB4FF" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_684F59178C7A38156302FF1760CFB4FF"/><End EntitySet="I_OverallChmlCmplncStatus" Role="ToRole_assoc_684F59178C7A38156302FF1760CFB4FF"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_93F9A728E439F29516C0A89F20439EB3" Name="assoc_93F9A728E439F29516C0A89F20439EB3" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_93F9A728E439F29516C0A89F20439EB3"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_93F9A728E439F29516C0A89F20439EB3"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.to_coverpage" Name="to_coverpageSet" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="SAP__MyDocumentDescriptions" Role="FromRole_to_coverpage"/><End EntitySet="SAP__CoverPageSet" Role="ToRole_to_coverpage"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_3D27B8E7B737E8A6BF30F262444DBE12" Name="assoc_3D27B8E7B737E8A6BF30F262444DBE12" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12"/><End EntitySet="I_OvrlTrdCmplncLegalCtrlChkSts" Role="ToRole_assoc_3D27B8E7B737E8A6BF30F262444DBE12"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_9269EB41593B822C48C1818C80CA36B3" Name="assoc_9269EB41593B822C48C1818C80CA36B3" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_9269EB41593B822C48C1818C80CA36B3"/><End EntitySet="I_DistributionChannel" Role="ToRole_assoc_9269EB41593B822C48C1818C80CA36B3"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_D807C35146D88C9A3E4CBAA40966EB30" Name="assoc_D807C35146D88C9A3E4CBAA40966EB30" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_D807C35146D88C9A3E4CBAA40966EB30"/><End EntitySet="I_FulfillmentStatus" Role="ToRole_assoc_D807C35146D88C9A3E4CBAA40966EB30"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_42309CE41DBBC9354AC8F0DE1F41BB59" Name="assoc_42309CE41DBBC9354AC8F0DE1F41BB59" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59"/><End EntitySet="I_Customer" Role="ToRole_assoc_42309CE41DBBC9354AC8F0DE1F41BB59"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_D6835A9EE21769E2B90A8C9BDE316B0B" Name="assoc_D6835A9EE21769E2B90A8C9BDE316B0B" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B"/><End EntitySet="I_OverallPurchaseConfStatus" Role="ToRole_assoc_D6835A9EE21769E2B90A8C9BDE316B0B"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_3957DA89FBEF7609C32B61DE8298847E" Name="assoc_3957DA89FBEF7609C32B61DE8298847E" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_3957DA89FBEF7609C32B61DE8298847E"/><End EntitySet="C_OrgDivisionValueHelp" Role="ToRole_assoc_3957DA89FBEF7609C32B61DE8298847E"/></AssociationSet>
+				<AssociationSet Association="SD_SOFA.assoc_F8C2B8DCC28A95206E9EE8876D37E85D" Name="assoc_F8C2B8DCC28A95206E9EE8876D37E85D" sap:content-version="1" sap:creatable="false" sap:deletable="false" sap:updatable="false"><End EntitySet="C_SlsDocFlfllmntAnalyzer" Role="FromRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D"/><End EntitySet="I_SalesOffice" Role="ToRole_assoc_F8C2B8DCC28A95206E9EE8876D37E85D"/></AssociationSet>
+			</EntityContainer>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/FulfillmentStatusInDelivery">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Fullfillment Status"/><PropertyValue Property="CollectionPath" String="I_FulfillmentStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="FulfillmentStatusInDelivery"/><PropertyValue Property="ValueListProperty" String="FulfillmentStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="FulfillmentStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/FulfillmentProcessPhase">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Fullfillment Process Phase"/><PropertyValue Property="CollectionPath" String="I_FulfillmentProcessPhase"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="FulfillmentProcessPhase"/><PropertyValue Property="ValueListProperty" String="FulfillmentProcessPhase"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="FulfillmentProcessPhase_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/DistributionChannel">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Sales Org specific Distribution Channel"/><PropertyValue Property="CollectionPath" String="C_Dischannelvaluehelp"/><PropertyValue Bool="true" Property="SearchSupported"/><PropertyValue Int="1" Property="FetchValues"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/><PropertyValue Property="ValueListProperty" String="SalesOrganization"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="DistributionChannel"/><PropertyValue Property="ValueListProperty" String="DistributionChannel"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="DistributionChannel_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OrganizationDivision">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Sales Org/Dis Ch specific Org Division"/><PropertyValue Property="CollectionPath" String="C_OrgDivisionValueHelp"/><PropertyValue Bool="true" Property="SearchSupported"/><PropertyValue Int="1" Property="FetchValues"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/><PropertyValue Property="ValueListProperty" String="SalesOrganization"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="DistributionChannel"/><PropertyValue Property="ValueListProperty" String="DistributionChannel"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OrganizationDivision"/><PropertyValue Property="ValueListProperty" String="Division"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Division_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/SalesGroup">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Sales Office specific Sales Group"/><PropertyValue Property="CollectionPath" String="C_SalesGroupValueHelp"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesGroup"/><PropertyValue Property="ValueListProperty" String="SalesGroup"/><Annotation EnumMember="UI.ImportanceType/High" Term="UI.Importance"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesOffice"/><PropertyValue Property="ValueListProperty" String="SalesOffice"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SalesGroup_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/SalesOffice">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Sales Area specific Sales Office"/><PropertyValue Property="CollectionPath" String="C_SalesOfficeValueHelp"/><PropertyValue Bool="true" Property="SearchSupported"/><PropertyValue Int="1" Property="FetchValues"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesOffice"/><PropertyValue Property="ValueListProperty" String="SalesOffice"/><Annotation EnumMember="UI.ImportanceType/High" Term="UI.Importance"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesOrganization"/><PropertyValue Property="ValueListProperty" String="SalesOrganization"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="DistributionChannel"/><PropertyValue Property="ValueListProperty" String="DistributionChannel"/></Record>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OrganizationDivision"/><PropertyValue Property="ValueListProperty" String="OrganizationDivision"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SalesOffice_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/TransactionCurrency">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Currency"/><PropertyValue Property="CollectionPath" String="I_Currency"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="TransactionCurrency"/><PropertyValue Property="ValueListProperty" String="Currency"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="Currency_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallSDProcessStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall SD Process Status"/><PropertyValue Property="CollectionPath" String="I_OverallSDProcessStatus"/><PropertyValue Bool="false" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallSDProcessStatus"/><PropertyValue Property="ValueListProperty" String="OverallSDProcessStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallSDProcessStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallTotalDeliveryStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall Total Delivery Status"/><PropertyValue Property="CollectionPath" String="I_OverallTotalDeliveryStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallTotalDeliveryStatus"/><PropertyValue Property="ValueListProperty" String="OverallTotalDeliveryStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallTotalDeliveryStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallPurchaseConfStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall Purchase Confirmation Status"/><PropertyValue Property="CollectionPath" String="I_OverallPurchaseConfStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallPurchaseConfStatus"/><PropertyValue Property="ValueListProperty" String="OverallPurchaseConfStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallPurchaseConfStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallSDDocumentRejectionSts">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall SD Document Rejection Status"/><PropertyValue Property="CollectionPath" String="C_Overallsddocumentrjcnstatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallSDDocumentRejectionSts"/><PropertyValue Property="ValueListProperty" String="OverallSDDocumentRejectionSts"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallSDDocumentRejectionSts_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/DeliveryBlockReason">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Delivery Block Reason"/><PropertyValue Property="CollectionPath" String="I_DeliveryBlockReason"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="DeliveryBlockReason"/><PropertyValue Property="ValueListProperty" String="DeliveryBlockReason"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="DeliveryBlockReason"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="DeliveryBlockReason_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/HeaderBillingBlockReason">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Billing Block Reason"/><PropertyValue Property="CollectionPath" String="I_BillingBlockReason"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="HeaderBillingBlockReason"/><PropertyValue Property="ValueListProperty" String="BillingBlockReason"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="BillingBlockReason_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/SalesDocumentRjcnReason">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Sales Document Rejection Reason"/><PropertyValue Property="CollectionPath" String="I_SalesDocumentRjcnReason"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesDocumentRjcnReason"/><PropertyValue Property="ValueListProperty" String="SalesDocumentRjcnReason"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SalesDocumentRjcnReason_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/SalesDocApprovalStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Approval Sts for Sales Document"/><PropertyValue Property="CollectionPath" String="I_SalesDocApprovalStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="SalesDocApprovalStatus"/><PropertyValue Property="ValueListProperty" String="SalesDocApprovalStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="SalesDocApprovalStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallChmlCmplncStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall Chemical Compliance Check Status"/><PropertyValue Property="CollectionPath" String="I_OverallChmlCmplncStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallChmlCmplncStatus"/><PropertyValue Property="ValueListProperty" String="OverallChmlCmplncStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallChmlCmplncStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallDangerousGoodsStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall Dangerous Goods Status"/><PropertyValue Property="CollectionPath" String="I_OverallDangerousGoodsStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallDangerousGoodsStatus"/><PropertyValue Property="ValueListProperty" String="OverallDangerousGoodsStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallDangerousGoodsStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallSafetyDataSheetStatus">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall Safety Data Sheet Status"/><PropertyValue Property="CollectionPath" String="I_OvrlSftyDataSheetSts"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallSafetyDataSheetStatus"/><PropertyValue Property="ValueListProperty" String="OverallSafetyDataSheetStatus"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallSafetyDataSheetStatus_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OverallTrdCmplncEmbargoSts">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Overall Trade Compliance Embargo Status"/><PropertyValue Property="CollectionPath" String="I_OvrlTradeCmplncEmbargoStatus"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OverallTrdCmplncEmbargoSts"/><PropertyValue Property="ValueListProperty" String="OverallTrdCmplncEmbargoSts"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OverallTrdCmplncEmbargoSts_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OvrlTrdCmplncSnctndListChkSts">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Ovrl Trade Compl Snctnd List Chk Sts"/><PropertyValue Property="CollectionPath" String="I_OvTrdCmplncSnctndListChkSts"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OvrlTrdCmplncSnctndListChkSts"/><PropertyValue Property="ValueListProperty" String="OvrlTrdCmplncSnctndListChkSts"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OvrlTrdCmplncSnctndListChkSts_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.C_SlsDocFlfllmntAnalyzerType/OvrlTrdCmplncLegalCtrlChkSts">
+				<Annotation Term="Common.ValueList">
+					<Record><PropertyValue Property="Label" String="Ovrl Trade Cmplnc Legal Ctrl Chk Sts"/><PropertyValue Property="CollectionPath" String="I_OvrlTrdCmplncLegalCtrlChkSts"/><PropertyValue Bool="true" Property="SearchSupported"/>
+						<PropertyValue Property="Parameters">
+							<Collection>
+								<Record Type="Common.ValueListParameterInOut"><PropertyValue Property="LocalDataProperty" PropertyPath="OvrlTrdCmplncLegalCtrlChkSts"/><PropertyValue Property="ValueListProperty" String="OvrlTrdCmplncLegalCtrlChkSts"/></Record>
+								<Record Type="Common.ValueListParameterDisplayOnly"><PropertyValue Property="ValueListProperty" String="OvrlTrdCmplncLegalCtrlChkSts_Text"/></Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.SD_SOFA_Entities"><Annotation Bool="true" Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering"/></Annotations>
+			<Annotations Target="SD_SOFA.SD_SOFA_Entities/C_SlsDocFlfllmntAnalyzer">
+				<Annotation Term="Capabilities.FilterRestrictions">
+					<Record>
+						<PropertyValue Property="FilterExpressionRestrictions">
+							<Collection>
+								<Record><PropertyValue Property="Property" PropertyPath="SoldToPartyIsOneTimeAccount"/><PropertyValue Property="AllowedExpressions" String="SingleValue"/></Record>
+							</Collection>
+						</PropertyValue>
+						<PropertyValue Property="NonFilterableProperties">
+							<Collection>
+								<PropertyPath>SoldToPartyFullName</PropertyPath>
+								<PropertyPath>TotalNetAmount</PropertyPath>
+								<PropertyPath>TotalGrossAmount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.NavigationRestrictions">
+					<Record>
+						<PropertyValue Property="RestrictedProperties">
+							<Collection>
+								<Record><PropertyValue NavigationPropertyPath="to_DeliveryBlockReason" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_DistributionChannel" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_DistributionChannelVH" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentProcessPhase" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentStatusInAccounting" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentStatusInDelivery" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentStatusInInvoice" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentStatusInOrder" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentStatusInSupply" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_FulfillmentStatusInTransit" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_HeaderBillingBlockReason" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OrganizationDivision" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OrganizationDivisionVH" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OvTrdCmplncSnctndListChkSts" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallChmlCmplncStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallDangerousGoodsStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallFulfillmentStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallPurchaseConfStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallSDDocRejectionStsVH" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallSDDocumentRejectionSts" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallSDProcessStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OverallTotalDeliveryStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OvrlSftyDataSheetSts" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OvrlTradeCmplncEmbargoStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_OvrlTrdCmplncLegalCtrlChkSts" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SDDocumentCategory" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesDocApprovalStatus" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesDocumentRjcnReason" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesDocumentType" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesGroup" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesGroupVH" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesOffice" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesOfficeVH" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SalesOrganization" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_SoldToParty" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+								<Record><PropertyValue NavigationPropertyPath="to_TransactionCurrency" Property="NavigationProperty"/>
+									<PropertyValue Property="InsertRestrictions">
+										<Record><PropertyValue Bool="false" Property="Insertable"/></Record>
+									</PropertyValue>
+								</Record>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.SortRestrictions">
+					<Record>
+						<PropertyValue Property="NonSortableProperties">
+							<Collection>
+								<PropertyPath>SoldToPartyFullName</PropertyPath>
+								<PropertyPath>TotalGrossAmount</PropertyPath>
+							</Collection>
+						</PropertyValue>
+					</Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_OverallSDDocumentRjcnStatusType">
+				<Annotation Term="Common.SAPObjectNodeType">
+					<Record><PropertyValue Property="Name" String="OverallSDDocumentRejectionSts"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_OverallSDProcessStatusType">
+				<Annotation Term="Common.SAPObjectNodeType">
+					<Record><PropertyValue Property="Name" String="OverallSDProcessStatus"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_OverallTotalDeliveryStatusType">
+				<Annotation Term="Common.SAPObjectNodeType">
+					<Record><PropertyValue Property="Name" String="SlsDocOvrlTotalDeliveryStatus"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_SDDocumentCategoryType">
+				<Annotation Term="Common.SAPObjectNodeType">
+					<Record><PropertyValue Property="Name" String="SDDocumentCategory"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_SalesDocApprovalStatusType">
+				<Annotation Term="Common.SAPObjectNodeType">
+					<Record><PropertyValue Property="Name" String="SalesDocApprovalStatus"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_SalesDocumentRjcnReasonType">
+				<Annotation Term="Common.SAPObjectNodeType">
+					<Record><PropertyValue Property="Name" String="SalesDocumentRjcnReason"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.I_CurrencyType/Currency"><Annotation Path="Decimals" Term="Common.UnitSpecificScale"/></Annotations>
+			<Annotations Target="SD_SOFA.SD_SOFA_Entities">
+				<Annotation Term="SAP__CodeList.CurrencyCodes">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__Currencies"/></Record>
+				</Annotation>
+				<Annotation Term="SAP__CodeList.UnitsOfMeasure">
+					<Record><PropertyValue Property="Url" String="./$metadata"/><PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/></Record>
+				</Annotation>
+			</Annotations>
+			<Annotations Target="SD_SOFA.SAP__Currency/CurrencyCode"><Annotation Path="Text" Term="SAP__common.Text"/><Annotation Path="DecimalPlaces" Term="SAP__common.UnitSpecificScale"/><Annotation Path="ISOCode" Term="SAP__CodeList.StandardCode"/></Annotations>
+			<Annotations Target="SD_SOFA.SAP__UnitOfMeasure/UnitCode"><Annotation Path="Text" Term="SAP__common.Text"/><Annotation Path="DecimalPlaces" Term="SAP__common.UnitSpecificScale"/><Annotation Path="ISOCode" Term="SAP__CodeList.StandardCode"/><Annotation Path="ExternalCode" Term="SAP__CodeList.ExternalCode"/></Annotations>
+			<Annotations Target="SD_SOFA.SAP__UnitOfMeasure">
+				<Annotation Term="SAP__core.AlternateKeys">
+					<Collection>
+						<Record>
+							<PropertyValue Property="Key">
+								<Collection>
+									<Record><PropertyValue Path="ExternalCode" Property="Name"/><PropertyValue Property="Alias" String="ExternalCode"/></Record>
+								</Collection>
+							</PropertyValue>
+						</Record>
+					</Collection>
+				</Annotation>
+			</Annotations><atom:link href="./sap/SD_SOFA/$metadata" rel="self" xmlns:atom="http://www.w3.org/2005/Atom"/><atom:link href="./sap/SD_SOFA/$metadata" rel="latest-version" xmlns:atom="http://www.w3.org/2005/Atom"/></Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,6 @@
+[
+	{ "BillingBlockReason": "", "BillingBlockReason_Text": "No Block" },
+	{ "BillingBlockReason": "01", "BillingBlockReason_Text": "Check Credit Memo" },
+	{ "BillingBlockReason": "02", "BillingBlockReason_Text": "Check Prices & Terms" },
+	{ "BillingBlockReason": "03", "BillingBlockReason_Text": "Quantity Discrepancy" }
+]

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SD - Document Flow &amp; Status Report</title>
+    <script src="https://ui5.sap.com/resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m, sap.f, sap.ui.layout, sap.ui.core, sap.viz, sap.suite.ui.microchart, sap.suite.ui.commons"
+        data-sap-ui-theme="sap_horizon"
+        data-sap-ui-compatVersion="edge"
+        data-sap-ui-async="true"
+        data-sap-ui-preload=""
+        data-sap-ui-resourceroots='{
+            "myapp" : "./"
+        }'></script>
+    <script>
+        sap.ui.getCore().attachInit(function () {
+            new sap.ui.core.ComponentContainer({
+                name: "myapp",
+                height: "100%",
+                async: true,
+                manifest: true
+            }).placeAt("content");
+        });
+    </script>
+    <style>
+        html, body, #content {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Fluid Page Entrance Animations */
+        @keyframes appFadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cardPop {
+            0% { opacity: 0; transform: scale(0.96) translateY(10px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(0, 112, 242, 0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(0, 112, 242, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 112, 242, 0); }
+        }
+
+        @keyframes statusRedPulse {
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.45); }
+            70% { box-shadow: 0 0 0 7px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+
+        @keyframes shimmerTop {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Standard SAP Fiori ShellBar */
+        .sapFShellBar {
+            background: #ffffff !important;
+            border-bottom: 1px solid #d9d9d9 !important;
+            box-shadow: none !important;
+        }
+
+        .sapFShellBarTitle,
+        .sapFShellBar .sapFShellBarTitle {
+            font-family: "72", "72full", Arial, Helvetica, sans-serif !important;
+            font-size: 1rem !important;
+            font-weight: 600 !important;
+            color: #1d2d3e !important;
+            letter-spacing: normal !important;
+        }
+
+        .fioriVariantBtn .sapMBtnContent {
+            font-size: 1.25rem !important;
+            font-weight: 700 !important;
+            color: #0070f2 !important;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .fioriVariantBtn:hover .sapMBtnContent {
+            color: #0050b3 !important;
+            transform: translateX(2px);
+        }
+        .fioriVariantBtn .sapUiIcon {
+            font-size: 0.85rem !important;
+            color: #0070f2 !important;
+            margin-left: 0.25rem !important;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .fioriVariantBtn:hover .sapUiIcon {
+            transform: translateY(2px);
+        }
+
+        /* Dynamic Page Header Glassmorphism & Accent Bar */
+        .sapFDynamicPageHeader {
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+            animation: appFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Emphasized Buttons Animation */
+        .sapMBtnEmphasized {
+            background: linear-gradient(135deg, #0070f2 0%, #0050b3 100%) !important;
+            border-radius: 8px !important;
+            border: none !important;
+            box-shadow: 0 2px 6px rgba(0, 112, 242, 0.28) !important;
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        }
+        .sapMBtnEmphasized:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 5px 14px rgba(0, 112, 242, 0.4) !important;
+        }
+        .sapMBtnEmphasized:active {
+            transform: translateY(0) !important;
+        }
+
+        /* Isolate Chart Card from layout thrashing during animation */
+        .fioriChartCard {
+            contain: layout paint style;
+            overflow: hidden !important;
+            width: 100% !important;
+            border-radius: 14px !important;
+            border: 1px solid #e2e8f0 !important;
+            background: #ffffff !important;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+            position: relative;
+            animation: cardPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .fioriChartCard:hover {
+            box-shadow: 0 8px 26px rgba(0, 0, 0, 0.07) !important;
+            border-color: #cbd5e1 !important;
+        }
+        .fioriChartCard::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; height: 3.5px;
+            background: linear-gradient(90deg, #0284c7, #7c3aed, #16a34a, #ea580c, #0d9488, #0284c7);
+            background-size: 300% 100%;
+            animation: shimmerTop 8s linear infinite;
+            z-index: 10;
+        }
+
+        .fioriChartContainer {
+            width: 100% !important;
+            min-height: 280px !important;
+            padding-bottom: 16px !important;
+            overflow: visible !important;
+            position: relative;
+        }
+        .sapVizFrame {
+            width: 100% !important;
+            overflow: visible !important;
+        }
+
+        /* Stabilize DynamicPage scroll container */
+        .sapFDynamicPageContent, 
+        .sapFDynamicPageContentWrapper {
+            overflow-x: hidden !important;
+        }
+
+        /* ==========================================
+           PREMIUM ANIMATED KPI SUMMARY CARDS
+           ========================================== */
+        .kpiSummaryBox {
+            border-radius: 10px !important;
+            border: 1px solid #e2e8f0 !important;
+            padding: 9px 12px;
+            background: #ffffff;
+            margin-bottom: 8px;
+            min-height: 52px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+            transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        .kpiSummaryBox::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; bottom: 0; width: 4px;
+            background: currentColor;
+            border-radius: 10px 0 0 10px;
+            transition: width 0.2s ease;
+        }
+        .kpiSummaryBox:hover {
+            transform: translateY(-3px) scale(1.015);
+            box-shadow: 0 7px 18px rgba(0, 0, 0, 0.08);
+            border-color: currentColor !important;
+        }
+        .kpiSummaryBox:hover::before {
+            width: 6px;
+        }
+        .kpiSummaryBox .sapUiIcon {
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .kpiSummaryBox:hover .sapUiIcon {
+            transform: scale(1.18) rotate(4deg);
+        }
+
+        /* Specific KPI Accent Tints */
+        .kpiBoxInquiry { color: #64748b; }
+        .kpiTitleInquiry { color: #475569 !important; font-weight: 600; font-size: 0.88rem; }
+        .kpiIconInquiry { color: #64748b !important; }
+        .kpiValInquiry { color: #1e293b !important; font-weight: 800; font-size: 1.18rem; }
+
+        .kpiBoxDelivery { color: #0284c7; }
+        .kpiTitleDelivery { color: #0369a1 !important; font-weight: 600; font-size: 0.88rem; }
+        .kpiIconDelivery { color: #0284c7 !important; }
+        .kpiValDelivery { color: #0c4a6e !important; font-weight: 800; font-size: 1.18rem; }
+
+        .kpiBoxQuotation { color: #7c3aed; }
+        .kpiTitleQuotation { color: #6d28d9 !important; font-weight: 600; font-size: 0.88rem; }
+        .kpiIconQuotation { color: #7c3aed !important; }
+        .kpiValQuotation { color: #4c1d95 !important; font-weight: 800; font-size: 1.18rem; }
+
+        .kpiBoxBilling { color: #ea580c; }
+        .kpiTitleBilling { color: #c2410c !important; font-weight: 600; font-size: 0.88rem; }
+        .kpiIconBilling { color: #ea580c !important; }
+        .kpiValBilling { color: #7c2d12 !important; font-weight: 800; font-size: 1.18rem; }
+
+        .kpiBoxSalesOrder { color: #16a34a; }
+        .kpiTitleSalesOrder { color: #15803d !important; font-weight: 600; font-size: 0.88rem; }
+        .kpiIconSalesOrder { color: #16a34a !important; }
+        .kpiValSalesOrder { color: #14532d !important; font-weight: 800; font-size: 1.18rem; }
+
+        .kpiBoxPayment { color: #0d9488; }
+        .kpiTitlePayment { color: #0f766e !important; font-weight: 600; font-size: 0.88rem; }
+        .kpiIconPayment { color: #0d9488 !important; }
+        .kpiValPayment { color: #134e4a !important; font-weight: 800; font-size: 1.18rem; }
+
+        /* Crisp Clean White Backgrounds */
+        body, 
+        .sapUiBody, 
+        .sapFDynamicPage, 
+        .sapFDynamicPageContent, 
+        .sapFDynamicPageContentWrapper {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+
+        .sapFDynamicPageHeader {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+
+        /* Clean Pure White Table & Toolbar Styling */
+        .sapMTable,
+        .sapMListTbl,
+        #idDocFlowTable {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border-radius: 12px !important;
+            border: 1px solid #e2e8f0 !important;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04) !important;
+        }
+
+        .sapMOHT,
+        .sapMTable .sapMOHT,
+        .sapMListHdr,
+        .sapMToolbar,
+        .sapMIBar {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+
+        #idDocFlowTable .sapMListHdr,
+        #idDocFlowTable header.sapMListHdr,
+        #idDocFlowTable .sapMOHT {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+            border-bottom: 1px solid #e2e8f0 !important;
+        }
+
+        .sapMListTblHeaderCell {
+            background: #f8fafc !important;
+            background-color: #f8fafc !important;
+            border-bottom: 2px solid #e2e8f0 !important;
+        }
+
+        .sapMListTblCell {
+            background: #ffffff !important;
+            background-color: #ffffff !important;
+        }
+
+        /* ==========================================
+           TABLE MICRO-INTERACTIONS & STYLING
+           ========================================== */
+        .sapMListTblRow {
+            transition: all 0.2s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+        }
+        .sapMListTblRow:hover {
+            background-color: #f1f8ff !important;
+            box-shadow: inset 3px 0 0 #0070f2 !important;
+        }
+
+        /* Document Links Hover */
+        .sapMLnk {
+            font-weight: 700 !important;
+            color: #0070f2 !important;
+            transition: color 0.18s ease, transform 0.18s ease;
+            display: inline-block;
+        }
+        .sapMLnk:hover {
+            color: #004085 !important;
+            transform: translateX(3px);
+            text-decoration: underline !important;
+        }
+
+        /* Status Icon Breathing Indicator for Error/Overdue */
+        .sapUiIcon[src*="error"] {
+            border-radius: 50%;
+            animation: statusRedPulse 2.2s infinite;
+        }
+
+        /* Process Flow Nodes Hover Glow & Micro-interactions */
+        .sapSuiteUiCommonsProcessFlowNode {
+            transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.25s ease !important;
+        }
+        .sapSuiteUiCommonsProcessFlowNode:hover {
+            transform: scale(1.04) translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 112, 242, 0.22) !important;
+        }
+
+        /* ==========================================
+           DEFINE CONDITIONS DIALOG (SELECT-OPTIONS)
+           ========================================== */
+        /* "Selected Conditions" container: bordered box that grows with the tokens */
+        .sdCondTokenBox {
+            border: 1px solid #d9d9d9;
+            border-radius: 8px;
+            background: #ffffff;
+            padding: 0.25rem 0.25rem 0.25rem 0.5rem;
+            min-height: 2.75rem;
+            max-height: 9.5rem;
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-sizing: border-box;
+        }
+        .sdCondTokenBox:focus-within {
+            border-color: #0070f2;
+        }
+
+        /* Let the Tokenizer wrap into multiple rows instead of scrolling horizontally */
+        .sdCondTokenizer.sapMTokenizer {
+            height: auto !important;
+            min-height: 2rem;
+            padding: 0 !important;
+        }
+        .sdCondTokenizer .sapMTokenizerScrollContainer {
+            flex-wrap: wrap !important;
+            align-content: flex-start;
+            height: auto !important;
+            overflow-x: hidden !important;
+            row-gap: 0.25rem;
+        }
+        .sdCondTokenizer.sapMTokenizerEmpty {
+            display: none;
+        }
+
+        /* Modern Sleek Scrollbar */
+        ::-webkit-scrollbar {
+            width: 7px;
+            height: 7px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+
+<body class="sapUiBody">
+    <div id="content"></div>
+</body>
+
+</html>
